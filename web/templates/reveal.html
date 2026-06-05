@@ -1,0 +1,260 @@
+{% extends "base.html" %}
+{% block title %}38-0 — Final Score{% endblock %}
+{% block content %}
+
+{% set tier = result.tier %}
+
+<!-- Tier-specific theme colours -->
+{% if 'Invincible' in tier %}
+  {% set tc = '#92620a' %}{% set tBg = '#fef3c7' %}{% set tBdr = '#d97706' %}{% set artCol = '#d97706' %}
+{% elif 'Title' in tier %}
+  {% set tc = '#14532d' %}{% set tBg = '#dcfce7' %}{% set tBdr = '#16a34a' %}{% set artCol = '#16a34a' %}
+{% elif 'European' in tier %}
+  {% set tc = '#1e3a8a' %}{% set tBg = '#dbeafe' %}{% set tBdr = '#3b82f6' %}{% set artCol = '#3b82f6' %}
+{% elif 'Mid' in tier %}
+  {% set tc = '#374151' %}{% set tBg = '#f3f4f6' %}{% set tBdr = '#9ca3af' %}{% set artCol = '#6b7280' %}
+{% else %}
+  {% set tc = '#7f1d1d' %}{% set tBg = '#fee2e2' %}{% set tBdr = '#ef4444' %}{% set artCol = '#ef4444' %}
+{% endif %}
+
+<!-- ─── Header ──────────────────────────────────────────────── -->
+<div style="height:46px; background:var(--navy); border-bottom:3px solid var(--navy);
+            box-shadow:0 3px 0 var(--sh); display:flex; align-items:center;
+            justify-content:space-between; padding:0 18px; flex-shrink:0;">
+  <span class="font-pixel" style="font-size:13px; color:var(--yellow); text-shadow:2px 2px 0 var(--yellow2);">38-0</span>
+  <span class="font-pixel" style="font-size:7px; color:rgba(255,255,255,0.45); letter-spacing:0.1em;">FINAL RESULT</span>
+  <a href="/" class="font-pixel"
+     style="font-size:6px; color:var(--yellow); text-decoration:none; letter-spacing:0.08em;
+            border:2px solid var(--yellow); padding:5px 10px; border-radius:2px;
+            box-shadow:2px 2px 0 var(--yellow2);">
+    PLAY AGAIN
+  </a>
+</div>
+
+<div style="min-height:calc(100vh - 46px); overflow-y:auto;">
+<div style="max-width:1100px; margin:0 auto; padding:16px 16px 48px;">
+
+<!-- ─── Hero: ASCII art + Score + Art ──────────────────────── -->
+<div class="px-box" style="background:{{ tBg }}; border-color:{{ tBdr }}; margin-bottom:16px;
+            border-radius:6px; display:grid; grid-template-columns:1fr auto 1fr;
+            align-items:center; gap:0; overflow:hidden;">
+
+  <!-- Left ASCII art -->
+  <div style="padding:24px 16px; display:flex; align-items:center; justify-content:center;">
+    <div class="font-pixel" style="font-size:7px; line-height:2; color:{{ artCol }};
+                white-space:pre; text-align:center; letter-spacing:0.05em;">
+{% if 'Invincible' in tier %}
+* * * * * * * *
+*  .--------.  *
+* /  ( (T) )  \ *
+*|   `------'  |*
+* \____+_____/ *
+  *    |||    *
+  *  ,=====, *
+  *  |CHAMP|  *
+  *  |_____|  *
+* * * * * * * *{% elif 'Title' in tier %}
+   .---------.
+  /  ( (T) )  \
+ |   `-------'  |
+  \____+______/
+       |||
+     ,=====,
+     | WIN |
+     |_____|{% elif 'European' in tier %}
+ .   *   .   *   .
+ . * .--------. * .
+ .  / *  **  * \  .
+ * |  * * * * *  | *
+ .  \ *  **  * /  .
+ . * `--------' * .
+ .   *   .   *   .{% elif 'Mid' in tier %}
+    ,-----------.
+    |  .     .  |
+    |    ___    |
+    |   (   )   |
+    |    ---    |
+    `-----------'
+    keeping heads
+      above water{% else %}
+    ,-----------.
+    |   !   !   |
+    |   v v v   |
+    `----vvv----'
+        v   v
+      v       v
+    TRAPDOOR
+    OPENS...{% endif %}
+    </div>
+  </div>
+
+  <!-- Score (center column) -->
+  <div style="padding:32px 40px; text-align:center; border-left:3px solid {{ tBdr }};
+              border-right:3px solid {{ tBdr }};">
+    <div class="font-pixel" style="font-size:7px; color:{{ tc }}; letter-spacing:0.15em; margin-bottom:12px; opacity:0.7;">
+      PREDICTED POINTS
+    </div>
+    <div style="font-size:clamp(3.5rem,8vw,6rem); font-weight:900; color:{{ tc }};
+                line-height:1; margin-bottom:6px; letter-spacing:-0.02em;">
+      {{ "%.0f"|format(result.predicted_points) }}
+    </div>
+    <div class="font-pixel px-box-sm"
+         style="display:inline-block; font-size:8px; color:{{ tc }}; background:{{ tBg }};
+                border-color:{{ tBdr }}; padding:8px 18px; margin:12px 0 10px;
+                border-radius:3px; letter-spacing:0.1em;">
+      {{ tier | upper }}
+    </div>
+    <div style="font-size:13px; font-weight:800; color:{{ tc }}; opacity:0.75; margin-top:4px;">
+      {{ result.record }}
+    </div>
+    {% if result.avg_games < 30 %}
+    <div class="font-pixel" style="font-size:6px; color:{{ tc }}; opacity:0.55; margin-top:8px;">
+      avg {{ "%.0f"|format(result.avg_games) }}g played
+    </div>
+    {% endif %}
+  </div>
+
+  <!-- Right ASCII art (mirrored feel, slightly different) -->
+  <div style="padding:24px 16px; display:flex; align-items:center; justify-content:center;">
+    {% set bd = result.breakdown %}
+    {% set pg = result.pedigree %}
+    <div style="display:flex; flex-direction:column; gap:10px; width:100%;">
+      <div class="font-pixel" style="font-size:6px; color:{{ tc }}; opacity:0.6; letter-spacing:0.1em;">SQUAD STATS</div>
+      <div style="display:flex; flex-direction:column; gap:8px;">
+        <div style="display:flex; justify-content:space-between; align-items:baseline;">
+          <span style="font-size:11px; font-weight:700; color:{{ tc }}; opacity:0.75;">Attack xGF/g</span>
+          <span style="font-size:16px; font-weight:900; color:{{ tc }};">{{ "%.2f"|format(bd.attack_xgf_pg) }}</span>
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:baseline;">
+          <span style="font-size:11px; font-weight:700; color:{{ tc }}; opacity:0.75;">Defence xGA/g</span>
+          <span style="font-size:16px; font-weight:900; color:{{ tc }};">{{ "%.2f"|format(bd.defense_xga_pg) }}</span>
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:baseline;">
+          <span style="font-size:11px; font-weight:700; color:{{ tc }}; opacity:0.75;">Pred ppg</span>
+          <span style="font-size:16px; font-weight:900; color:{{ tc }};">{{ "%.2f"|format(bd.ppg_hat) }}</span>
+        </div>
+        <div style="border-top:2px solid {{ tBdr }}; padding-top:8px; display:flex; justify-content:space-between; align-items:baseline;">
+          <span style="font-size:11px; font-weight:700; color:{{ tc }}; opacity:0.75;">Squad value</span>
+          <span style="font-size:16px; font-weight:900; color:{{ tc }};">{{ "%+.1f"|format(pg.squad_value_z) }}σ</span>
+        </div>
+        {% if pg.total_caps and pg.total_caps > 0 %}
+        <div style="display:flex; justify-content:space-between; align-items:baseline;">
+          <span style="font-size:11px; font-weight:700; color:{{ tc }}; opacity:0.75;">Intl caps</span>
+          <span style="font-size:16px; font-weight:900; color:{{ tc }};">{{ pg.total_caps }}</span>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── Pitch + Squad list ──────────────────────────────────── -->
+<div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;">
+
+  <!-- Pitch -->
+  <div class="px-box" style="background:var(--panel); border-radius:6px; padding:14px;
+              height:480px; display:flex; flex-direction:column;">
+    {% include "partials/formation.html" %}
+  </div>
+
+  <!-- Squad list -->
+  <div class="px-box" style="background:var(--panel); border-radius:6px; overflow:hidden;
+              height:480px; display:flex; flex-direction:column;">
+    <div style="flex-shrink:0; padding:10px 14px; border-bottom:2px solid var(--border);">
+      <span class="font-pixel" style="font-size:7px; color:var(--navy); letter-spacing:0.08em;">FULL SQUAD</span>
+    </div>
+    <div style="flex:1; overflow-y:auto;">
+      {% for row in roster_rows %}
+      {% for player in row.players %}
+      {% if row.bucket == 'GK' %}{% set lc='var(--col-gk)' %}{% set lD='#925707' %}
+      {% elif row.bucket == 'DEF' %}{% set lc='var(--col-def)' %}{% set lD='#1e40af' %}
+      {% elif row.bucket == 'MID' %}{% set lc='var(--col-mid)' %}{% set lD='#15803d' %}
+      {% else %}{% set lc='var(--col-fwd)' %}{% set lD='#be123c' %}{% endif %}
+      <div style="display:flex; align-items:center; border-bottom:1px solid var(--border);
+                  transition:background 0.08s;"
+           onmouseover="this.style.background='var(--bg2)'"
+           onmouseout="this.style.background=''">
+        <!-- Position colour strip -->
+        <div style="width:5px; align-self:stretch; background:{{ lc }}; flex-shrink:0;"></div>
+        <!-- Player info -->
+        <div style="flex:1; min-width:0; padding:9px 11px;">
+          <div style="display:flex; align-items:center; gap:7px; margin-bottom:2px;">
+            <span class="font-pixel" style="font-size:6px; color:{{ lc }};">{{ row.bucket }}</span>
+            <span style="font-size:13px; font-weight:900; color:var(--navy);
+                         white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
+              {{ player.player_name }}
+            </span>
+          </div>
+          <div style="font-size:10px; font-weight:700; color:var(--navy2);">
+            {{ player.club }} &nbsp;·&nbsp; {{ player.season[:2] }}/{{ player.season[2:] }}
+          </div>
+        </div>
+        <!-- Key stats -->
+        <div style="padding:9px 12px; text-align:right; flex-shrink:0;">
+          {% if player.npxg_pg is not none %}
+          <div style="font-size:11px; font-weight:800; color:var(--navy);">
+            {{ "%.2f"|format(player.npxg_pg) }}
+            <span style="font-size:9px; font-weight:600; color:var(--navy2);">npxG/g</span>
+          </div>
+          {% endif %}
+          {% set vz = player.get('value_z') if player is mapping else none %}
+          {% if vz is not none %}
+          <div style="font-size:11px; font-weight:800;
+               {{ 'color:#15803d;' if vz > 1 else ('color:#be123c;' if vz < -0.5 else 'color:var(--navy2);') }}">
+            {{ "%+.1f"|format(vz) }}σ
+          </div>
+          {% endif %}
+        </div>
+      </div>
+      {% endfor %}
+      {% endfor %}
+    </div>
+  </div>
+
+</div>
+
+<!-- ─── Model breakdown ─────────────────────────────────────── -->
+<div class="px-box" style="background:var(--panel); border-radius:6px; padding:16px;">
+  <div class="font-pixel" style="font-size:7px; color:var(--navy); letter-spacing:0.08em; margin-bottom:14px;">
+    MODEL BREAKDOWN
+  </div>
+  {% set bd = result.breakdown %}
+  <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:0; border:2px solid var(--border); border-radius:4px; overflow:hidden;">
+    {% for label, value, sublabel in [
+        ("xGF/g", "%.3f"|format(bd.attack_xgf_pg), "attack"),
+        ("xGA/g", "%.3f"|format(bd.defense_xga_pg), "defence"),
+        ("ppg", "%.3f"|format(bd.ppg_hat), "predicted"),
+        ("pts×38", "%.1f"|format(result.predicted_points), "final"),
+    ] %}
+    <div style="padding:14px 12px; border-right:{{ '2px solid var(--border)' if not loop.last else 'none' }};
+                background:{{ 'var(--bg2)' if loop.index % 2 == 0 else 'var(--panel)' }};">
+      <div class="font-pixel" style="font-size:6px; color:var(--navy2); letter-spacing:0.07em; margin-bottom:6px;">{{ sublabel | upper }}</div>
+      <div style="font-size:22px; font-weight:900; color:var(--navy); line-height:1;">{{ value }}</div>
+      <div class="font-pixel" style="font-size:6px; color:var(--navy); margin-top:4px;">{{ label }}</div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <!-- Position value breakdown -->
+  <div style="margin-top:14px; display:grid; grid-template-columns:repeat(4,1fr); gap:10px;">
+    {% for bucket, key in [("GK","gk_value_z"),("DEF","def_value_z"),("MID","mid_value_z"),("FWD","fwd_value_z")] %}
+    {% set vv = bd.position_value.get(key, 0) %}
+    {% if bucket == 'GK' %}{% set bc='var(--col-gk)' %}
+    {% elif bucket == 'DEF' %}{% set bc='var(--col-def)' %}
+    {% elif bucket == 'MID' %}{% set bc='var(--col-mid)' %}
+    {% else %}{% set bc='var(--col-fwd)' %}{% endif %}
+    <div style="background:var(--bg2); border:2px solid var(--border); border-radius:4px; padding:10px 12px;">
+      <div class="font-pixel" style="font-size:6px; color:{{ bc }}; margin-bottom:5px;">{{ bucket }} VALUE</div>
+      <div style="font-size:18px; font-weight:900;
+           {{ 'color:#15803d;' if vv > 0.5 else ('color:#be123c;' if vv < -0.5 else 'color:var(--navy);') }}">
+        {{ "%+.2f"|format(vv) }}σ
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+</div><!-- /max-width wrapper -->
+</div><!-- /scrollable -->
+
+{% endblock %}

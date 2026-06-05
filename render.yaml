@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: 38-0-draft
+    runtime: python
+    region: oregon
+    plan: free
+    buildCommand: pip install -e "." && python -m data.fetch_understat || true && python -m data.fetch_transfermarkt || true && python -m data.resolve || true && python -m data.build || true && python -m model.train || true
+    startCommand: uvicorn web.app:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.12"

@@ -1,0 +1,97 @@
+<!-- Formation pitch — parent #formation-sidebar provides flex:1 height. -->
+
+{% set drafted_count = state.drafted | length %}
+
+<!-- Header row (fixed height) -->
+<div style="display:flex; align-items:baseline; justify-content:space-between;
+            margin-bottom:8px; flex-shrink:0;">
+  <span class="font-pixel" style="font-size:9px; color:var(--navy);">YOUR XI</span>
+  <span class="font-pixel" style="font-size:7px; color:var(--navy2);">
+    {{ state.formation }} &nbsp;·&nbsp; {{ drafted_count }}/11
+  </span>
+</div>
+
+<!-- Pitch (flex:1 — fills all remaining vertical space) -->
+<div class="pitch px-box"
+     style="flex:1; min-height:0; display:flex; flex-direction:column;
+            border-radius:6px; padding:10px 12px; position:relative;">
+
+  <!-- Pitch markings (absolute, don't affect layout) -->
+  <div style="position:absolute; top:7px; left:26%; right:26%; height:20px;
+              border:2px solid rgba(255,255,255,0.22); border-bottom:none; pointer-events:none;
+              border-radius:2px 2px 0 0;"></div>
+  <div style="position:absolute; top:7px; left:14%; right:14%; height:52px;
+              border:2px solid rgba(255,255,255,0.16); border-bottom:none; pointer-events:none;"></div>
+  <div style="position:absolute; bottom:7px; left:26%; right:26%; height:20px;
+              border:2px solid rgba(255,255,255,0.22); border-top:none; pointer-events:none;
+              border-radius:0 0 2px 2px;"></div>
+  <div style="position:absolute; bottom:7px; left:14%; right:14%; height:52px;
+              border:2px solid rgba(255,255,255,0.16); border-top:none; pointer-events:none;"></div>
+
+  <!-- Position rows — each takes an equal share of the pitch height -->
+  {% for row in roster_rows %}
+  <div style="flex:1; display:flex; align-items:center; justify-content:center;
+              gap:10px; position:relative; z-index:1;">
+
+    {% for i in range(row.total) %}
+    {% if row.bucket == 'GK' %}
+      {% set col='var(--col-gk)' %}{% set colD='#925707' %}{% set colT='#fff' %}
+    {% elif row.bucket == 'DEF' %}
+      {% set col='var(--col-def)' %}{% set colD='#1e40af' %}{% set colT='#fff' %}
+    {% elif row.bucket == 'MID' %}
+      {% set col='var(--col-mid)' %}{% set colD='#15803d' %}{% set colT='#fff' %}
+    {% else %}
+      {% set col='var(--col-fwd)' %}{% set colD='#be123c' %}{% set colT='#fff' %}
+    {% endif %}
+
+    {% if i < row.players | length %}
+      {% set player = row.players[i] %}
+      <div style="flex:1; min-width:0; max-width:120px; background:{{ col }};
+                  border:2px solid {{ colD }}; box-shadow:3px 3px 0 {{ colD }};
+                  padding:6px 5px; text-align:center; border-radius:4px;">
+        <div style="font-size:10px; font-weight:900; color:{{ colT }};
+                    text-transform:uppercase; white-space:nowrap;
+                    overflow:hidden; text-overflow:ellipsis; line-height:1.2;">
+          {{ player.player_name.split()[-1] }}
+        </div>
+        <div style="font-size:9px; color:rgba(255,255,255,0.75); margin-top:2px;
+                    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
+          {{ player.club[:12] }}
+        </div>
+        <div style="font-size:8px; color:rgba(255,255,255,0.55); margin-top:1px;">
+          {{ player.season[:2] }}/{{ player.season[2:] }}
+        </div>
+      </div>
+    {% else %}
+      <div class="slot-empty"
+           style="flex:1; min-width:0; max-width:120px; padding:6px 5px;
+                  text-align:center; border-radius:4px; background:rgba(0,0,0,0.08);">
+        <div class="font-pixel" style="font-size:6px; color:rgba(255,255,255,0.45);">
+          {{ row.bucket }}
+        </div>
+      </div>
+    {% endif %}
+
+    {% endfor %}
+  </div>
+  {% endfor %}
+</div>
+
+<!-- Slot-counter dots (fixed height) -->
+<div style="margin-top:8px; flex-shrink:0; display:flex; flex-wrap:wrap; gap:6px 14px;">
+  {% for row in roster_rows %}
+  {% set filled = row.players | length %}
+  {% if row.bucket == 'GK' %}{% set col='var(--col-gk)' %}
+  {% elif row.bucket == 'DEF' %}{% set col='var(--col-def)' %}
+  {% elif row.bucket == 'MID' %}{% set col='var(--col-mid)' %}
+  {% else %}{% set col='var(--col-fwd)' %}{% endif %}
+  <div style="display:flex; align-items:center; gap:4px;">
+    <span class="font-pixel" style="font-size:6px; color:{{ col }}; width:24px;">{{ row.bucket }}</span>
+    {% for i in range(row.total) %}
+    <div style="width:9px; height:9px; border-radius:50%;
+                background:{{ col if i < filled else 'transparent' }};
+                border:2px solid {{ col }};"></div>
+    {% endfor %}
+  </div>
+  {% endfor %}
+</div>

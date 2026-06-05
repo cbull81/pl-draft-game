@@ -1,0 +1,154 @@
+<!--
+  Round partial — returned by /pick and /reroll, swapped into #round-content via innerHTML.
+  OOB block only included when is_partial=True (HTMX responses, not initial game.html render).
+-->
+
+{% if is_partial %}
+<!-- OOB: update pitch after each pick -->
+<div id="formation-sidebar" hx-swap-oob="true"
+     style="flex:1; min-height:0; display:flex; flex-direction:column;">
+  {% include "partials/formation.html" %}
+</div>
+{% endif %}
+
+<!-- Sticky roll header -->
+<div style="position:sticky; top:0; z-index:10; background:var(--bg2);
+            border-bottom:3px solid var(--navy); padding:12px 14px 10px;
+            box-shadow:0 3px 0 var(--sh);">
+  <div class="font-pixel"
+       style="font-size:6px; color:var(--navy2); letter-spacing:0.1em; margin-bottom:5px;">
+    ROUND {{ state.round + 1 }} / 11
+  </div>
+  <div style="display:flex; align-items:center; justify-content:space-between; gap:8px;">
+    <div style="min-width:0;">
+      <div style="font-size:16px; font-weight:900; color:var(--navy); line-height:1.1;
+                  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
+        {{ club }}
+      </div>
+      <div style="font-size:11px; color:var(--navy2); margin-top:1px; font-weight:700;">
+        {{ season_display }}
+      </div>
+    </div>
+    {% if state.rerolls_left > 0 %}
+    <button hx-post="/reroll"
+            hx-target="#round-content"
+            hx-swap="innerHTML"
+            class="font-pixel"
+            style="font-size:6px; background:var(--yellow); color:var(--navy);
+                   border:2px solid var(--navy); box-shadow:3px 3px 0 var(--sh);
+                   padding:7px 11px; cursor:pointer; white-space:nowrap;
+                   border-radius:3px; flex-shrink:0; transition:transform 0.08s;"
+            onmouseover="this.style.transform='translateY(-1px)'"
+            onmouseout="this.style.transform='none'">
+      ↺ REROLL<br>
+      <span style="font-size:5px; opacity:0.75;">({{ state.rerolls_left }} left)</span>
+    </button>
+    {% else %}
+    <span class="font-pixel" style="font-size:6px; color:var(--navy2); opacity:0.4; flex-shrink:0;">NO REROLLS</span>
+    {% endif %}
+  </div>
+</div>
+
+<!-- Cards grid: 2 columns of portrait playing cards -->
+{% if candidates %}
+<div style="padding:12px 10px; display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+
+  {% for p in candidates %}
+
+  {% if p.primary_bucket == 'GK' %}
+    {% set col = 'var(--col-gk)' %}  {% set colD = '#925707' %}  {% set colT = '#fff' %} {% set colBg = '#fef3c7' %}
+  {% elif p.primary_bucket == 'DEF' %}
+    {% set col = 'var(--col-def)' %} {% set colD = '#1e40af' %}  {% set colT = '#fff' %} {% set colBg = '#eff6ff' %}
+  {% elif p.primary_bucket == 'MID' %}
+    {% set col = 'var(--col-mid)' %} {% set colD = '#15803d' %}  {% set colT = '#fff' %} {% set colBg = '#f0fdf4' %}
+  {% else %}
+    {% set col = 'var(--col-fwd)' %} {% set colD = '#be123c' %}  {% set colT = '#fff' %} {% set colBg = '#fff1f2' %}
+  {% endif %}
+
+  <!-- Portrait playing card -->
+  <div style="background:{{ colBg }}; border:2px solid var(--navy);
+              box-shadow:4px 4px 0 var(--sh); border-radius:6px;
+              display:flex; flex-direction:column; overflow:hidden;">
+
+    <!-- Top color band: position label -->
+    <div style="background:{{ col }}; padding:7px 8px; display:flex; align-items:center;
+                justify-content:space-between; gap:4px;">
+      <span class="font-pixel"
+            style="font-size:6px; color:{{ colT }}; letter-spacing:0.06em; line-height:1.4;">
+        {{ p.sub_position or p.primary_bucket }}
+      </span>
+      {% if p.games is not none %}
+      <span style="font-size:9px; font-weight:800; color:rgba(255,255,255,0.8);">{{ p.games | int }}g</span>
+      {% endif %}
+    </div>
+
+    <!-- Player name + club -->
+    <div style="padding:8px 9px 6px; flex:1;">
+      <div style="font-size:13px; font-weight:900; color:var(--navy); line-height:1.2;
+                  margin-bottom:3px; word-break:break-word;">
+        {{ p.player_name }}
+      </div>
+      <div style="font-size:10px; font-weight:700; color:var(--navy2); opacity:0.8;">
+        {{ p.season_display }}
+      </div>
+
+      <!-- Stats -->
+      <div style="margin-top:8px; display:flex; flex-direction:column; gap:3px;">
+        {% if p.npxg_pg is not none %}
+        <div style="font-size:11px; color:var(--navy);">
+          <span style="font-weight:800;">{{ "%.2f"|format(p.npxg_pg) }}</span>
+          <span style="color:var(--navy2); font-size:10px;"> npxG/g</span>
+        </div>
+        {% endif %}
+        {% if p.xa_pg is not none %}
+        <div style="font-size:11px; color:var(--navy);">
+          <span style="font-weight:800;">{{ "%.2f"|format(p.xa_pg) }}</span>
+          <span style="color:var(--navy2); font-size:10px;"> xA/g</span>
+        </div>
+        {% endif %}
+        {% if p.value_z is not none %}
+        <div style="font-size:11px;">
+          <span style="font-weight:800;
+            {{ 'color:#15803d;' if p.value_z > 1 else ('color:#be123c;' if p.value_z < -0.5 else 'color:var(--navy);') }}">
+            {{ "%+.1f"|format(p.value_z) }}σ
+          </span>
+          <span style="color:var(--navy2); font-size:10px;"> value</span>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+
+    <!-- Pick button(s) at bottom -->
+    <div style="display:flex; flex-direction:column; gap:0;">
+      {% for bucket in p.valid_buckets %}
+      {% if bucket == 'GK' %}{% set bc = 'var(--col-gk)' %}{% set bd = '#925707' %}{% set bt = '#fff' %}
+      {% elif bucket == 'DEF' %}{% set bc = 'var(--col-def)' %}{% set bd = '#1e40af' %}{% set bt = '#fff' %}
+      {% elif bucket == 'MID' %}{% set bc = 'var(--col-mid)' %}{% set bd = '#15803d' %}{% set bt = '#fff' %}
+      {% else %}{% set bc = 'var(--col-fwd)' %}{% set bd = '#be123c' %}{% set bt = '#fff' %}{% endif %}
+      <form hx-post="/pick" hx-target="#round-content" hx-swap="innerHTML"
+            style="display:block; margin:0; padding:0;">
+        <input type="hidden" name="understat_id" value="{{ p.understat_id }}">
+        <input type="hidden" name="bucket" value="{{ bucket }}">
+        <button type="submit" class="font-pixel"
+                style="font-size:7px; color:{{ bt }}; background:{{ bc }};
+                       border-top:2px solid {{ bd }}; border:none;
+                       padding:8px 4px; cursor:pointer; letter-spacing:0.07em; width:100%;
+                       transition:filter 0.08s;"
+                onmouseover="this.style.filter='brightness(1.1)'"
+                onmouseout="this.style.filter='none'">
+          PICK {{ bucket }} ▶
+        </button>
+      </form>
+      {% endfor %}
+    </div>
+
+  </div>
+  {% endfor %}
+</div>
+
+{% else %}
+<div style="padding:40px 16px; text-align:center;">
+  <div class="font-pixel" style="font-size:8px; color:var(--navy); margin-bottom:12px;">NO ELIGIBLE PLAYERS</div>
+  <p style="font-size:12px; color:var(--navy2);">All open slots filled or no rerolls remain.</p>
+</div>
+{% endif %}

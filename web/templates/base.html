@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}38-0{% endblock %}</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet">
+
+  <script src="https://unpkg.com/htmx.org@2.0.3/dist/htmx.min.js"></script>
+
+  <style>
+    :root {
+      --bg:       #bfdbfe;   /* pastel sky blue */
+      --bg2:      #dbeafe;   /* lighter blue for cards */
+      --panel:    #eff6ff;   /* near-white panel */
+      --navy:     #1e3a5f;   /* dark text / header bg */
+      --navy2:    #2d5282;   /* secondary navy */
+      --border:   #93c5fd;   /* blue border */
+      --yellow:   #fbbf24;   /* amber accent */
+      --yellow2:  #92620a;   /* amber shadow */
+      --col-gk:  #f59e0b;
+      --col-def: #3b82f6;
+      --col-mid: #22c55e;
+      --col-fwd: #f43f5e;
+      --sh: rgba(30,58,95,0.25);  /* pixel shadow color */
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      /* subtle checker pattern for that retro feel */
+      background-image:
+        radial-gradient(circle, rgba(255,255,255,0.4) 1px, transparent 1px);
+      background-size: 20px 20px;
+      color: var(--navy);
+      font-family: 'Nunito', sans-serif;
+    }
+
+    /* 8-bit font */
+    .font-pixel { font-family: 'Press Start 2P', monospace; }
+
+    /* Pixel-border helpers */
+    .px-box       { border: 3px solid var(--navy); box-shadow: 4px 4px 0 var(--sh); }
+    .px-box-sm    { border: 2px solid var(--navy); box-shadow: 3px 3px 0 var(--sh); }
+    .px-box-color { border: 3px solid currentColor; box-shadow: 4px 4px 0 var(--sh); }
+
+    /* Football pitch */
+    .pitch {
+      background: #2d8a42;
+      background-image: repeating-linear-gradient(
+        to bottom,
+        transparent,
+        transparent 16.66%,
+        rgba(0,0,0,0.1) 16.66%,
+        rgba(0,0,0,0.1) 33.33%
+      );
+      position: relative;
+      overflow: hidden;
+    }
+    .pitch::before {
+      content: '';
+      position: absolute;
+      left: 8%; right: 8%; top: 50%; height: 2px;
+      background: rgba(255,255,255,0.3);
+    }
+    .pitch::after {
+      content: '';
+      position: absolute;
+      left: 50%; top: 50%;
+      width: 56px; height: 56px;
+      margin: -28px 0 0 -28px;
+      border-radius: 50%;
+      border: 2px solid rgba(255,255,255,0.3);
+    }
+
+    /* Slot animations */
+    .slot-empty {
+      border: 2px dashed rgba(255,255,255,0.4);
+      animation: slot-pulse 2s ease-in-out infinite;
+    }
+    @keyframes slot-pulse {
+      0%,100% { border-color: rgba(255,255,255,0.3); }
+      50%      { border-color: rgba(255,255,255,0.65); }
+    }
+
+    /* HTMX */
+    .htmx-swapping { opacity: 0; transition: opacity 0.1s ease; }
+    .htmx-settling  { opacity: 0; }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+  </style>
+</head>
+<body>
+  {% block content %}{% endblock %}
+</body>
+</html>

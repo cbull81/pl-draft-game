@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}38-0 — Round {{ state.round + 1 }}/11{% endblock %}
+{% block content %}
+
+<!-- Header -->
+<div style="height:46px; background:var(--navy); border-bottom:3px solid var(--navy);
+            box-shadow:0 3px 0 var(--sh); display:flex; align-items:center;
+            justify-content:space-between; padding:0 18px; flex-shrink:0;">
+  <span class="font-pixel"
+        style="font-size:13px; color:var(--yellow); text-shadow:2px 2px 0 var(--yellow2);">
+    38-0
+  </span>
+  <div class="font-pixel" style="font-size:7px; color:rgba(255,255,255,0.6);
+              display:flex; gap:18px; align-items:center;">
+    <span style="color:#93c5fd;">{{ league_display | upper }}</span>
+    <span>{{ state.formation }}</span>
+    <span>RD <strong style="color:white;">{{ state.round + 1 }}</strong>/11</span>
+    <span style="{{ 'color:var(--yellow);' if state.rerolls_left > 0 else 'color:rgba(255,255,255,0.25);' }}">
+      ↺ {{ state.rerolls_left }}
+    </span>
+  </div>
+</div>
+
+<!-- Body: PITCH (flex:2) | CANDIDATES (flex:1) -->
+<div style="display:flex; height:calc(100vh - 46px); overflow:hidden;">
+
+  <!-- PITCH — 2/3 of the screen -->
+  <div style="flex:2; min-width:0; overflow:hidden; display:flex; flex-direction:column;
+              padding:14px 10px 10px 14px;">
+    <div id="formation-sidebar"
+         style="flex:1; min-height:0; display:flex; flex-direction:column;">
+      {% include "partials/formation.html" %}
+    </div>
+  </div>
+
+  <!-- CANDIDATES — 1/3 of the screen, scrollable -->
+  <div id="round-content"
+       style="flex:1; min-width:240px; overflow-y:auto; border-left:3px solid var(--navy);
+              background:var(--bg2); box-shadow:-3px 0 0 var(--sh);">
+    {% include "partials/round.html" %}
+  </div>
+
+</div>
+{% endblock %}

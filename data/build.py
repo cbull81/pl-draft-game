@@ -175,16 +175,18 @@ def build_players() -> pd.DataFrame:
 
     df["primary_bucket"] = df["eligible_buckets"].apply(lambda b: b[0] if b else None)
 
-    # value_z: position × season normalisation (broad reference, kept for display)
+    # value_z: position × league × season normalisation.
+    # Normalising within-league ensures a Bundesliga defender is compared to other
+    # Bundesliga defenders, not inflated by PL wages (PL mean value is ~2× other leagues).
     df["value_z"] = np.nan
-    for (bucket, season), grp in df.groupby(["primary_bucket", "season"]):
+    for (league, bucket, season), grp in df.groupby(["league", "primary_bucket", "season"]):
         vals = grp["market_value_eur"].dropna()
         if len(vals) < 3:
             continue
         mu, sigma = vals.mean(), vals.std()
         if sigma == 0:
             continue
-        mask = (df["primary_bucket"] == bucket) & (df["season"] == season)
+        mask = (df["league"] == league) & (df["primary_bucket"] == bucket) & (df["season"] == season)
         df.loc[mask, "value_z"] = (df.loc[mask, "market_value_eur"] - mu) / sigma
 
     print(f"  Players with value: {df['market_value_eur'].notna().sum()} / {len(df)}")
@@ -211,10 +213,12 @@ def build_players() -> pd.DataFrame:
 
     df["age_band"] = df["age_at_season"].apply(_age_band)
 
-    # value_z_age: normalised within (position × age_band × season)
-    # Answers "how good is this player relative to peers their own age this season?"
+    # value_z_age: normalised within (league × position × age_band × season).
+    # Same league-scoping rationale as value_z above.
     df["value_z_age"] = np.nan
-    for (bucket, band, season), grp in df.groupby(["primary_bucket", "age_band", "season"]):
+    for (league, bucket, band, season), grp in df.groupby(
+        ["league", "primary_bucket", "age_band", "season"]
+    ):
         if band == "unknown":
             continue
         vals = grp["market_value_eur"].dropna()
@@ -223,7 +227,12 @@ def build_players() -> pd.DataFrame:
         mu, sigma = vals.mean(), vals.std()
         if sigma == 0:
             continue
-        mask = (df["primary_bucket"] == bucket) & (df["age_band"] == band) & (df["season"] == season)
+        mask = (
+            (df["league"] == league)
+            & (df["primary_bucket"] == bucket)
+            & (df["age_band"] == band)
+            & (df["season"] == season)
+        )
         df.loc[mask, "value_z_age"] = (df.loc[mask, "market_value_eur"] - mu) / sigma
 
     # age_adj_value_z: peer-relative value weighted down for young players

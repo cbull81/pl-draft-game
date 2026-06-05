@@ -1,0 +1,135 @@
+{% extends "base.html" %}
+{% block title %}38-0 — Build Your XI{% endblock %}
+{% block content %}
+
+<div style="min-height:100vh; overflow-y:auto; display:flex; flex-direction:column;
+            align-items:center; justify-content:center; padding:3rem 1.5rem;">
+<div style="width:100%; max-width:620px;">
+
+  <!-- Title -->
+  <div style="text-align:center; margin-bottom:3rem;">
+    <h1 class="font-pixel"
+        style="font-size:clamp(2.5rem,9vw,5rem); color:var(--navy);
+               text-shadow:5px 5px 0 var(--border), 9px 9px 0 rgba(30,58,95,0.15);
+               line-height:1.1; margin-bottom:1.5rem;">
+      38-0
+    </h1>
+    <div class="font-pixel"
+         style="font-size:8px; color:var(--navy2); letter-spacing:0.15em; margin-bottom:1rem;">
+      CAN YOU GO UNBEATEN?
+    </div>
+    <p style="color:var(--navy2); font-size:14px; opacity:0.7;">
+      11 rounds · blind draft · expected-points scoring
+    </p>
+  </div>
+
+  <form method="POST" action="/start">
+
+    <!-- LEAGUE -->
+    <div style="margin-bottom:2rem;">
+      <div class="font-pixel"
+           style="font-size:8px; color:var(--navy); letter-spacing:0.1em; margin-bottom:12px;">
+        &gt; SELECT LEAGUE
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:8px;">
+        {% for lid, name, flag in league_options %}
+        <label style="cursor:pointer; display:block;">
+          <input type="radio" name="league" value="{{ lid }}" required
+                 {% if loop.first %}checked{% endif %}
+                 style="position:absolute; opacity:0; width:0; height:0;" class="opt-radio">
+          <div class="opt-card px-box-sm"
+               style="background:var(--panel); padding:12px 6px; text-align:center;
+                      cursor:pointer; transition:all 0.08s; border-radius:4px;">
+            <div style="font-size:1.7rem; margin-bottom:5px;">{{ flag }}</div>
+            <div style="font-size:9px; font-weight:800; color:var(--navy); line-height:1.3;">{{ name }}</div>
+          </div>
+        </label>
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- FORMATION -->
+    <div style="margin-bottom:2.5rem;">
+      <div class="font-pixel"
+           style="font-size:8px; color:var(--navy); letter-spacing:0.1em; margin-bottom:12px;">
+        &gt; CHOOSE FORMATION
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:8px;">
+        {% for fname, slots in formations.items() %}
+        <label style="cursor:pointer; display:block;">
+          <input type="radio" name="formation" value="{{ fname }}" required
+                 {% if loop.first %}checked{% endif %}
+                 style="position:absolute; opacity:0; width:0; height:0;" class="opt-radio">
+          <div class="opt-card px-box-sm"
+               style="background:var(--panel); padding:12px; cursor:pointer;
+                      transition:all 0.08s; border-radius:4px;">
+            <div class="font-pixel" style="font-size:9px; color:var(--navy); margin-bottom:10px;">{{ fname }}</div>
+            <div style="background:#2d8a42; padding:8px; border-radius:3px;
+                        display:flex; flex-direction:column; gap:5px;">
+              {% for bucket, count, col in [("FWD",slots.FWD,"var(--col-fwd)"),("MID",slots.MID,"var(--col-mid)"),("DEF",slots.DEF,"var(--col-def)"),("GK",slots.GK,"var(--col-gk)")] %}
+              <div style="display:flex; justify-content:center; gap:4px;">
+                {% for _ in range(count) %}
+                <div style="width:12px; height:12px; border-radius:50%; background:{{ col }};
+                            border:1px solid rgba(255,255,255,0.4);"></div>
+                {% endfor %}
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        </label>
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- START -->
+    <div style="text-align:center; padding-bottom:2rem;">
+      <button type="submit" class="font-pixel"
+              style="font-size:11px; background:var(--yellow); color:var(--navy);
+                     border:3px solid var(--navy); box-shadow:6px 6px 0 var(--sh);
+                     padding:16px 52px; cursor:pointer; letter-spacing:0.1em;
+                     border-radius:4px; transition:transform 0.08s;"
+              onmouseover="this.style.transform='translateY(-2px)'"
+              onmouseout="this.style.transform='none'"
+              onmousedown="this.style.transform='translateY(3px)'">
+        KICK OFF ▶
+      </button>
+    </div>
+
+  </form>
+
+  <!-- Attribution -->
+  <p class="font-pixel" style="text-align:center; font-size:5px; color:var(--navy2); opacity:0.5;
+             line-height:2; letter-spacing:0.08em;">
+    DATA: UNDERSTAT · TRANSFERMARKT (DCARIBOU DATASET)<br>
+    INDEPENDENT PROJECT · NOT AFFILIATED WITH THE PREMIER LEAGUE
+  </p>
+
+</div>
+</div>
+
+<script>
+(function() {
+  function sync() {
+    document.querySelectorAll('label').forEach(function(lbl) {
+      var r = lbl.querySelector('.opt-radio');
+      var c = lbl.querySelector('.opt-card');
+      if (!r || !c) return;
+      if (r.checked) {
+        c.style.background = '#fef9c3';
+        c.style.borderColor = 'var(--navy)';
+        c.style.boxShadow = '3px 3px 0 var(--yellow2)';
+      } else {
+        c.style.background = 'var(--panel)';
+        c.style.borderColor = 'var(--navy)';
+        c.style.boxShadow = '3px 3px 0 var(--sh)';
+      }
+    });
+  }
+  sync();
+  document.querySelectorAll('.opt-radio').forEach(function(r) {
+    r.addEventListener('change', sync);
+  });
+})();
+</script>
+
+{% endblock %}
