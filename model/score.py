@@ -18,6 +18,8 @@ from model.features import (
 
 ARTIFACTS = Path(__file__).parent.parent / "artifacts"
 
+GAMES_THRESHOLD = 30  # avg games played per player; above this, no availability penalty
+
 TIER_THRESHOLDS = [
     ("Invincible Chase (38-0)", 105),
     ("Title Contender", 85),
@@ -76,10 +78,11 @@ def score_xi(players: pd.DataFrame) -> dict:
     feat = pd.DataFrame([{"xgf_pg": xgf_pg, "xga_pg": xga_pg}])
     raw_ppg = float(ep_model.predict(feat)[0])
 
-    # Scale by average games played across the XI, not a fixed 38.
+    # Availability scaling: no penalty above GAMES_THRESHOLD; below it, scale by avg.
     avg_games = float(players["games"].fillna(0).clip(upper=38).mean())
-    avg_games = max(1.0, avg_games)  # guard against all-zero edge case
-    raw_pts = raw_ppg * avg_games
+    avg_games = max(1.0, avg_games)
+    effective_games = 38.0 if avg_games >= GAMES_THRESHOLD else avg_games
+    raw_pts = raw_ppg * effective_games
     predicted_points = float(np.clip(raw_pts, 0, 114))
 
     pedigree = squad_pedigree(players)
@@ -87,8 +90,9 @@ def score_xi(players: pd.DataFrame) -> dict:
     return {
         "predicted_points": predicted_points,
         "tier": tier(predicted_points),
-        "record": points_to_record(predicted_points, games=round(avg_games)),
+        "record": points_to_record(predicted_points, games=round(effective_games)),
         "avg_games": round(avg_games, 1),
+        "effective_games": round(effective_games, 1),
         "breakdown": {
             "attack_xgf_pg": round(xgf_pg, 3),
             "defense_xga_pg": round(xga_pg, 3),
