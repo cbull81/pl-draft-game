@@ -113,6 +113,26 @@ def build_defensive_value_index(players: pd.DataFrame) -> pd.DataFrame:
     return pd.DataFrame([{"def_value_z": float(val)}])
 
 
+# Position groups and their Stage 1 feature names. Order matches the model's feature vector.
+POSITION_VALUE_GROUPS = [("GK", "gk_value_z"), ("DEF", "def_value_z"), ("MID", "mid_value_z"), ("FWD", "fwd_value_z")]
+
+
+def build_position_value_features(players: pd.DataFrame) -> pd.DataFrame:
+    """
+    One-row feature vector of mean age_adj_value_z per position group (Stage 1 input).
+
+    value_z is already position×season-normalised, so a defender's value_z is
+    relative to other defenders that season — no cross-position inflation.
+    Missing values imputed with 0 (position-season median quality).
+    """
+    val_col = "age_adj_value_z" if "age_adj_value_z" in players.columns else "value_z"
+    row = {}
+    for bucket, feat_name in POSITION_VALUE_GROUPS:
+        grp = players[players["primary_bucket"] == bucket][val_col]
+        row[feat_name] = float(grp.fillna(0).mean()) if not grp.empty else 0.0
+    return pd.DataFrame([row])[[feat for _, feat in POSITION_VALUE_GROUPS]]
+
+
 def compute_measured_team_features(team_season_df: pd.DataFrame) -> pd.DataFrame:
     """
     For training: return one row per (league, season, team) with [xGF_pg, xGA_pg].

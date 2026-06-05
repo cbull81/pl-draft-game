@@ -11,6 +11,7 @@ import pandas as pd
 
 from model.features import (
     build_offensive_features,
+    build_position_value_features,
     compute_xi_xgf,
     compute_xi_xga,
     season_max_games,
@@ -76,10 +77,12 @@ def score_xi(players: pd.DataFrame) -> dict:
     if np.isnan(xga_pg):
         xga_pg = 1.2  # ~PL average fallback if Stage 2 not trained
 
-    val_col = "age_adj_value_z" if "age_adj_value_z" in players.columns else "value_z"
-    squad_value_z = float(players[val_col].fillna(0).mean())
+    pos_value_feats = build_position_value_features(players)
 
-    feat = pd.DataFrame([{"xgf_pg": xgf_pg, "xga_pg": xga_pg, "squad_value_z": squad_value_z}])
+    feat = pd.concat([
+        pd.DataFrame([{"xgf_pg": xgf_pg, "xga_pg": xga_pg}]),
+        pos_value_feats,
+    ], axis=1)
     raw_ppg = float(ep_model.predict(feat)[0])
 
     # Normalize each player's games to a 38-game equivalent before averaging.
@@ -106,7 +109,7 @@ def score_xi(players: pd.DataFrame) -> dict:
         "breakdown": {
             "attack_xgf_pg": round(xgf_pg, 3),
             "defense_xga_pg": round(xga_pg, 3),
-            "squad_value_z": round(squad_value_z, 3),
+            "position_value": {c: round(float(v), 3) for c, v in pos_value_feats.iloc[0].items()},
             "ppg_hat": round(raw_ppg, 3),
             "offensive_features": {c: round(float(v), 3) for c, v in off_feats.iloc[0].items()},
         },
