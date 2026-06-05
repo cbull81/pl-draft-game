@@ -266,6 +266,10 @@ def build_players() -> pd.DataFrame:
     keep = [c for c in keep if c in df.columns]
     df = df[keep].copy()
 
+    # Serialize list column as comma-separated string to avoid PyArrow repetition-level
+    # histogram mismatch errors on read (list-typed parquet columns are fragile across versions).
+    df["eligible_buckets"] = df["eligible_buckets"].apply(lambda b: ",".join(b) if b else "")
+
     return df
 
 

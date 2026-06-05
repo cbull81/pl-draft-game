@@ -173,6 +173,10 @@ def play():
         sys.exit(1)
 
     players_df = pd.read_parquet(players_path)
+    players_df["eligible_buckets"] = (
+        players_df["eligible_buckets"].fillna("").str.split(",")
+        .apply(lambda x: [s for s in x if s])
+    )
     league = choose_league()
     formation = choose_formation()
     state = new_game(formation, league)
