@@ -1,0 +1,23 @@
+# Data artifacts — regenerate with data/ scripts
+artifacts/*.parquet
+artifacts/*.joblib
+
+# Keep manual resolver overrides (checked in per CLAUDE.md)
+!artifacts/resolver_overrides.csv
+
+# Downloaded source files
+downloaded_files/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.env
+dist/
+build/
+
+# Claude Code internal
+.claude/
+
+# macOS
+.DS_Store

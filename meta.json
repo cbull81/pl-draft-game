@@ -1,0 +1,951 @@
+{
+  "formations": {
+    "4-4-2": {
+      "GK": 1,
+      "DEF": 4,
+      "MID": 4,
+      "FWD": 2
+    },
+    "4-3-3": {
+      "GK": 1,
+      "DEF": 4,
+      "MID": 3,
+      "FWD": 3
+    },
+    "3-5-2": {
+      "GK": 1,
+      "DEF": 3,
+      "MID": 5,
+      "FWD": 2
+    },
+    "4-2-3-1": {
+      "GK": 1,
+      "DEF": 4,
+      "MID": 5,
+      "FWD": 1
+    },
+    "3-4-3": {
+      "GK": 1,
+      "DEF": 3,
+      "MID": 4,
+      "FWD": 3
+    },
+    "5-3-2": {
+      "GK": 1,
+      "DEF": 5,
+      "MID": 3,
+      "FWD": 2
+    }
+  },
+  "seasons": [
+    "1415",
+    "1516",
+    "1617",
+    "1718",
+    "1819",
+    "1920",
+    "2021",
+    "2122",
+    "2223",
+    "2324",
+    "2425"
+  ],
+  "default_rerolls": 3,
+  "min_minutes": 450,
+  "tier_thresholds": {
+    "Invincible Chase (38-0)": 105,
+    "Title Contender": 85,
+    "European Football": 65,
+    "Mid-Table": 45,
+    "Relegation Battle": 0
+  },
+  "stage1_features": [
+    "xgf_pg",
+    "xga_pg"
+  ],
+  "stage2_features": [
+    "def_value_z"
+  ],
+  "valid_cells": [
+    {
+      "club": "Arsenal",
+      "season": "1415"
+    },
+    {
+      "club": "Arsenal",
+      "season": "1516"
+    },
+    {
+      "club": "Arsenal",
+      "season": "1617"
+    },
+    {
+      "club": "Arsenal",
+      "season": "1718"
+    },
+    {
+      "club": "Arsenal",
+      "season": "1819"
+    },
+    {
+      "club": "Arsenal",
+      "season": "1920"
+    },
+    {
+      "club": "Arsenal",
+      "season": "2021"
+    },
+    {
+      "club": "Arsenal",
+      "season": "2122"
+    },
+    {
+      "club": "Arsenal",
+      "season": "2223"
+    },
+    {
+      "club": "Arsenal",
+      "season": "2324"
+    },
+    {
+      "club": "Arsenal",
+      "season": "2425"
+    },
+    {
+      "club": "Aston Villa",
+      "season": "1415"
+    },
+    {
+      "club": "Aston Villa",
+      "season": "1516"
+    },
+    {
+      "club": "Aston Villa",
+      "season": "1920"
+    },
+    {
+      "club": "Aston Villa",
+      "season": "2021"
+    },
+    {
+      "club": "Aston Villa",
+      "season": "2122"
+    },
+    {
+      "club": "Aston Villa",
+      "season": "2223"
+    },
+    {
+      "club": "Aston Villa",
+      "season": "2324"
+    },
+    {
+      "club": "Aston Villa",
+      "season": "2425"
+    },
+    {
+      "club": "Bournemouth",
+      "season": "1516"
+    },
+    {
+      "club": "Bournemouth",
+      "season": "1617"
+    },
+    {
+      "club": "Bournemouth",
+      "season": "1718"
+    },
+    {
+      "club": "Bournemouth",
+      "season": "1819"
+    },
+    {
+      "club": "Bournemouth",
+      "season": "1920"
+    },
+    {
+      "club": "Bournemouth",
+      "season": "2223"
+    },
+    {
+      "club": "Bournemouth",
+      "season": "2324"
+    },
+    {
+      "club": "Bournemouth",
+      "season": "2425"
+    },
+    {
+      "club": "Brentford",
+      "season": "2122"
+    },
+    {
+      "club": "Brentford",
+      "season": "2223"
+    },
+    {
+      "club": "Brentford",
+      "season": "2324"
+    },
+    {
+      "club": "Brentford",
+      "season": "2425"
+    },
+    {
+      "club": "Brighton",
+      "season": "1718"
+    },
+    {
+      "club": "Brighton",
+      "season": "1819"
+    },
+    {
+      "club": "Brighton",
+      "season": "1920"
+    },
+    {
+      "club": "Brighton",
+      "season": "2021"
+    },
+    {
+      "club": "Brighton",
+      "season": "2122"
+    },
+    {
+      "club": "Brighton",
+      "season": "2223"
+    },
+    {
+      "club": "Brighton",
+      "season": "2324"
+    },
+    {
+      "club": "Brighton",
+      "season": "2425"
+    },
+    {
+      "club": "Burnley",
+      "season": "1415"
+    },
+    {
+      "club": "Burnley",
+      "season": "1617"
+    },
+    {
+      "club": "Burnley",
+      "season": "1718"
+    },
+    {
+      "club": "Burnley",
+      "season": "1819"
+    },
+    {
+      "club": "Burnley",
+      "season": "1920"
+    },
+    {
+      "club": "Burnley",
+      "season": "2021"
+    },
+    {
+      "club": "Burnley",
+      "season": "2122"
+    },
+    {
+      "club": "Burnley",
+      "season": "2324"
+    },
+    {
+      "club": "Cardiff",
+      "season": "1819"
+    },
+    {
+      "club": "Chelsea",
+      "season": "1415"
+    },
+    {
+      "club": "Chelsea",
+      "season": "1516"
+    },
+    {
+      "club": "Chelsea",
+      "season": "1617"
+    },
+    {
+      "club": "Chelsea",
+      "season": "1718"
+    },
+    {
+      "club": "Chelsea",
+      "season": "1819"
+    },
+    {
+      "club": "Chelsea",
+      "season": "1920"
+    },
+    {
+      "club": "Chelsea",
+      "season": "2021"
+    },
+    {
+      "club": "Chelsea",
+      "season": "2122"
+    },
+    {
+      "club": "Chelsea",
+      "season": "2223"
+    },
+    {
+      "club": "Chelsea",
+      "season": "2324"
+    },
+    {
+      "club": "Chelsea",
+      "season": "2425"
+    },
+    {
+      "club": "Crystal Palace",
+      "season": "1415"
+    },
+    {
+      "club": "Crystal Palace",
+      "season": "1516"
+    },
+    {
+      "club": "Crystal Palace",
+      "season": "1617"
+    },
+    {
+      "club": "Crystal Palace",
+      "season": "1718"
+    },
+    {
+      "club": "Crystal Palace",
+      "season": "1819"
+    },
+    {
+      "club": "Crystal Palace",
+      "season": "1920"
+    },
+    {
+      "club": "Crystal Palace",
+      "season": "2021"
+    },
+    {
+      "club": "Crystal Palace",
+      "season": "2122"
+    },
+    {
+      "club": "Crystal Palace",
+      "season": "2223"
+    },
+    {
+      "club": "Crystal Palace",
+      "season": "2324"
+    },
+    {
+      "club": "Crystal Palace",
+      "season": "2425"
+    },
+    {
+      "club": "Everton",
+      "season": "1415"
+    },
+    {
+      "club": "Everton",
+      "season": "1516"
+    },
+    {
+      "club": "Everton",
+      "season": "1617"
+    },
+    {
+      "club": "Everton",
+      "season": "1718"
+    },
+    {
+      "club": "Everton",
+      "season": "1819"
+    },
+    {
+      "club": "Everton",
+      "season": "1920"
+    },
+    {
+      "club": "Everton",
+      "season": "2021"
+    },
+    {
+      "club": "Everton",
+      "season": "2122"
+    },
+    {
+      "club": "Everton",
+      "season": "2223"
+    },
+    {
+      "club": "Everton",
+      "season": "2324"
+    },
+    {
+      "club": "Everton",
+      "season": "2425"
+    },
+    {
+      "club": "Fulham",
+      "season": "1819"
+    },
+    {
+      "club": "Fulham",
+      "season": "2021"
+    },
+    {
+      "club": "Fulham",
+      "season": "2223"
+    },
+    {
+      "club": "Fulham",
+      "season": "2324"
+    },
+    {
+      "club": "Fulham",
+      "season": "2425"
+    },
+    {
+      "club": "Huddersfield",
+      "season": "1718"
+    },
+    {
+      "club": "Huddersfield",
+      "season": "1819"
+    },
+    {
+      "club": "Hull",
+      "season": "1415"
+    },
+    {
+      "club": "Hull",
+      "season": "1617"
+    },
+    {
+      "club": "Ipswich",
+      "season": "2425"
+    },
+    {
+      "club": "Leeds",
+      "season": "2021"
+    },
+    {
+      "club": "Leeds",
+      "season": "2122"
+    },
+    {
+      "club": "Leeds",
+      "season": "2223"
+    },
+    {
+      "club": "Leicester",
+      "season": "1415"
+    },
+    {
+      "club": "Leicester",
+      "season": "1516"
+    },
+    {
+      "club": "Leicester",
+      "season": "1617"
+    },
+    {
+      "club": "Leicester",
+      "season": "1718"
+    },
+    {
+      "club": "Leicester",
+      "season": "1819"
+    },
+    {
+      "club": "Leicester",
+      "season": "1920"
+    },
+    {
+      "club": "Leicester",
+      "season": "2021"
+    },
+    {
+      "club": "Leicester",
+      "season": "2122"
+    },
+    {
+      "club": "Leicester",
+      "season": "2223"
+    },
+    {
+      "club": "Leicester",
+      "season": "2425"
+    },
+    {
+      "club": "Liverpool",
+      "season": "1415"
+    },
+    {
+      "club": "Liverpool",
+      "season": "1516"
+    },
+    {
+      "club": "Liverpool",
+      "season": "1617"
+    },
+    {
+      "club": "Liverpool",
+      "season": "1718"
+    },
+    {
+      "club": "Liverpool",
+      "season": "1819"
+    },
+    {
+      "club": "Liverpool",
+      "season": "1920"
+    },
+    {
+      "club": "Liverpool",
+      "season": "2021"
+    },
+    {
+      "club": "Liverpool",
+      "season": "2122"
+    },
+    {
+      "club": "Liverpool",
+      "season": "2223"
+    },
+    {
+      "club": "Liverpool",
+      "season": "2324"
+    },
+    {
+      "club": "Liverpool",
+      "season": "2425"
+    },
+    {
+      "club": "Luton",
+      "season": "2324"
+    },
+    {
+      "club": "Manchester City",
+      "season": "1415"
+    },
+    {
+      "club": "Manchester City",
+      "season": "1516"
+    },
+    {
+      "club": "Manchester City",
+      "season": "1617"
+    },
+    {
+      "club": "Manchester City",
+      "season": "1718"
+    },
+    {
+      "club": "Manchester City",
+      "season": "1819"
+    },
+    {
+      "club": "Manchester City",
+      "season": "1920"
+    },
+    {
+      "club": "Manchester City",
+      "season": "2021"
+    },
+    {
+      "club": "Manchester City",
+      "season": "2122"
+    },
+    {
+      "club": "Manchester City",
+      "season": "2223"
+    },
+    {
+      "club": "Manchester City",
+      "season": "2324"
+    },
+    {
+      "club": "Manchester City",
+      "season": "2425"
+    },
+    {
+      "club": "Manchester United",
+      "season": "1415"
+    },
+    {
+      "club": "Manchester United",
+      "season": "1516"
+    },
+    {
+      "club": "Manchester United",
+      "season": "1617"
+    },
+    {
+      "club": "Manchester United",
+      "season": "1718"
+    },
+    {
+      "club": "Manchester United",
+      "season": "1819"
+    },
+    {
+      "club": "Manchester United",
+      "season": "1920"
+    },
+    {
+      "club": "Manchester United",
+      "season": "2021"
+    },
+    {
+      "club": "Manchester United",
+      "season": "2122"
+    },
+    {
+      "club": "Manchester United",
+      "season": "2223"
+    },
+    {
+      "club": "Manchester United",
+      "season": "2324"
+    },
+    {
+      "club": "Manchester United",
+      "season": "2425"
+    },
+    {
+      "club": "Middlesbrough",
+      "season": "1617"
+    },
+    {
+      "club": "Newcastle United",
+      "season": "1415"
+    },
+    {
+      "club": "Newcastle United",
+      "season": "1516"
+    },
+    {
+      "club": "Newcastle United",
+      "season": "1718"
+    },
+    {
+      "club": "Newcastle United",
+      "season": "1819"
+    },
+    {
+      "club": "Newcastle United",
+      "season": "1920"
+    },
+    {
+      "club": "Newcastle United",
+      "season": "2021"
+    },
+    {
+      "club": "Newcastle United",
+      "season": "2122"
+    },
+    {
+      "club": "Newcastle United",
+      "season": "2223"
+    },
+    {
+      "club": "Newcastle United",
+      "season": "2324"
+    },
+    {
+      "club": "Newcastle United",
+      "season": "2425"
+    },
+    {
+      "club": "Norwich",
+      "season": "1516"
+    },
+    {
+      "club": "Norwich",
+      "season": "1920"
+    },
+    {
+      "club": "Norwich",
+      "season": "2122"
+    },
+    {
+      "club": "Nottingham Forest",
+      "season": "2223"
+    },
+    {
+      "club": "Nottingham Forest",
+      "season": "2324"
+    },
+    {
+      "club": "Nottingham Forest",
+      "season": "2425"
+    },
+    {
+      "club": "Queens Park Rangers",
+      "season": "1415"
+    },
+    {
+      "club": "Sheffield United",
+      "season": "1920"
+    },
+    {
+      "club": "Sheffield United",
+      "season": "2021"
+    },
+    {
+      "club": "Sheffield United",
+      "season": "2324"
+    },
+    {
+      "club": "Southampton",
+      "season": "1415"
+    },
+    {
+      "club": "Southampton",
+      "season": "1516"
+    },
+    {
+      "club": "Southampton",
+      "season": "1617"
+    },
+    {
+      "club": "Southampton",
+      "season": "1718"
+    },
+    {
+      "club": "Southampton",
+      "season": "1819"
+    },
+    {
+      "club": "Southampton",
+      "season": "1920"
+    },
+    {
+      "club": "Southampton",
+      "season": "2021"
+    },
+    {
+      "club": "Southampton",
+      "season": "2122"
+    },
+    {
+      "club": "Southampton",
+      "season": "2223"
+    },
+    {
+      "club": "Southampton",
+      "season": "2425"
+    },
+    {
+      "club": "Stoke",
+      "season": "1415"
+    },
+    {
+      "club": "Stoke",
+      "season": "1516"
+    },
+    {
+      "club": "Stoke",
+      "season": "1617"
+    },
+    {
+      "club": "Stoke",
+      "season": "1718"
+    },
+    {
+      "club": "Sunderland",
+      "season": "1415"
+    },
+    {
+      "club": "Sunderland",
+      "season": "1516"
+    },
+    {
+      "club": "Sunderland",
+      "season": "1617"
+    },
+    {
+      "club": "Swansea",
+      "season": "1415"
+    },
+    {
+      "club": "Swansea",
+      "season": "1516"
+    },
+    {
+      "club": "Swansea",
+      "season": "1617"
+    },
+    {
+      "club": "Swansea",
+      "season": "1718"
+    },
+    {
+      "club": "Tottenham",
+      "season": "1415"
+    },
+    {
+      "club": "Tottenham",
+      "season": "1516"
+    },
+    {
+      "club": "Tottenham",
+      "season": "1617"
+    },
+    {
+      "club": "Tottenham",
+      "season": "1718"
+    },
+    {
+      "club": "Tottenham",
+      "season": "1819"
+    },
+    {
+      "club": "Tottenham",
+      "season": "1920"
+    },
+    {
+      "club": "Tottenham",
+      "season": "2021"
+    },
+    {
+      "club": "Tottenham",
+      "season": "2122"
+    },
+    {
+      "club": "Tottenham",
+      "season": "2223"
+    },
+    {
+      "club": "Tottenham",
+      "season": "2324"
+    },
+    {
+      "club": "Tottenham",
+      "season": "2425"
+    },
+    {
+      "club": "Watford",
+      "season": "1516"
+    },
+    {
+      "club": "Watford",
+      "season": "1617"
+    },
+    {
+      "club": "Watford",
+      "season": "1718"
+    },
+    {
+      "club": "Watford",
+      "season": "1819"
+    },
+    {
+      "club": "Watford",
+      "season": "1920"
+    },
+    {
+      "club": "Watford",
+      "season": "2122"
+    },
+    {
+      "club": "West Bromwich Albion",
+      "season": "1415"
+    },
+    {
+      "club": "West Bromwich Albion",
+      "season": "1516"
+    },
+    {
+      "club": "West Bromwich Albion",
+      "season": "1617"
+    },
+    {
+      "club": "West Bromwich Albion",
+      "season": "1718"
+    },
+    {
+      "club": "West Bromwich Albion",
+      "season": "2021"
+    },
+    {
+      "club": "West Ham",
+      "season": "1415"
+    },
+    {
+      "club": "West Ham",
+      "season": "1516"
+    },
+    {
+      "club": "West Ham",
+      "season": "1617"
+    },
+    {
+      "club": "West Ham",
+      "season": "1718"
+    },
+    {
+      "club": "West Ham",
+      "season": "1819"
+    },
+    {
+      "club": "West Ham",
+      "season": "1920"
+    },
+    {
+      "club": "West Ham",
+      "season": "2021"
+    },
+    {
+      "club": "West Ham",
+      "season": "2122"
+    },
+    {
+      "club": "West Ham",
+      "season": "2223"
+    },
+    {
+      "club": "West Ham",
+      "season": "2324"
+    },
+    {
+      "club": "West Ham",
+      "season": "2425"
+    },
+    {
+      "club": "Wolverhampton Wanderers",
+      "season": "1819"
+    },
+    {
+      "club": "Wolverhampton Wanderers",
+      "season": "1920"
+    },
+    {
+      "club": "Wolverhampton Wanderers",
+      "season": "2021"
+    },
+    {
+      "club": "Wolverhampton Wanderers",
+      "season": "2122"
+    },
+    {
+      "club": "Wolverhampton Wanderers",
+      "season": "2223"
+    },
+    {
+      "club": "Wolverhampton Wanderers",
+      "season": "2324"
+    },
+    {
+      "club": "Wolverhampton Wanderers",
+      "season": "2425"
+    }
+  ]
+}
