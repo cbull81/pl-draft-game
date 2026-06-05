@@ -19,6 +19,8 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
+from model.features import age_value_weight
+
 ARTIFACTS = Path(__file__).parent.parent / "artifacts"
 ROOT = Path(__file__).parent.parent
 META_PATH = ROOT / "meta.json"
@@ -185,6 +187,26 @@ def build_players() -> pd.DataFrame:
     print(f"  Players with value: {df['market_value_eur'].notna().sum()} / {len(df)}")
     print(f"  Players with value_z: {df['value_z'].notna().sum()} / {len(df)}")
 
+    # Age at season start (Aug 1 of start year), used to discount young-player potential premium
+    def _age_at_season(row) -> float | None:
+        try:
+            dob = pd.Timestamp(row["date_of_birth"])
+            start_year = int("20" + str(row["season"])[:2])
+            return (pd.Timestamp(f"{start_year}-08-01") - dob).days / 365.25
+        except Exception:
+            return None
+
+    df["age_at_season"] = df.apply(_age_at_season, axis=1)
+    df["age_adj_value_z"] = df.apply(
+        lambda row: (
+            row["value_z"] * age_value_weight(row["age_at_season"])
+            if pd.notna(row["value_z"]) and pd.notna(row["age_at_season"])
+            else row["value_z"]
+        ),
+        axis=1,
+    )
+    print(f"  Players with age_adj_value_z: {df['age_adj_value_z'].notna().sum()} / {len(df)}")
+
     # Rename columns to clean API
     df = df.rename(columns={
         "player_id": "understat_id",
@@ -202,7 +224,7 @@ def build_players() -> pd.DataFrame:
         "xg_chain", "xg_buildup", "shots", "key_passes",
         "npxg_pg", "xa_pg", "xg_buildup_pg", "xg_chain_pg",
         "sub_position", "primary_bucket", "eligible_buckets",
-        "market_value_eur", "value_z",
+        "market_value_eur", "value_z", "age_at_season", "age_adj_value_z",
         "match_type",
     ]
     # Add caps if present

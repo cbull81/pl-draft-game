@@ -18,6 +18,24 @@ recovers something close to the team's measured xGF_pg. Apply a scaling factor i
 import numpy as np
 import pandas as pd
 
+# Age-weight parameters: logistic ramp, normalised so peak_def_age → 1.0.
+# Young players carry a future-potential premium in market value that doesn't
+# reflect current defensive ability; this discounts that premium.
+_AGE_INFLECTION = 22.0   # age at which weight = 0.5 (before normalisation)
+_AGE_K          = 0.5    # logistic steepness
+_PEAK_DEF_AGE   = 27.0   # age at which weight is normalised to 1.0
+
+
+def age_value_weight(age: float) -> float:
+    """
+    Discount factor in [0, 1] applied to value_z for defensive players.
+    Ramps from ~0.13 at 18 up to 1.0 at peak_def_age (27), capped there.
+    Values at or above peak age are not discounted.
+    """
+    raw = 1.0 / (1.0 + np.exp(-_AGE_K * (age - _AGE_INFLECTION)))
+    norm = 1.0 / (1.0 + np.exp(-_AGE_K * (_PEAK_DEF_AGE - _AGE_INFLECTION)))
+    return float(min(1.0, raw / norm))
+
 
 def compute_xi_xgf(players: pd.DataFrame) -> float:
     """
@@ -45,13 +63,15 @@ def compute_xi_xga(players: pd.DataFrame, stage2_model) -> float:
 
 def build_defensive_value_index(players: pd.DataFrame) -> pd.DataFrame:
     """
-    One-row feature vector for Stage 2: average value_z of DEF and GK players.
-    If value_z is missing, impute with 0 (= position-season average quality).
+    One-row feature vector for Stage 2: average age-adjusted value_z of DEF+GK players.
+    Prefers age_adj_value_z (age-weighted) over raw value_z when available.
+    Missing values imputed with 0 (= position-season average quality).
     """
     defensive = players[players["primary_bucket"].isin(["GK", "DEF"])]
     if defensive.empty:
         return pd.DataFrame([{"def_value_z": 0.0}])
-    val = defensive["value_z"].fillna(0).mean()
+    val_col = "age_adj_value_z" if "age_adj_value_z" in defensive.columns else "value_z"
+    val = defensive[val_col].fillna(0).mean()
     return pd.DataFrame([{"def_value_z": float(val)}])
 
 

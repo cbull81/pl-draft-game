@@ -127,7 +127,10 @@ def roster_summary(state: dict) -> str:
     for pos in ["GK", "DEF", "MID", "FWD"]:
         total = state["slots"].get(pos, 0)
         filled = state["filled"].get(pos, 0)
-        players_in_slot = [p["player_name"] for p in state["drafted"] if p["drafted_bucket"] == pos]
+        players_in_slot = [
+            f"{p['player_name']} (20{p['season'][:2]}-{p['season'][2:]})"
+            for p in state["drafted"] if p["drafted_bucket"] == pos
+        ]
         filled_str = ", ".join(players_in_slot) if players_in_slot else "—"
         open_str = f"({total - filled} open)"
         lines.append(f"  {pos:4s} [{filled}/{total}] {open_str}  {filled_str}")

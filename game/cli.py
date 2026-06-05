@@ -48,19 +48,23 @@ def choose_formation() -> str:
 
 def print_candidates(candidates: pd.DataFrame, show_stats: bool) -> None:
     if show_stats:
-        print(f"\n  {'#':>3}  {'Player':<26}  {'Position':<20}  {'Slots':<14}  {'npxG/g':>7}  {'xA/g':>6}  {'val_z':>6}  {'g':>3}")
-        print(f"  {'─'*3}  {'─'*26}  {'─'*20}  {'─'*14}  {'─'*7}  {'─'*6}  {'─'*6}  {'─'*3}")
+        print(f"\n  {'#':>3}  {'Player':<26}  {'Position':<20}  {'Slots':<14}  {'npxG/g':>7}  {'xA/g':>6}  {'val_z':>6}  {'adj_z':>6}  {'age':>4}  {'g':>3}")
+        print(f"  {'─'*3}  {'─'*26}  {'─'*20}  {'─'*14}  {'─'*7}  {'─'*6}  {'─'*6}  {'─'*6}  {'─'*4}  {'─'*3}")
         for i, row in candidates.iterrows():
             sub_pos = row.get("sub_position", "—") or "—"
             buckets = ", ".join(row["eligible_buckets"])
             npxg = row.get("npxg_pg")
             xa   = row.get("xa_pg")
             vz   = row.get("value_z")
+            avz  = row.get("age_adj_value_z")
+            age  = row.get("age_at_season")
             g    = int(row.get("games", 0) or 0)
             npxg_s = f"{npxg:.3f}" if pd.notna(npxg) else "—"
             xa_s   = f"{xa:.3f}"   if pd.notna(xa)   else "—"
             vz_s   = f"{vz:+.2f}" if pd.notna(vz)   else "—"
-            print(f"  [{i+1:2d}]  {row['player_name']:<26}  {sub_pos:<20}  {buckets:<14}  {npxg_s:>7}  {xa_s:>6}  {vz_s:>6}  {g:>3}")
+            avz_s  = f"{avz:+.2f}" if pd.notna(avz)  else "—"
+            age_s  = f"{age:.1f}"  if pd.notna(age)  else "—"
+            print(f"  [{i+1:2d}]  {row['player_name']:<26}  {sub_pos:<20}  {buckets:<14}  {npxg_s:>7}  {xa_s:>6}  {vz_s:>6}  {avz_s:>6}  {age_s:>4}  {g:>3}")
     else:
         print(f"\n  {'#':>3}  {'Player':<28}  {'Position':<22}  Eligible Slots")
         print(f"  {'─'*3}  {'─'*28}  {'─'*22}  {'─'*20}")
@@ -73,20 +77,25 @@ def print_candidates(candidates: pd.DataFrame, show_stats: bool) -> None:
 def print_model_inputs(xi_df: pd.DataFrame, result: dict) -> None:
     bd = result["breakdown"]
     print("\n  ── Model Inputs " + "─" * 39)
-    print(f"\n  {'Player':<26}  {'Slot':<4}  {'npxG/g':>7}  {'xA/g':>6}  {'val_z':>6}")
-    print(f"  {'─'*26}  {'─'*4}  {'─'*7}  {'─'*6}  {'─'*6}")
+    print(f"\n  {'Player':<26}  {'Slot':<4}  {'npxG/g':>7}  {'xA/g':>6}  {'val_z':>6}  {'adj_z':>6}  {'age':>4}")
+    print(f"  {'─'*26}  {'─'*4}  {'─'*7}  {'─'*6}  {'─'*6}  {'─'*6}  {'─'*4}")
     for _, row in xi_df.sort_values("drafted_bucket").iterrows():
         bucket = row.get("drafted_bucket", "?")
         npxg = row.get("npxg_pg")
         xa   = row.get("xa_pg")
         vz   = row.get("value_z")
+        avz  = row.get("age_adj_value_z")
+        age  = row.get("age_at_season")
         npxg_s = f"{npxg:.3f}" if pd.notna(npxg) else "—"
         xa_s   = f"{xa:.3f}"   if pd.notna(xa)   else "—"
         vz_s   = f"{vz:+.2f}" if pd.notna(vz)   else "—"
-        print(f"  {row['player_name']:<26}  {bucket:<4}  {npxg_s:>7}  {xa_s:>6}  {vz_s:>6}")
+        avz_s  = f"{avz:+.2f}" if pd.notna(avz)  else "—"
+        age_s  = f"{age:.1f}"  if pd.notna(age)  else "—"
+        print(f"  {row['player_name']:<26}  {bucket:<4}  {npxg_s:>7}  {xa_s:>6}  {vz_s:>6}  {avz_s:>6}  {age_s:>4}")
 
     defensive = xi_df[xi_df["primary_bucket"].isin(["GK", "DEF"])]
-    mean_def_vz = defensive["value_z"].fillna(0).mean() if not defensive.empty else 0.0
+    val_col = "age_adj_value_z" if "age_adj_value_z" in defensive.columns else "value_z"
+    mean_def_vz = defensive[val_col].fillna(0).mean() if not defensive.empty else 0.0
 
     print(f"\n  xGF_hat  = Σ npxG/g (outfield)  →  {bd['attack_xgf_pg']:.4f}")
     print(f"  def_val_z = mean value_z (DEF+GK) →  {mean_def_vz:+.4f}")
