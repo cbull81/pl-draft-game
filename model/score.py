@@ -13,6 +13,7 @@ from model.features import (
     build_offensive_features,
     compute_xi_xgf,
     compute_xi_xga,
+    season_max_games,
     squad_pedigree,
 )
 
@@ -78,8 +79,14 @@ def score_xi(players: pd.DataFrame) -> dict:
     feat = pd.DataFrame([{"xgf_pg": xgf_pg, "xga_pg": xga_pg}])
     raw_ppg = float(ep_model.predict(feat)[0])
 
-    # Availability scaling: no penalty above GAMES_THRESHOLD; below it, scale by avg.
-    avg_games = float(players["games"].fillna(0).clip(upper=38).mean())
+    # Normalize each player's games to a 38-game equivalent before averaging.
+    # Bundesliga has 34-game seasons; Ligue 1 has 34-game seasons from 2023/24 onwards.
+    def _norm_games(row) -> float:
+        max_g = season_max_games(str(row.get("league", "")), str(row.get("season", "")))
+        g = min(float(row.get("games") or 0), max_g)
+        return g * 38.0 / max_g
+
+    avg_games = float(players.apply(_norm_games, axis=1).mean())
     avg_games = max(1.0, avg_games)
     effective_games = 38.0 if avg_games >= GAMES_THRESHOLD else avg_games
     raw_pts = raw_ppg * effective_games

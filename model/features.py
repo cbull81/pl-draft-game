@@ -26,6 +26,22 @@ _AGE_K          = 0.5    # logistic steepness
 _PEAK_DEF_AGE   = 27.0   # age at which weight is normalised to 1.0
 
 
+def season_max_games(league: str, season: str) -> int:
+    """
+    Max games in a full season for a league.
+    Bundesliga: always 34 (18 teams since inception).
+    Ligue 1: 34 from 2023/24 onwards (reduced from 20 to 18 teams), else 38.
+    All others (PL, La Liga, Serie A): 38.
+    """
+    if league == "GER-Bundesliga":
+        return 34
+    if league == "FRA-Ligue 1":
+        start_year = int("20" + season[:2]) if len(season) == 4 else int(season)
+        if start_year >= 2023:
+            return 34
+    return 38
+
+
 def age_value_weight(age: float) -> float:
     """
     Discount factor in [0, 1] applied to value_z for defensive players.
