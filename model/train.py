@@ -20,9 +20,7 @@ import joblib
 import numpy as np
 import pandas as pd
 from scipy.stats import spearmanr
-from sklearn.linear_model import RidgeCV
-from sklearn.pipeline import make_pipeline
-from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import LinearRegression
 
 from model.features import (
     build_defensive_value_index,
@@ -30,7 +28,6 @@ from model.features import (
 )
 
 ARTIFACTS = Path(__file__).parent.parent / "artifacts"
-ALPHAS = np.logspace(-3, 3, 25)
 
 
 def build_stage1_matrix() -> tuple[pd.DataFrame, pd.Series, pd.Series, pd.Series]:
@@ -86,7 +83,7 @@ def loso_cv(X: pd.DataFrame, y: pd.Series, league_s: pd.Series, season_s: pd.Ser
     for held in unique_groups:
         train_mask = [g != held for g in groups]
         test_mask = [g == held for g in groups]
-        m = make_pipeline(StandardScaler(), RidgeCV(alphas=ALPHAS))
+        m = LinearRegression()
         m.fit(X[train_mask], y[train_mask])
         preds[test_mask] = m.predict(X[test_mask])
 
@@ -106,11 +103,10 @@ def main():
     print(f"  RMSE (ppg): {rmse:.4f}")
     print(f"  Spearman ρ: {rho:.3f}  (p={pval:.4f})")
 
-    stage1 = make_pipeline(StandardScaler(), RidgeCV(alphas=ALPHAS))
+    stage1 = LinearRegression()
     stage1.fit(X1, y1)
-    ridge1 = stage1.named_steps["ridgecv"]
-    coefs1 = dict(zip(["xGF_pg", "xGA_pg"], ridge1.coef_))
-    print(f"\n  Best alpha: {ridge1.alpha_:.4f}")
+    coefs1 = dict(zip(["xGF_pg", "xGA_pg"], stage1.coef_))
+    print(f"\n  Intercept: {stage1.intercept_:.4f}")
     print(f"  Coefficients: {coefs1}")
     if coefs1.get("xGF_pg", 0) <= 0 or coefs1.get("xGA_pg", 0) >= 0:
         print("  WARNING: coefficient signs unexpected — xGF should be +, xGA should be –")
@@ -123,7 +119,7 @@ def main():
         stage2_r2 = None
     else:
         print(f"  Rows: {len(X2)}")
-        stage2 = make_pipeline(StandardScaler(), RidgeCV(alphas=ALPHAS))
+        stage2 = LinearRegression()
         stage2.fit(X2, y2)
         preds2 = stage2.predict(X2)
         rho2, _ = spearmanr(y2, preds2)
