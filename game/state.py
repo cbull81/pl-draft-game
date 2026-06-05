@@ -29,19 +29,20 @@ FORMATIONS: dict[str, dict[str, int]] = {
 DEFAULT_REROLLS = 3
 
 
-def new_game(formation: str, seed: Optional[int] = None) -> dict:
+def new_game(formation: str, league: str, seed: Optional[int] = None) -> dict:
     if formation not in FORMATIONS:
         raise ValueError(f"Unknown formation '{formation}'. Choose from: {list(FORMATIONS)}")
     slots = FORMATIONS[formation]
     return {
         "formation": formation,
+        "league": league,
         "slots": slots.copy(),
         "filled": {pos: 0 for pos in slots},
         "drafted": [],                   # list of player dicts
         "drafted_ids": set(),            # understat_id set — no dupes
         "rerolls_left": DEFAULT_REROLLS,
         "round": 0,                      # 0-indexed
-        "current_cell": None,            # (club, season) currently rolled
+        "current_cell": None,            # (league, club, season) currently rolled
         "seed": seed if seed is not None else random.randint(0, 2**32),
         "rng": None,
         "complete": False,
@@ -54,24 +55,26 @@ def _get_rng(state: dict) -> random.Random:
     return state["rng"]
 
 
-def _load_valid_cells() -> list[tuple[str, str]]:
+def _load_valid_cells() -> list[tuple[str, str, str]]:
     if not META_PATH.exists():
         raise FileNotFoundError("meta.json not found — run data/build.py first")
     with open(META_PATH) as f:
         meta = json.load(f)
-    return [(c["club"], c["season"]) for c in meta["valid_cells"]]
+    return [(c["league"], c["club"], c["season"]) for c in meta["valid_cells"]]
 
 
 def _open_buckets(state: dict) -> list[str]:
     return [pos for pos, total in state["slots"].items() if state["filled"][pos] < total]
 
 
-def roll(state: dict) -> tuple[str, str]:
-    cells = _load_valid_cells()
+def roll(state: dict) -> tuple[str, str, str]:
+    cells = [c for c in _load_valid_cells() if c[0] == state["league"]]
+    if not cells:
+        raise ValueError(f"No valid cells found for league '{state['league']}'")
     rng = _get_rng(state)
-    club, season = rng.choice(cells)
-    state["current_cell"] = (club, season)
-    return club, season
+    league, club, season = rng.choice(cells)
+    state["current_cell"] = (league, club, season)
+    return league, club, season
 
 
 def reroll(state: dict) -> tuple[str, str]:
@@ -84,11 +87,12 @@ def reroll(state: dict) -> tuple[str, str]:
 def get_candidates(state: dict, players_df: pd.DataFrame) -> pd.DataFrame:
     if state["current_cell"] is None:
         return pd.DataFrame()
-    club, season = state["current_cell"]
+    league, club, season = state["current_cell"]
     open_buckets = _open_buckets(state)
 
     mask = (
-        (players_df["club"] == club)
+        (players_df["league"] == league)
+        & (players_df["club"] == club)
         & (players_df["season"] == season)
         & (~players_df["understat_id"].isin(state["drafted_ids"]))
         & (players_df["minutes"].fillna(0) >= 450)

@@ -10,6 +10,7 @@ import numpy as np
 import pandas as pd
 
 from model.features import (
+    build_offensive_features,
     compute_xi_xgf,
     compute_xi_xga,
     squad_pedigree,
@@ -27,13 +28,15 @@ TIER_THRESHOLDS = [
 
 
 def load_models():
-    ep_path = ARTIFACTS / "ep_model.joblib"
+    ep_path  = ARTIFACTS / "ep_model.joblib"
     xga_path = ARTIFACTS / "xga_model.joblib"
+    xgf_path = ARTIFACTS / "xgf_model.joblib"
     if not ep_path.exists():
         raise FileNotFoundError("Stage 1 model not found — run model/train.py first")
-    ep = joblib.load(ep_path)
+    ep  = joblib.load(ep_path)
     xga = joblib.load(xga_path)["model"] if xga_path.exists() else None
-    return ep["model"], xga
+    xgf = joblib.load(xgf_path)["model"] if xgf_path.exists() else None
+    return ep["model"], xga, xgf
 
 
 def tier(points: float) -> str:
@@ -43,12 +46,12 @@ def tier(points: float) -> str:
     return "Relegation Battle"
 
 
-def points_to_record(points: float) -> str:
-    pts = max(0, min(114, round(points)))
+def points_to_record(points: float, games: int = 38) -> str:
+    pts = max(0, min(games * 3, round(points)))
     wins = pts // 3
     remainder = pts % 3
     draws = remainder
-    losses = max(0, 38 - wins - draws)
+    losses = max(0, games - wins - draws)
     return f"{wins}W {draws}D {losses}L"
 
 
@@ -56,19 +59,27 @@ def score_xi(players: pd.DataFrame) -> dict:
     """
     players: 11-row DataFrame (one per drafted player).
     Returns: predicted_points, tier, record, attack/defense breakdown, pedigree.
-    """
-    ep_model, xga_model = load_models()
 
-    xgf_pg = compute_xi_xgf(players)
+    Per-game quality (ppg_hat) is estimated from individual per-game rates, then
+    scaled by the XI's average games played — not a fixed 38. Drafting players who
+    only appeared in 15 games contributes proportionally less to total points.
+    """
+    ep_model, xga_model, xgf_model = load_models()
+
+    off_feats = build_offensive_features(players)
+    xgf_pg = compute_xi_xgf(players, xgf_model)
     xga_pg = compute_xi_xga(players, xga_model)
 
     if np.isnan(xga_pg):
-        # Stage 2 not available — fall back to league-average xGA
-        xga_pg = 1.2  # ~PL average; replace with empirical value after training
+        xga_pg = 1.2  # ~PL average fallback if Stage 2 not trained
 
     feat = pd.DataFrame([{"xgf_pg": xgf_pg, "xga_pg": xga_pg}])
     raw_ppg = float(ep_model.predict(feat)[0])
-    raw_pts = raw_ppg * 38
+
+    # Scale by average games played across the XI, not a fixed 38.
+    avg_games = float(players["games"].fillna(0).clip(upper=38).mean())
+    avg_games = max(1.0, avg_games)  # guard against all-zero edge case
+    raw_pts = raw_ppg * avg_games
     predicted_points = float(np.clip(raw_pts, 0, 114))
 
     pedigree = squad_pedigree(players)
@@ -76,11 +87,13 @@ def score_xi(players: pd.DataFrame) -> dict:
     return {
         "predicted_points": predicted_points,
         "tier": tier(predicted_points),
-        "record": points_to_record(predicted_points),
+        "record": points_to_record(predicted_points, games=round(avg_games)),
+        "avg_games": round(avg_games, 1),
         "breakdown": {
             "attack_xgf_pg": round(xgf_pg, 3),
             "defense_xga_pg": round(xga_pg, 3),
             "ppg_hat": round(raw_ppg, 3),
+            "offensive_features": {c: round(float(v), 3) for c, v in off_feats.iloc[0].items()},
         },
         "pedigree": pedigree,
     }

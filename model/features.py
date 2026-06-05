@@ -37,15 +37,37 @@ def age_value_weight(age: float) -> float:
     return float(min(1.0, raw / norm))
 
 
-def compute_xi_xgf(players: pd.DataFrame) -> float:
+# Features fed into Stage 0 (xGF model). Order matters — must match training.
+OFFENSIVE_COLS = ["npxg_pg", "xa_pg", "xg_buildup_pg", "xg_chain_pg", "key_passes_pg", "shots_pg"]
+
+
+def build_offensive_features(players: pd.DataFrame) -> pd.DataFrame:
     """
-    Estimate an XI's xGF rate as the sum of outfield players' npxg_pg.
-    GKs are excluded (they don't generate expected goals in open play).
-    Missing npxg_pg values → impute with position-bucket median (handled by caller).
+    Sum of outfield players' per-game offensive stats (Stage 0 input).
+
+    Pure per-game quality — no games weighting here. Availability is accounted for
+    separately by scaling ppg_hat by avg games played (see score.py).
+    GKs excluded. Missing values filled with 0.
     """
     outfield = players[players["primary_bucket"] != "GK"]
-    vals = outfield["npxg_pg"].fillna(0)
-    return float(vals.sum())
+    row = {}
+    for col in OFFENSIVE_COLS:
+        vals = outfield[col].fillna(0) if col in outfield.columns else pd.Series(0.0, index=outfield.index)
+        row[f"sum_{col}"] = float(vals.sum())
+    return pd.DataFrame([row])[[f"sum_{c}" for c in OFFENSIVE_COLS]]
+
+
+def compute_xi_xgf(players: pd.DataFrame, stage0_model=None) -> float:
+    """
+    Estimate an XI's xGF per game.
+    With Stage 0 model: Ridge(Σnpxg, Σxa, Σbuildup) — accounts for creative midfielders via xA.
+    Without: falls back to simple Σnpxg_pg.
+    """
+    if stage0_model is not None:
+        feat = build_offensive_features(players)
+        return float(stage0_model.predict(feat)[0])
+    outfield = players[players["primary_bucket"] != "GK"]
+    return float(outfield["npxg_pg"].fillna(0).sum())
 
 
 def compute_xi_xga(players: pd.DataFrame, stage2_model) -> float:

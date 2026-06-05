@@ -84,7 +84,7 @@ def get_season_valuation(player_id: str, season: str, valuations: pd.DataFrame) 
 
 def build_players() -> pd.DataFrame:
     print("  Loading artifacts...")
-    us = pd.read_parquet(ARTIFACTS / "understat_players_pl.parquet")
+    us = pd.read_parquet(ARTIFACTS / "understat_players_all.parquet")
     resolver = pd.read_parquet(ARTIFACTS / "resolver.parquet")
     tm_players = pd.read_parquet(ARTIFACTS / "tm_players_raw.parquet")
     tm_valuations = pd.read_parquet(ARTIFACTS / "tm_player_valuations_raw.parquet")
@@ -139,10 +139,12 @@ def build_players() -> pd.DataFrame:
     df = df[df["eligible_buckets"].map(len) > 0].copy()
 
     # Per-game offense rates
-    df["npxg_pg"] = df["np_xg"] / df["matches"].replace(0, np.nan)
-    df["xa_pg"] = df["xa"] / df["matches"].replace(0, np.nan)
+    df["npxg_pg"]       = df["np_xg"]      / df["matches"].replace(0, np.nan)
+    df["xa_pg"]         = df["xa"]          / df["matches"].replace(0, np.nan)
     df["xg_buildup_pg"] = df["xg_buildup"] / df["matches"].replace(0, np.nan)
-    df["xg_chain_pg"] = df["xg_chain"] / df["matches"].replace(0, np.nan)
+    df["xg_chain_pg"]   = df["xg_chain"]   / df["matches"].replace(0, np.nan)
+    df["shots_pg"]      = df["shots"]       / df["matches"].replace(0, np.nan)
+    df["key_passes_pg"] = df["key_passes"]  / df["matches"].replace(0, np.nan)
 
     # Season-dated market value (slow: one call per player-season)
     print(f"  Looking up season-dated valuations for {len(df)} player-season rows...")
@@ -170,10 +172,10 @@ def build_players() -> pd.DataFrame:
 
     df["market_value_eur"] = df.apply(get_val, axis=1)
 
-    # Normalize market value within (primary_bucket × season)
-    # Use primary bucket (first element of eligible_buckets) for normalization group
     df["primary_bucket"] = df["eligible_buckets"].apply(lambda b: b[0] if b else None)
 
+    # value_z: position × season normalisation (broad reference, kept for display)
+    df["value_z"] = np.nan
     for (bucket, season), grp in df.groupby(["primary_bucket", "season"]):
         vals = grp["market_value_eur"].dropna()
         if len(vals) < 3:
@@ -187,7 +189,7 @@ def build_players() -> pd.DataFrame:
     print(f"  Players with value: {df['market_value_eur'].notna().sum()} / {len(df)}")
     print(f"  Players with value_z: {df['value_z'].notna().sum()} / {len(df)}")
 
-    # Age at season start (Aug 1 of start year), used to discount young-player potential premium
+    # Age at season start (Aug 1 of start year)
     def _age_at_season(row) -> float | None:
         try:
             dob = pd.Timestamp(row["date_of_birth"])
@@ -197,14 +199,43 @@ def build_players() -> pd.DataFrame:
             return None
 
     df["age_at_season"] = df.apply(_age_at_season, axis=1)
+
+    # age_band: coarse grouping for within-peer normalisation
+    def _age_band(age) -> str:
+        if pd.isna(age): return "unknown"
+        if age < 21:  return "U21"
+        if age < 26:  return "21-25"
+        if age < 31:  return "26-30"
+        return "31+"
+
+    df["age_band"] = df["age_at_season"].apply(_age_band)
+
+    # value_z_age: normalised within (position × age_band × season)
+    # Answers "how good is this player relative to peers their own age this season?"
+    df["value_z_age"] = np.nan
+    for (bucket, band, season), grp in df.groupby(["primary_bucket", "age_band", "season"]):
+        if band == "unknown":
+            continue
+        vals = grp["market_value_eur"].dropna()
+        if len(vals) < 3:
+            continue
+        mu, sigma = vals.mean(), vals.std()
+        if sigma == 0:
+            continue
+        mask = (df["primary_bucket"] == bucket) & (df["age_band"] == band) & (df["season"] == season)
+        df.loc[mask, "value_z_age"] = (df.loc[mask, "market_value_eur"] - mu) / sigma
+
+    # age_adj_value_z: peer-relative value weighted down for young players
+    # (being elite for your age matters less at 18 than at 27)
     df["age_adj_value_z"] = df.apply(
         lambda row: (
-            row["value_z"] * age_value_weight(row["age_at_season"])
-            if pd.notna(row["value_z"]) and pd.notna(row["age_at_season"])
-            else row["value_z"]
+            row["value_z_age"] * age_value_weight(row["age_at_season"])
+            if pd.notna(row["value_z_age"]) and pd.notna(row["age_at_season"])
+            else None
         ),
         axis=1,
     )
+    print(f"  Players with value_z_age:     {df['value_z_age'].notna().sum()} / {len(df)}")
     print(f"  Players with age_adj_value_z: {df['age_adj_value_z'].notna().sum()} / {len(df)}")
 
     # Rename columns to clean API
@@ -218,13 +249,14 @@ def build_players() -> pd.DataFrame:
 
     # Keep only columns we'll use downstream
     keep = [
-        "understat_id", "tm_id", "player_name", "club", "season",
+        "understat_id", "tm_id", "player_name", "league", "club", "season",
         "games", "minutes",
         "goals", "np_goals", "xg", "np_xg", "assists", "xa",
         "xg_chain", "xg_buildup", "shots", "key_passes",
         "npxg_pg", "xa_pg", "xg_buildup_pg", "xg_chain_pg",
         "sub_position", "primary_bucket", "eligible_buckets",
-        "market_value_eur", "value_z", "age_at_season", "age_adj_value_z",
+        "shots_pg", "key_passes_pg",
+        "market_value_eur", "value_z", "value_z_age", "age_at_season", "age_band", "age_adj_value_z",
         "match_type",
     ]
     # Add caps if present
@@ -237,11 +269,11 @@ def build_players() -> pd.DataFrame:
 
 
 def build_valid_cells(players: pd.DataFrame) -> list[dict]:
-    """(club, season) cells with enough players to draft from."""
+    """(league, club, season) cells with enough players to draft from."""
     cells = []
-    for (club, season), grp in players.groupby(["club", "season"]):
+    for (league, club, season), grp in players.groupby(["league", "club", "season"]):
         if len(grp) >= 5:
-            cells.append({"club": club, "season": season})
+            cells.append({"league": league, "club": club, "season": season})
     return cells
 
 

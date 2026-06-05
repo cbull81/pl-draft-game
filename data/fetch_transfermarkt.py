@@ -48,40 +48,35 @@ def download_csv(name: str, filename: str) -> pd.DataFrame:
     r.raise_for_status()
     return pd.read_csv(io.BytesIO(r.content), compression="gzip", low_memory=False)
 
+TOP5_COMP_IDS = ["GB1", "ES1", "IT1", "FR1", "L1"]  # PL, La Liga, Serie A, Ligue 1, Bundesliga
+
+
 def filter_to_relevant(tables: dict[str, pd.DataFrame]) -> dict[str, pd.DataFrame]:
     """
-    Narrow the Transfermarkt data down to PL-relevant clubs.
-    Keeps all seasons; further filtering to PL clubs happens in build.py.
+    Narrow Transfermarkt data to the top-5 European leagues.
+    Keeps all seasons; league filtering in build.py uses the Understat league column.
     """
-    comps = tables["competitions"]
-    clubs = tables["clubs"]
-    games = tables["games"]
-    players = tables["players"]
-    valuations = tables["player_valuations"]
+    clubs       = tables["clubs"]
+    players     = tables["players"]
+    valuations  = tables["player_valuations"]
     appearances = tables["appearances"]
+    comps       = tables["competitions"]
+    games       = tables["games"]
 
-    # TM uses competition_id "GB1" for the Premier League (name is "premier-league", lowercase)
-    PL_COMP_ID = "GB1"
-    pl_club_ids = clubs[clubs["domestic_competition_id"] == PL_COMP_ID]["club_id"].unique()
-    print(f"  PL clubs count: {len(pl_club_ids)}")
+    top5_club_ids = clubs[clubs["domestic_competition_id"].isin(TOP5_COMP_IDS)]["club_id"].unique()
+    print(f"  Top-5 clubs: {len(top5_club_ids)}")
 
-    # PL appearances: filter directly by competition_id so we catch all PL appearances
-    # (player_club_id filter alone would miss players on loan from non-PL clubs)
-    pl_appearances = appearances[appearances["competition_id"] == PL_COMP_ID]
-    pl_player_ids = pl_appearances["player_id"].unique()
-    print(f"  PL-associated players: {len(pl_player_ids)}")
-
-    # Filter players and valuations to PL-relevant players
-    pl_players = players[players["player_id"].isin(pl_player_ids)]
-    pl_valuations = valuations[valuations["player_id"].isin(pl_player_ids)]
+    top5_appearances = appearances[appearances["competition_id"].isin(TOP5_COMP_IDS)]
+    top5_player_ids  = top5_appearances["player_id"].unique()
+    print(f"  Top-5 associated players: {len(top5_player_ids)}")
 
     return {
-        "players": pl_players,
-        "player_valuations": pl_valuations,
-        "appearances": pl_appearances,
-        "clubs": clubs[clubs["club_id"].isin(pl_club_ids)],
-        "competitions": comps,
-        "games": games,
+        "players":          players[players["player_id"].isin(top5_player_ids)],
+        "player_valuations": valuations[valuations["player_id"].isin(top5_player_ids)],
+        "appearances":      top5_appearances,
+        "clubs":            clubs[clubs["club_id"].isin(top5_club_ids)],
+        "competitions":     comps,
+        "games":            games,
     }
 
 

@@ -20,14 +20,16 @@ import joblib
 import numpy as np
 import pandas as pd
 from scipy.stats import spearmanr
-from sklearn.linear_model import LinearRegression
+from sklearn.linear_model import LinearRegression, RidgeCV
 
 from model.features import (
     build_defensive_value_index,
+    build_offensive_features,
     compute_measured_team_features,
 )
 
 ARTIFACTS = Path(__file__).parent.parent / "artifacts"
+ALPHAS = np.logspace(-3, 3, 25)
 
 
 def build_stage1_matrix() -> tuple[pd.DataFrame, pd.Series, pd.Series, pd.Series]:
@@ -41,6 +43,38 @@ def build_stage1_matrix() -> tuple[pd.DataFrame, pd.Series, pd.Series, pd.Series
     X = ts[["xgf_pg", "xga_pg"]]
     y = ts["points_pg"]
     return X, y, ts["league"], ts["season"], ts
+
+
+def build_stage0_matrix() -> tuple[pd.DataFrame, pd.Series]:
+    """
+    PL team-seasons: measured xGF_pg ~ f(Σ individual offensive stats).
+    Ridge is justified here — npxg, xa, and buildup are correlated.
+    """
+    players = pd.read_parquet(ARTIFACTS / "players.parquet")
+    ts = pd.read_parquet(ARTIFACTS / "understat_team_seasons.parquet")
+    pl = ts[ts["league"] == "ENG-Premier League"][["season", "team", "xgf_pg"]].dropna()
+
+    rows = []
+    for _, row in pl.iterrows():
+        team_players = players[
+            (players["club"] == row["team"]) &
+            (players["season"] == row["season"]) &
+            (players["primary_bucket"] != "GK") &
+            (players["minutes"].fillna(0) >= 450)
+        ]
+        if team_players.empty:
+            continue
+        feat = build_offensive_features(team_players)
+        feat["xgf_pg"] = row["xgf_pg"]
+        rows.append(feat)
+
+    if not rows:
+        print("  WARNING: No Stage 0 training rows — run build.py first.")
+        return pd.DataFrame(), pd.Series()
+
+    df = pd.concat(rows, ignore_index=True).dropna(subset=["xgf_pg"])
+    X_cols = [c for c in df.columns if c.startswith("sum_")]
+    return df[X_cols], df["xgf_pg"]
 
 
 def build_stage2_matrix() -> tuple[pd.DataFrame, pd.Series]:
@@ -93,7 +127,23 @@ def loso_cv(X: pd.DataFrame, y: pd.Series, league_s: pd.Series, season_s: pd.Ser
 
 
 def main():
-    print("=== Stage 1: points_pg ~ Ridge(xGF_pg, xGA_pg) ===")
+    print("=== Stage 0: xGF_pg ~ RidgeCV(Σnpxg, Σxa, Σbuildup) ===")
+    X0, y0 = build_stage0_matrix()
+    if X0.empty:
+        print("  Skipping Stage 0 — no training data.")
+        stage0 = None
+    else:
+        print(f"  Rows: {len(X0)}  Features: {X0.columns.tolist()}")
+        stage0 = RidgeCV(alphas=ALPHAS)
+        stage0.fit(X0, y0)
+        preds0 = stage0.predict(X0)
+        rho0, _ = spearmanr(y0, preds0)
+        r2_0 = float(1 - ((y0 - preds0)**2).sum() / ((y0 - y0.mean())**2).sum())
+        print(f"  Best alpha: {stage0.alpha_:.4f}")
+        print(f"  Coefficients: {dict(zip(X0.columns, stage0.coef_))}")
+        print(f"  In-sample  Spearman ρ: {rho0:.3f}  R²: {r2_0:.3f}")
+
+    print("\n=== Stage 1: points_pg ~ OLS(xGF_pg, xGA_pg) ===")
     X1, y1, league_s, season_s, ts = build_stage1_matrix()
     print(f"  Rows: {len(X1)}  (leagues: {league_s.nunique()}, seasons: {season_s.nunique()})")
     print(f"  points_pg: {y1.min():.3f} – {y1.max():.3f}  mean={y1.mean():.3f}")
@@ -128,6 +178,12 @@ def main():
         print("  (Low R² here is expected — value is a noisy proxy for defense)")
 
     print("\n=== Persisting models ===")
+    if stage0 is not None:
+        joblib.dump({"model": stage0, "feature_cols": list(X0.columns)}, ARTIFACTS / "xgf_model.joblib")
+        print("  Saved xgf_model.joblib")
+    else:
+        print("  xgf_model.joblib NOT saved (no Stage 0 data)")
+
     stage1_artifact = {
         "model": stage1,
         "feature_cols": ["xgf_pg", "xga_pg"],

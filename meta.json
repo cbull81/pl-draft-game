@@ -68,883 +68,5373 @@
   ],
   "valid_cells": [
     {
+      "league": "ENG-Premier League",
       "club": "Arsenal",
       "season": "1415"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Arsenal",
       "season": "1516"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Arsenal",
       "season": "1617"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Arsenal",
       "season": "1718"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Arsenal",
       "season": "1819"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Arsenal",
       "season": "1920"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Arsenal",
       "season": "2021"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Arsenal",
       "season": "2122"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Arsenal",
       "season": "2223"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Arsenal",
       "season": "2324"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Arsenal",
       "season": "2425"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Aston Villa",
       "season": "1415"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Aston Villa",
       "season": "1516"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Aston Villa",
       "season": "1920"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Aston Villa",
       "season": "2021"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Aston Villa",
       "season": "2122"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Aston Villa",
       "season": "2223"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Aston Villa",
       "season": "2324"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Aston Villa",
       "season": "2425"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Bournemouth",
       "season": "1516"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Bournemouth",
       "season": "1617"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Bournemouth",
       "season": "1718"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Bournemouth",
       "season": "1819"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Bournemouth",
       "season": "1920"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Bournemouth",
       "season": "2223"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Bournemouth",
       "season": "2324"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Bournemouth",
       "season": "2425"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Brentford",
       "season": "2122"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Brentford",
       "season": "2223"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Brentford",
       "season": "2324"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Brentford",
       "season": "2425"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Brighton",
       "season": "1718"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Brighton",
       "season": "1819"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Brighton",
       "season": "1920"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Brighton",
       "season": "2021"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Brighton",
       "season": "2122"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Brighton",
       "season": "2223"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Brighton",
       "season": "2324"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Brighton",
       "season": "2425"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Burnley",
       "season": "1415"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Burnley",
       "season": "1617"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Burnley",
       "season": "1718"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Burnley",
       "season": "1819"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Burnley",
       "season": "1920"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Burnley",
       "season": "2021"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Burnley",
       "season": "2122"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Burnley",
       "season": "2324"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Cardiff",
       "season": "1819"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Chelsea",
       "season": "1415"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Chelsea",
       "season": "1516"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Chelsea",
       "season": "1617"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Chelsea",
       "season": "1718"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Chelsea",
       "season": "1819"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Chelsea",
       "season": "1920"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Chelsea",
       "season": "2021"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Chelsea",
       "season": "2122"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Chelsea",
       "season": "2223"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Chelsea",
       "season": "2324"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Chelsea",
       "season": "2425"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Crystal Palace",
       "season": "1415"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Crystal Palace",
       "season": "1516"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Crystal Palace",
       "season": "1617"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Crystal Palace",
       "season": "1718"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Crystal Palace",
       "season": "1819"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Crystal Palace",
       "season": "1920"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Crystal Palace",
       "season": "2021"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Crystal Palace",
       "season": "2122"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Crystal Palace",
       "season": "2223"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Crystal Palace",
       "season": "2324"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Crystal Palace",
       "season": "2425"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Everton",
       "season": "1415"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Everton",
       "season": "1516"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Everton",
       "season": "1617"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Everton",
       "season": "1718"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Everton",
       "season": "1819"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Everton",
       "season": "1920"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Everton",
       "season": "2021"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Everton",
       "season": "2122"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Everton",
       "season": "2223"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Everton",
       "season": "2324"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Everton",
       "season": "2425"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Fulham",
       "season": "1819"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Fulham",
       "season": "2021"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Fulham",
       "season": "2223"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Fulham",
       "season": "2324"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Fulham",
       "season": "2425"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Huddersfield",
       "season": "1718"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Huddersfield",
       "season": "1819"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Hull",
       "season": "1415"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Hull",
       "season": "1617"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Ipswich",
       "season": "2425"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Leeds",
       "season": "2021"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Leeds",
       "season": "2122"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Leeds",
       "season": "2223"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Leicester",
       "season": "1415"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Leicester",
       "season": "1516"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Leicester",
       "season": "1617"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Leicester",
       "season": "1718"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Leicester",
       "season": "1819"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Leicester",
       "season": "1920"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Leicester",
       "season": "2021"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Leicester",
       "season": "2122"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Leicester",
       "season": "2223"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Leicester",
       "season": "2425"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Liverpool",
       "season": "1415"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Liverpool",
       "season": "1516"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Liverpool",
       "season": "1617"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Liverpool",
       "season": "1718"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Liverpool",
       "season": "1819"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Liverpool",
       "season": "1920"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Liverpool",
       "season": "2021"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Liverpool",
       "season": "2122"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Liverpool",
       "season": "2223"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Liverpool",
       "season": "2324"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Liverpool",
       "season": "2425"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Luton",
       "season": "2324"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Manchester City",
       "season": "1415"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Manchester City",
       "season": "1516"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Manchester City",
       "season": "1617"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Manchester City",
       "season": "1718"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Manchester City",
       "season": "1819"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Manchester City",
       "season": "1920"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Manchester City",
       "season": "2021"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Manchester City",
       "season": "2122"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Manchester City",
       "season": "2223"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Manchester City",
       "season": "2324"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Manchester City",
       "season": "2425"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Manchester United",
       "season": "1415"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Manchester United",
       "season": "1516"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Manchester United",
       "season": "1617"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Manchester United",
       "season": "1718"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Manchester United",
       "season": "1819"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Manchester United",
       "season": "1920"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Manchester United",
       "season": "2021"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Manchester United",
       "season": "2122"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Manchester United",
       "season": "2223"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Manchester United",
       "season": "2324"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Manchester United",
       "season": "2425"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Middlesbrough",
       "season": "1617"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Newcastle United",
       "season": "1415"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Newcastle United",
       "season": "1516"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Newcastle United",
       "season": "1718"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Newcastle United",
       "season": "1819"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Newcastle United",
       "season": "1920"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Newcastle United",
       "season": "2021"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Newcastle United",
       "season": "2122"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Newcastle United",
       "season": "2223"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Newcastle United",
       "season": "2324"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Newcastle United",
       "season": "2425"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Norwich",
       "season": "1516"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Norwich",
       "season": "1920"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Norwich",
       "season": "2122"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Nottingham Forest",
       "season": "2223"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Nottingham Forest",
       "season": "2324"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Nottingham Forest",
       "season": "2425"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Queens Park Rangers",
       "season": "1415"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Sheffield United",
       "season": "1920"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Sheffield United",
       "season": "2021"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Sheffield United",
       "season": "2324"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Southampton",
       "season": "1415"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Southampton",
       "season": "1516"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Southampton",
       "season": "1617"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Southampton",
       "season": "1718"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Southampton",
       "season": "1819"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Southampton",
       "season": "1920"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Southampton",
       "season": "2021"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Southampton",
       "season": "2122"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Southampton",
       "season": "2223"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Southampton",
       "season": "2425"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Stoke",
       "season": "1415"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Stoke",
       "season": "1516"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Stoke",
       "season": "1617"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Stoke",
       "season": "1718"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Sunderland",
       "season": "1415"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Sunderland",
       "season": "1516"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Sunderland",
       "season": "1617"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Swansea",
       "season": "1415"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Swansea",
       "season": "1516"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Swansea",
       "season": "1617"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Swansea",
       "season": "1718"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Tottenham",
       "season": "1415"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Tottenham",
       "season": "1516"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Tottenham",
       "season": "1617"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Tottenham",
       "season": "1718"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Tottenham",
       "season": "1819"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Tottenham",
       "season": "1920"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Tottenham",
       "season": "2021"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Tottenham",
       "season": "2122"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Tottenham",
       "season": "2223"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Tottenham",
       "season": "2324"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Tottenham",
       "season": "2425"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Watford",
       "season": "1516"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Watford",
       "season": "1617"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Watford",
       "season": "1718"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Watford",
       "season": "1819"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Watford",
       "season": "1920"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Watford",
       "season": "2122"
     },
     {
+      "league": "ENG-Premier League",
       "club": "West Bromwich Albion",
       "season": "1415"
     },
     {
+      "league": "ENG-Premier League",
       "club": "West Bromwich Albion",
       "season": "1516"
     },
     {
+      "league": "ENG-Premier League",
       "club": "West Bromwich Albion",
       "season": "1617"
     },
     {
+      "league": "ENG-Premier League",
       "club": "West Bromwich Albion",
       "season": "1718"
     },
     {
+      "league": "ENG-Premier League",
       "club": "West Bromwich Albion",
       "season": "2021"
     },
     {
+      "league": "ENG-Premier League",
       "club": "West Ham",
       "season": "1415"
     },
     {
+      "league": "ENG-Premier League",
       "club": "West Ham",
       "season": "1516"
     },
     {
+      "league": "ENG-Premier League",
       "club": "West Ham",
       "season": "1617"
     },
     {
+      "league": "ENG-Premier League",
       "club": "West Ham",
       "season": "1718"
     },
     {
+      "league": "ENG-Premier League",
       "club": "West Ham",
       "season": "1819"
     },
     {
+      "league": "ENG-Premier League",
       "club": "West Ham",
       "season": "1920"
     },
     {
+      "league": "ENG-Premier League",
       "club": "West Ham",
       "season": "2021"
     },
     {
+      "league": "ENG-Premier League",
       "club": "West Ham",
       "season": "2122"
     },
     {
+      "league": "ENG-Premier League",
       "club": "West Ham",
       "season": "2223"
     },
     {
+      "league": "ENG-Premier League",
       "club": "West Ham",
       "season": "2324"
     },
     {
+      "league": "ENG-Premier League",
       "club": "West Ham",
       "season": "2425"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Wolverhampton Wanderers",
       "season": "1819"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Wolverhampton Wanderers",
       "season": "1920"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Wolverhampton Wanderers",
       "season": "2021"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Wolverhampton Wanderers",
       "season": "2122"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Wolverhampton Wanderers",
       "season": "2223"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Wolverhampton Wanderers",
       "season": "2324"
     },
     {
+      "league": "ENG-Premier League",
       "club": "Wolverhampton Wanderers",
+      "season": "2425"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Alaves",
+      "season": "1617"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Alaves",
+      "season": "1718"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Alaves",
+      "season": "1819"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Alaves",
+      "season": "1920"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Alaves",
+      "season": "2021"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Alaves",
+      "season": "2122"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Alaves",
+      "season": "2324"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Alaves",
+      "season": "2425"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Almeria",
+      "season": "1415"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Almeria",
+      "season": "2223"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Almeria",
+      "season": "2324"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Athletic Club",
+      "season": "1415"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Athletic Club",
+      "season": "1516"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Athletic Club",
+      "season": "1617"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Athletic Club",
+      "season": "1718"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Athletic Club",
+      "season": "1819"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Athletic Club",
+      "season": "1920"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Athletic Club",
+      "season": "2021"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Athletic Club",
+      "season": "2122"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Athletic Club",
+      "season": "2223"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Athletic Club",
+      "season": "2324"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Athletic Club",
+      "season": "2425"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Atletico Madrid",
+      "season": "1415"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Atletico Madrid",
+      "season": "1516"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Atletico Madrid",
+      "season": "1617"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Atletico Madrid",
+      "season": "1718"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Atletico Madrid",
+      "season": "1819"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Atletico Madrid",
+      "season": "1920"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Atletico Madrid",
+      "season": "2021"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Atletico Madrid",
+      "season": "2122"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Atletico Madrid",
+      "season": "2223"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Atletico Madrid",
+      "season": "2324"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Atletico Madrid",
+      "season": "2425"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Barcelona",
+      "season": "1415"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Barcelona",
+      "season": "1516"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Barcelona",
+      "season": "1617"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Barcelona",
+      "season": "1718"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Barcelona",
+      "season": "1819"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Barcelona",
+      "season": "1920"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Barcelona",
+      "season": "2021"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Barcelona",
+      "season": "2122"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Barcelona",
+      "season": "2223"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Barcelona",
+      "season": "2324"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Barcelona",
+      "season": "2425"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Cadiz",
+      "season": "2021"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Cadiz",
+      "season": "2122"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Cadiz",
+      "season": "2223"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Cadiz",
+      "season": "2324"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Celta Vigo",
+      "season": "1415"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Celta Vigo",
+      "season": "1516"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Celta Vigo",
+      "season": "1617"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Celta Vigo",
+      "season": "1718"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Celta Vigo",
+      "season": "1819"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Celta Vigo",
+      "season": "1920"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Celta Vigo",
+      "season": "2021"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Celta Vigo",
+      "season": "2122"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Celta Vigo",
+      "season": "2223"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Celta Vigo",
+      "season": "2324"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Celta Vigo",
+      "season": "2425"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Cordoba",
+      "season": "1415"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Deportivo La Coruna",
+      "season": "1415"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Deportivo La Coruna",
+      "season": "1516"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Deportivo La Coruna",
+      "season": "1617"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Deportivo La Coruna",
+      "season": "1718"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Eibar",
+      "season": "1415"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Eibar",
+      "season": "1516"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Eibar",
+      "season": "1617"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Eibar",
+      "season": "1718"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Eibar",
+      "season": "1819"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Eibar",
+      "season": "1920"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Eibar",
+      "season": "2021"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Elche",
+      "season": "1415"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Elche",
+      "season": "2021"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Elche",
+      "season": "2122"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Elche",
+      "season": "2223"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Espanyol",
+      "season": "1415"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Espanyol",
+      "season": "1516"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Espanyol",
+      "season": "1617"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Espanyol",
+      "season": "1718"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Espanyol",
+      "season": "1819"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Espanyol",
+      "season": "1920"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Espanyol",
+      "season": "2122"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Espanyol",
+      "season": "2223"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Espanyol",
+      "season": "2425"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Getafe",
+      "season": "1415"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Getafe",
+      "season": "1516"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Getafe",
+      "season": "1718"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Getafe",
+      "season": "1819"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Getafe",
+      "season": "1920"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Getafe",
+      "season": "2021"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Getafe",
+      "season": "2122"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Getafe",
+      "season": "2223"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Getafe",
+      "season": "2324"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Getafe",
+      "season": "2425"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Girona",
+      "season": "1718"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Girona",
+      "season": "1819"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Girona",
+      "season": "2223"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Girona",
+      "season": "2324"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Girona",
+      "season": "2425"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Granada",
+      "season": "1415"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Granada",
+      "season": "1516"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Granada",
+      "season": "1617"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Granada",
+      "season": "1920"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Granada",
+      "season": "2021"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Granada",
+      "season": "2122"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Granada",
+      "season": "2324"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Las Palmas",
+      "season": "1516"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Las Palmas",
+      "season": "1617"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Las Palmas",
+      "season": "1718"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Las Palmas",
+      "season": "2324"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Las Palmas",
+      "season": "2425"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Leganes",
+      "season": "1617"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Leganes",
+      "season": "1718"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Leganes",
+      "season": "1819"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Leganes",
+      "season": "1920"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Leganes",
+      "season": "2425"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Levante",
+      "season": "1415"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Levante",
+      "season": "1516"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Levante",
+      "season": "1718"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Levante",
+      "season": "1819"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Levante",
+      "season": "1920"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Levante",
+      "season": "2021"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Levante",
+      "season": "2122"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Malaga",
+      "season": "1415"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Malaga",
+      "season": "1516"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Malaga",
+      "season": "1617"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Malaga",
+      "season": "1718"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Mallorca",
+      "season": "1920"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Mallorca",
+      "season": "2122"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Mallorca",
+      "season": "2223"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Mallorca",
+      "season": "2324"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Mallorca",
+      "season": "2425"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Osasuna",
+      "season": "1617"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Osasuna",
+      "season": "1920"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Osasuna",
+      "season": "2021"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Osasuna",
+      "season": "2122"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Osasuna",
+      "season": "2223"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Osasuna",
+      "season": "2324"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Osasuna",
+      "season": "2425"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Rayo Vallecano",
+      "season": "1415"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Rayo Vallecano",
+      "season": "1516"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Rayo Vallecano",
+      "season": "1819"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Rayo Vallecano",
+      "season": "2122"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Rayo Vallecano",
+      "season": "2223"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Rayo Vallecano",
+      "season": "2324"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Rayo Vallecano",
+      "season": "2425"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Real Betis",
+      "season": "1516"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Real Betis",
+      "season": "1617"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Real Betis",
+      "season": "1718"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Real Betis",
+      "season": "1819"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Real Betis",
+      "season": "1920"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Real Betis",
+      "season": "2021"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Real Betis",
+      "season": "2122"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Real Betis",
+      "season": "2223"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Real Betis",
+      "season": "2324"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Real Betis",
+      "season": "2425"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Real Madrid",
+      "season": "1415"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Real Madrid",
+      "season": "1516"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Real Madrid",
+      "season": "1617"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Real Madrid",
+      "season": "1718"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Real Madrid",
+      "season": "1819"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Real Madrid",
+      "season": "1920"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Real Madrid",
+      "season": "2021"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Real Madrid",
+      "season": "2122"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Real Madrid",
+      "season": "2223"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Real Madrid",
+      "season": "2324"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Real Madrid",
+      "season": "2425"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Real Sociedad",
+      "season": "1415"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Real Sociedad",
+      "season": "1516"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Real Sociedad",
+      "season": "1617"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Real Sociedad",
+      "season": "1718"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Real Sociedad",
+      "season": "1819"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Real Sociedad",
+      "season": "1920"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Real Sociedad",
+      "season": "2021"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Real Sociedad",
+      "season": "2122"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Real Sociedad",
+      "season": "2223"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Real Sociedad",
+      "season": "2324"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Real Sociedad",
+      "season": "2425"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Real Valladolid",
+      "season": "1819"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Real Valladolid",
+      "season": "1920"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Real Valladolid",
+      "season": "2021"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Real Valladolid",
+      "season": "2223"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Real Valladolid",
+      "season": "2425"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "SD Huesca",
+      "season": "1819"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "SD Huesca",
+      "season": "2021"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Sevilla",
+      "season": "1415"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Sevilla",
+      "season": "1516"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Sevilla",
+      "season": "1617"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Sevilla",
+      "season": "1718"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Sevilla",
+      "season": "1819"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Sevilla",
+      "season": "1920"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Sevilla",
+      "season": "2021"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Sevilla",
+      "season": "2122"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Sevilla",
+      "season": "2223"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Sevilla",
+      "season": "2324"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Sevilla",
+      "season": "2425"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Sporting Gijon",
+      "season": "1516"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Sporting Gijon",
+      "season": "1617"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Valencia",
+      "season": "1415"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Valencia",
+      "season": "1516"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Valencia",
+      "season": "1617"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Valencia",
+      "season": "1718"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Valencia",
+      "season": "1819"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Valencia",
+      "season": "1920"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Valencia",
+      "season": "2021"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Valencia",
+      "season": "2122"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Valencia",
+      "season": "2223"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Valencia",
+      "season": "2324"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Valencia",
+      "season": "2425"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Villarreal",
+      "season": "1415"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Villarreal",
+      "season": "1516"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Villarreal",
+      "season": "1617"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Villarreal",
+      "season": "1718"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Villarreal",
+      "season": "1819"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Villarreal",
+      "season": "1920"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Villarreal",
+      "season": "2021"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Villarreal",
+      "season": "2122"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Villarreal",
+      "season": "2223"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Villarreal",
+      "season": "2324"
+    },
+    {
+      "league": "ESP-La Liga",
+      "club": "Villarreal",
+      "season": "2425"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Ajaccio",
+      "season": "2223"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Amiens",
+      "season": "1718"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Amiens",
+      "season": "1819"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Amiens",
+      "season": "1920"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Angers",
+      "season": "1516"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Angers",
+      "season": "1617"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Angers",
+      "season": "1718"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Angers",
+      "season": "1819"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Angers",
+      "season": "1920"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Angers",
+      "season": "2021"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Angers",
+      "season": "2122"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Angers",
+      "season": "2223"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Angers",
+      "season": "2425"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Auxerre",
+      "season": "2223"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Auxerre",
+      "season": "2425"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Bordeaux",
+      "season": "1415"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Bordeaux",
+      "season": "1516"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Bordeaux",
+      "season": "1617"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Bordeaux",
+      "season": "1718"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Bordeaux",
+      "season": "1819"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Bordeaux",
+      "season": "1920"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Bordeaux",
+      "season": "2021"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Bordeaux",
+      "season": "2122"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Brest",
+      "season": "1920"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Brest",
+      "season": "2021"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Brest",
+      "season": "2122"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Brest",
+      "season": "2223"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Brest",
+      "season": "2324"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Brest",
+      "season": "2425"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Caen",
+      "season": "1415"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Caen",
+      "season": "1516"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Caen",
+      "season": "1617"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Caen",
+      "season": "1718"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Caen",
+      "season": "1819"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Clermont Foot",
+      "season": "2122"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Clermont Foot",
+      "season": "2223"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Clermont Foot",
+      "season": "2324"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Dijon",
+      "season": "1617"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Dijon",
+      "season": "1718"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Dijon",
+      "season": "1819"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Dijon",
+      "season": "1920"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Dijon",
+      "season": "2021"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Evian Thonon Gaillard",
+      "season": "1415"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "GFC Ajaccio",
+      "season": "1516"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Guingamp",
+      "season": "1415"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Guingamp",
+      "season": "1516"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Guingamp",
+      "season": "1617"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Guingamp",
+      "season": "1718"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Guingamp",
+      "season": "1819"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Le Havre",
+      "season": "2324"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Le Havre",
+      "season": "2425"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Lens",
+      "season": "1415"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Lens",
+      "season": "2021"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Lens",
+      "season": "2122"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Lens",
+      "season": "2223"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Lens",
+      "season": "2324"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Lens",
+      "season": "2425"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Lille",
+      "season": "1415"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Lille",
+      "season": "1516"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Lille",
+      "season": "1617"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Lille",
+      "season": "1718"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Lille",
+      "season": "1819"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Lille",
+      "season": "1920"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Lille",
+      "season": "2021"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Lille",
+      "season": "2122"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Lille",
+      "season": "2223"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Lille",
+      "season": "2324"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Lille",
+      "season": "2425"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Lorient",
+      "season": "1415"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Lorient",
+      "season": "1516"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Lorient",
+      "season": "1617"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Lorient",
+      "season": "2021"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Lorient",
+      "season": "2122"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Lorient",
+      "season": "2223"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Lorient",
+      "season": "2324"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Lyon",
+      "season": "1415"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Lyon",
+      "season": "1516"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Lyon",
+      "season": "1617"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Lyon",
+      "season": "1718"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Lyon",
+      "season": "1819"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Lyon",
+      "season": "1920"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Lyon",
+      "season": "2021"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Lyon",
+      "season": "2122"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Lyon",
+      "season": "2223"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Lyon",
+      "season": "2324"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Lyon",
+      "season": "2425"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Marseille",
+      "season": "1415"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Marseille",
+      "season": "1516"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Marseille",
+      "season": "1617"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Marseille",
+      "season": "1718"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Marseille",
+      "season": "1819"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Marseille",
+      "season": "1920"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Marseille",
+      "season": "2021"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Marseille",
+      "season": "2122"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Marseille",
+      "season": "2223"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Marseille",
+      "season": "2324"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Marseille",
+      "season": "2425"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Metz",
+      "season": "1415"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Metz",
+      "season": "1617"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Metz",
+      "season": "1718"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Metz",
+      "season": "1920"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Metz",
+      "season": "2021"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Metz",
+      "season": "2122"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Metz",
+      "season": "2324"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Monaco",
+      "season": "1415"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Monaco",
+      "season": "1516"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Monaco",
+      "season": "1617"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Monaco",
+      "season": "1718"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Monaco",
+      "season": "1819"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Monaco",
+      "season": "1920"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Monaco",
+      "season": "2021"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Monaco",
+      "season": "2122"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Monaco",
+      "season": "2223"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Monaco",
+      "season": "2324"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Monaco",
+      "season": "2425"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Montpellier",
+      "season": "1415"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Montpellier",
+      "season": "1516"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Montpellier",
+      "season": "1617"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Montpellier",
+      "season": "1718"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Montpellier",
+      "season": "1819"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Montpellier",
+      "season": "1920"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Montpellier",
+      "season": "2021"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Montpellier",
+      "season": "2122"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Montpellier",
+      "season": "2223"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Montpellier",
+      "season": "2324"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Montpellier",
+      "season": "2425"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Nancy",
+      "season": "1617"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Nantes",
+      "season": "1415"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Nantes",
+      "season": "1516"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Nantes",
+      "season": "1617"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Nantes",
+      "season": "1718"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Nantes",
+      "season": "1819"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Nantes",
+      "season": "1920"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Nantes",
+      "season": "2021"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Nantes",
+      "season": "2122"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Nantes",
+      "season": "2223"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Nantes",
+      "season": "2324"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Nantes",
+      "season": "2425"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Nice",
+      "season": "1415"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Nice",
+      "season": "1516"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Nice",
+      "season": "1617"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Nice",
+      "season": "1718"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Nice",
+      "season": "1819"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Nice",
+      "season": "1920"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Nice",
+      "season": "2021"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Nice",
+      "season": "2122"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Nice",
+      "season": "2223"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Nice",
+      "season": "2324"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Nice",
+      "season": "2425"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Nimes",
+      "season": "1819"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Nimes",
+      "season": "1920"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Nimes",
+      "season": "2021"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Paris Saint Germain",
+      "season": "1415"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Paris Saint Germain",
+      "season": "1516"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Paris Saint Germain",
+      "season": "1617"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Paris Saint Germain",
+      "season": "1718"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Paris Saint Germain",
+      "season": "1819"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Paris Saint Germain",
+      "season": "1920"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Paris Saint Germain",
+      "season": "2021"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Paris Saint Germain",
+      "season": "2122"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Paris Saint Germain",
+      "season": "2223"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Paris Saint Germain",
+      "season": "2324"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Paris Saint Germain",
+      "season": "2425"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Reims",
+      "season": "1415"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Reims",
+      "season": "1516"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Reims",
+      "season": "1819"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Reims",
+      "season": "1920"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Reims",
+      "season": "2021"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Reims",
+      "season": "2122"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Reims",
+      "season": "2223"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Reims",
+      "season": "2324"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Reims",
+      "season": "2425"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Rennes",
+      "season": "1415"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Rennes",
+      "season": "1516"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Rennes",
+      "season": "1617"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Rennes",
+      "season": "1718"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Rennes",
+      "season": "1819"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Rennes",
+      "season": "1920"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Rennes",
+      "season": "2021"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Rennes",
+      "season": "2122"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Rennes",
+      "season": "2223"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Rennes",
+      "season": "2324"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Rennes",
+      "season": "2425"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "SC Bastia",
+      "season": "1415"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "SC Bastia",
+      "season": "1516"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "SC Bastia",
+      "season": "1617"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Saint-Etienne",
+      "season": "1415"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Saint-Etienne",
+      "season": "1516"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Saint-Etienne",
+      "season": "1617"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Saint-Etienne",
+      "season": "1718"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Saint-Etienne",
+      "season": "1819"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Saint-Etienne",
+      "season": "1920"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Saint-Etienne",
+      "season": "2021"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Saint-Etienne",
+      "season": "2122"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Saint-Etienne",
+      "season": "2425"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Strasbourg",
+      "season": "1718"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Strasbourg",
+      "season": "1819"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Strasbourg",
+      "season": "1920"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Strasbourg",
+      "season": "2021"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Strasbourg",
+      "season": "2122"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Strasbourg",
+      "season": "2223"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Strasbourg",
+      "season": "2324"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Strasbourg",
+      "season": "2425"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Toulouse",
+      "season": "1415"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Toulouse",
+      "season": "1516"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Toulouse",
+      "season": "1617"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Toulouse",
+      "season": "1718"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Toulouse",
+      "season": "1819"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Toulouse",
+      "season": "1920"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Toulouse",
+      "season": "2223"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Toulouse",
+      "season": "2324"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Toulouse",
+      "season": "2425"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Troyes",
+      "season": "1516"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Troyes",
+      "season": "1718"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Troyes",
+      "season": "2122"
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "club": "Troyes",
+      "season": "2223"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Arminia Bielefeld",
+      "season": "2021"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Arminia Bielefeld",
+      "season": "2122"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Augsburg",
+      "season": "1415"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Augsburg",
+      "season": "1516"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Augsburg",
+      "season": "1617"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Augsburg",
+      "season": "1718"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Augsburg",
+      "season": "1819"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Augsburg",
+      "season": "1920"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Augsburg",
+      "season": "2021"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Augsburg",
+      "season": "2122"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Augsburg",
+      "season": "2223"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Augsburg",
+      "season": "2324"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Augsburg",
+      "season": "2425"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Bayer Leverkusen",
+      "season": "1415"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Bayer Leverkusen",
+      "season": "1516"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Bayer Leverkusen",
+      "season": "1617"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Bayer Leverkusen",
+      "season": "1718"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Bayer Leverkusen",
+      "season": "1819"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Bayer Leverkusen",
+      "season": "1920"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Bayer Leverkusen",
+      "season": "2021"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Bayer Leverkusen",
+      "season": "2122"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Bayer Leverkusen",
+      "season": "2223"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Bayer Leverkusen",
+      "season": "2324"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Bayer Leverkusen",
+      "season": "2425"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Bayern Munich",
+      "season": "1415"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Bayern Munich",
+      "season": "1516"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Bayern Munich",
+      "season": "1617"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Bayern Munich",
+      "season": "1718"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Bayern Munich",
+      "season": "1819"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Bayern Munich",
+      "season": "1920"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Bayern Munich",
+      "season": "2021"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Bayern Munich",
+      "season": "2122"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Bayern Munich",
+      "season": "2223"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Bayern Munich",
+      "season": "2324"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Bayern Munich",
+      "season": "2425"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Bochum",
+      "season": "2122"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Bochum",
+      "season": "2223"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Bochum",
+      "season": "2324"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Bochum",
+      "season": "2425"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Borussia Dortmund",
+      "season": "1415"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Borussia Dortmund",
+      "season": "1516"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Borussia Dortmund",
+      "season": "1617"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Borussia Dortmund",
+      "season": "1718"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Borussia Dortmund",
+      "season": "1819"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Borussia Dortmund",
+      "season": "1920"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Borussia Dortmund",
+      "season": "2021"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Borussia Dortmund",
+      "season": "2122"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Borussia Dortmund",
+      "season": "2223"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Borussia Dortmund",
+      "season": "2324"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Borussia Dortmund",
+      "season": "2425"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Borussia M.Gladbach",
+      "season": "1415"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Borussia M.Gladbach",
+      "season": "1516"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Borussia M.Gladbach",
+      "season": "1617"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Borussia M.Gladbach",
+      "season": "1718"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Borussia M.Gladbach",
+      "season": "1819"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Borussia M.Gladbach",
+      "season": "1920"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Borussia M.Gladbach",
+      "season": "2021"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Borussia M.Gladbach",
+      "season": "2122"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Borussia M.Gladbach",
+      "season": "2223"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Borussia M.Gladbach",
+      "season": "2324"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Borussia M.Gladbach",
+      "season": "2425"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Darmstadt",
+      "season": "1516"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Darmstadt",
+      "season": "1617"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Darmstadt",
+      "season": "2324"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Eintracht Frankfurt",
+      "season": "1415"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Eintracht Frankfurt",
+      "season": "1516"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Eintracht Frankfurt",
+      "season": "1617"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Eintracht Frankfurt",
+      "season": "1718"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Eintracht Frankfurt",
+      "season": "1819"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Eintracht Frankfurt",
+      "season": "1920"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Eintracht Frankfurt",
+      "season": "2021"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Eintracht Frankfurt",
+      "season": "2122"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Eintracht Frankfurt",
+      "season": "2223"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Eintracht Frankfurt",
+      "season": "2324"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Eintracht Frankfurt",
+      "season": "2425"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "FC Cologne",
+      "season": "1415"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "FC Cologne",
+      "season": "1516"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "FC Cologne",
+      "season": "1617"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "FC Cologne",
+      "season": "1718"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "FC Cologne",
+      "season": "1920"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "FC Cologne",
+      "season": "2021"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "FC Cologne",
+      "season": "2122"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "FC Cologne",
+      "season": "2223"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "FC Cologne",
+      "season": "2324"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "FC Heidenheim",
+      "season": "2324"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "FC Heidenheim",
+      "season": "2425"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Fortuna Duesseldorf",
+      "season": "1819"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Fortuna Duesseldorf",
+      "season": "1920"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Freiburg",
+      "season": "1415"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Freiburg",
+      "season": "1617"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Freiburg",
+      "season": "1718"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Freiburg",
+      "season": "1819"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Freiburg",
+      "season": "1920"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Freiburg",
+      "season": "2021"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Freiburg",
+      "season": "2122"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Freiburg",
+      "season": "2223"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Freiburg",
+      "season": "2324"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Freiburg",
+      "season": "2425"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Greuther Fuerth",
+      "season": "2122"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Hamburger SV",
+      "season": "1415"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Hamburger SV",
+      "season": "1516"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Hamburger SV",
+      "season": "1617"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Hamburger SV",
+      "season": "1718"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Hannover 96",
+      "season": "1415"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Hannover 96",
+      "season": "1516"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Hannover 96",
+      "season": "1718"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Hannover 96",
+      "season": "1819"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Hertha Berlin",
+      "season": "1415"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Hertha Berlin",
+      "season": "1516"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Hertha Berlin",
+      "season": "1617"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Hertha Berlin",
+      "season": "1718"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Hertha Berlin",
+      "season": "1819"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Hertha Berlin",
+      "season": "1920"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Hertha Berlin",
+      "season": "2021"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Hertha Berlin",
+      "season": "2122"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Hertha Berlin",
+      "season": "2223"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Hoffenheim",
+      "season": "1415"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Hoffenheim",
+      "season": "1516"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Hoffenheim",
+      "season": "1617"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Hoffenheim",
+      "season": "1718"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Hoffenheim",
+      "season": "1819"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Hoffenheim",
+      "season": "1920"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Hoffenheim",
+      "season": "2021"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Hoffenheim",
+      "season": "2122"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Hoffenheim",
+      "season": "2223"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Hoffenheim",
+      "season": "2324"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Hoffenheim",
+      "season": "2425"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Holstein Kiel",
+      "season": "2425"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Ingolstadt",
+      "season": "1516"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Ingolstadt",
+      "season": "1617"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Mainz 05",
+      "season": "1415"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Mainz 05",
+      "season": "1516"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Mainz 05",
+      "season": "1617"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Mainz 05",
+      "season": "1718"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Mainz 05",
+      "season": "1819"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Mainz 05",
+      "season": "1920"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Mainz 05",
+      "season": "2021"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Mainz 05",
+      "season": "2122"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Mainz 05",
+      "season": "2223"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Mainz 05",
+      "season": "2324"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Mainz 05",
+      "season": "2425"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Nuernberg",
+      "season": "1819"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Paderborn",
+      "season": "1415"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Paderborn",
+      "season": "1920"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "RasenBallsport Leipzig",
+      "season": "1617"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "RasenBallsport Leipzig",
+      "season": "1718"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "RasenBallsport Leipzig",
+      "season": "1819"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "RasenBallsport Leipzig",
+      "season": "1920"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "RasenBallsport Leipzig",
+      "season": "2021"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "RasenBallsport Leipzig",
+      "season": "2122"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "RasenBallsport Leipzig",
+      "season": "2223"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "RasenBallsport Leipzig",
+      "season": "2324"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "RasenBallsport Leipzig",
+      "season": "2425"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Schalke 04",
+      "season": "1415"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Schalke 04",
+      "season": "1516"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Schalke 04",
+      "season": "1617"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Schalke 04",
+      "season": "1718"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Schalke 04",
+      "season": "1819"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Schalke 04",
+      "season": "1920"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Schalke 04",
+      "season": "2021"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Schalke 04",
+      "season": "2223"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "St. Pauli",
+      "season": "2425"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Union Berlin",
+      "season": "1920"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Union Berlin",
+      "season": "2021"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Union Berlin",
+      "season": "2122"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Union Berlin",
+      "season": "2223"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Union Berlin",
+      "season": "2324"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Union Berlin",
+      "season": "2425"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "VfB Stuttgart",
+      "season": "1415"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "VfB Stuttgart",
+      "season": "1516"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "VfB Stuttgart",
+      "season": "1718"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "VfB Stuttgart",
+      "season": "1819"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "VfB Stuttgart",
+      "season": "2021"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "VfB Stuttgart",
+      "season": "2122"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "VfB Stuttgart",
+      "season": "2223"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "VfB Stuttgart",
+      "season": "2324"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "VfB Stuttgart",
+      "season": "2425"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Werder Bremen",
+      "season": "1415"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Werder Bremen",
+      "season": "1516"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Werder Bremen",
+      "season": "1617"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Werder Bremen",
+      "season": "1718"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Werder Bremen",
+      "season": "1819"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Werder Bremen",
+      "season": "1920"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Werder Bremen",
+      "season": "2021"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Werder Bremen",
+      "season": "2223"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Werder Bremen",
+      "season": "2324"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Werder Bremen",
+      "season": "2425"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Wolfsburg",
+      "season": "1415"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Wolfsburg",
+      "season": "1516"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Wolfsburg",
+      "season": "1617"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Wolfsburg",
+      "season": "1718"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Wolfsburg",
+      "season": "1819"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Wolfsburg",
+      "season": "1920"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Wolfsburg",
+      "season": "2021"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Wolfsburg",
+      "season": "2122"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Wolfsburg",
+      "season": "2223"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Wolfsburg",
+      "season": "2324"
+    },
+    {
+      "league": "GER-Bundesliga",
+      "club": "Wolfsburg",
+      "season": "2425"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "AC Milan",
+      "season": "1415"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "AC Milan",
+      "season": "1516"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "AC Milan",
+      "season": "1617"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "AC Milan",
+      "season": "1718"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "AC Milan",
+      "season": "1819"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "AC Milan",
+      "season": "1920"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "AC Milan",
+      "season": "2021"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "AC Milan",
+      "season": "2122"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "AC Milan",
+      "season": "2223"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "AC Milan",
+      "season": "2324"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "AC Milan",
+      "season": "2425"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Atalanta",
+      "season": "1415"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Atalanta",
+      "season": "1516"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Atalanta",
+      "season": "1617"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Atalanta",
+      "season": "1718"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Atalanta",
+      "season": "1819"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Atalanta",
+      "season": "1920"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Atalanta",
+      "season": "2021"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Atalanta",
+      "season": "2122"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Atalanta",
+      "season": "2223"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Atalanta",
+      "season": "2324"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Atalanta",
+      "season": "2425"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Benevento",
+      "season": "1718"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Benevento",
+      "season": "2021"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Bologna",
+      "season": "1516"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Bologna",
+      "season": "1617"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Bologna",
+      "season": "1718"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Bologna",
+      "season": "1819"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Bologna",
+      "season": "1920"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Bologna",
+      "season": "2021"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Bologna",
+      "season": "2122"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Bologna",
+      "season": "2223"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Bologna",
+      "season": "2324"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Bologna",
+      "season": "2425"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Brescia",
+      "season": "1920"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Cagliari",
+      "season": "1415"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Cagliari",
+      "season": "1617"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Cagliari",
+      "season": "1718"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Cagliari",
+      "season": "1819"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Cagliari",
+      "season": "1920"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Cagliari",
+      "season": "2021"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Cagliari",
+      "season": "2122"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Cagliari",
+      "season": "2324"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Cagliari",
+      "season": "2425"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Carpi",
+      "season": "1516"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Cesena",
+      "season": "1415"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Chievo",
+      "season": "1415"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Chievo",
+      "season": "1516"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Chievo",
+      "season": "1617"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Chievo",
+      "season": "1718"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Chievo",
+      "season": "1819"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Como",
+      "season": "2425"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Cremonese",
+      "season": "2223"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Crotone",
+      "season": "1617"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Crotone",
+      "season": "1718"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Crotone",
+      "season": "2021"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Empoli",
+      "season": "1415"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Empoli",
+      "season": "1516"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Empoli",
+      "season": "1617"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Empoli",
+      "season": "1819"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Empoli",
+      "season": "2122"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Empoli",
+      "season": "2223"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Empoli",
+      "season": "2324"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Empoli",
+      "season": "2425"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Fiorentina",
+      "season": "1415"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Fiorentina",
+      "season": "1516"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Fiorentina",
+      "season": "1617"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Fiorentina",
+      "season": "1718"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Fiorentina",
+      "season": "1819"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Fiorentina",
+      "season": "1920"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Fiorentina",
+      "season": "2021"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Fiorentina",
+      "season": "2122"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Fiorentina",
+      "season": "2223"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Fiorentina",
+      "season": "2324"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Fiorentina",
+      "season": "2425"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Frosinone",
+      "season": "1516"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Frosinone",
+      "season": "1819"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Frosinone",
+      "season": "2324"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Genoa",
+      "season": "1415"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Genoa",
+      "season": "1516"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Genoa",
+      "season": "1617"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Genoa",
+      "season": "1718"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Genoa",
+      "season": "1819"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Genoa",
+      "season": "1920"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Genoa",
+      "season": "2021"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Genoa",
+      "season": "2122"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Genoa",
+      "season": "2324"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Genoa",
+      "season": "2425"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Inter",
+      "season": "1415"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Inter",
+      "season": "1516"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Inter",
+      "season": "1617"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Inter",
+      "season": "1718"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Inter",
+      "season": "1819"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Inter",
+      "season": "1920"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Inter",
+      "season": "2021"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Inter",
+      "season": "2122"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Inter",
+      "season": "2223"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Inter",
+      "season": "2324"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Inter",
+      "season": "2425"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Juventus",
+      "season": "1415"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Juventus",
+      "season": "1516"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Juventus",
+      "season": "1617"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Juventus",
+      "season": "1718"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Juventus",
+      "season": "1819"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Juventus",
+      "season": "1920"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Juventus",
+      "season": "2021"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Juventus",
+      "season": "2122"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Juventus",
+      "season": "2223"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Juventus",
+      "season": "2324"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Juventus",
+      "season": "2425"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Lazio",
+      "season": "1415"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Lazio",
+      "season": "1516"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Lazio",
+      "season": "1617"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Lazio",
+      "season": "1718"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Lazio",
+      "season": "1819"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Lazio",
+      "season": "1920"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Lazio",
+      "season": "2021"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Lazio",
+      "season": "2122"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Lazio",
+      "season": "2223"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Lazio",
+      "season": "2324"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Lazio",
+      "season": "2425"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Lecce",
+      "season": "1920"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Lecce",
+      "season": "2223"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Lecce",
+      "season": "2324"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Lecce",
+      "season": "2425"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Monza",
+      "season": "2223"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Monza",
+      "season": "2324"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Monza",
+      "season": "2425"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Napoli",
+      "season": "1415"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Napoli",
+      "season": "1516"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Napoli",
+      "season": "1617"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Napoli",
+      "season": "1718"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Napoli",
+      "season": "1819"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Napoli",
+      "season": "1920"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Napoli",
+      "season": "2021"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Napoli",
+      "season": "2122"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Napoli",
+      "season": "2223"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Napoli",
+      "season": "2324"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Napoli",
+      "season": "2425"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Palermo",
+      "season": "1415"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Palermo",
+      "season": "1516"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Palermo",
+      "season": "1617"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Parma",
+      "season": "1415"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Parma Calcio 1913",
+      "season": "1819"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Parma Calcio 1913",
+      "season": "1920"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Parma Calcio 1913",
+      "season": "2021"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Parma Calcio 1913",
+      "season": "2425"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Pescara",
+      "season": "1617"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Roma",
+      "season": "1415"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Roma",
+      "season": "1516"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Roma",
+      "season": "1617"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Roma",
+      "season": "1718"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Roma",
+      "season": "1819"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Roma",
+      "season": "1920"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Roma",
+      "season": "2021"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Roma",
+      "season": "2122"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Roma",
+      "season": "2223"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Roma",
+      "season": "2324"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Roma",
+      "season": "2425"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "SPAL 2013",
+      "season": "1718"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "SPAL 2013",
+      "season": "1819"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "SPAL 2013",
+      "season": "1920"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Salernitana",
+      "season": "2122"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Salernitana",
+      "season": "2223"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Salernitana",
+      "season": "2324"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Sampdoria",
+      "season": "1415"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Sampdoria",
+      "season": "1516"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Sampdoria",
+      "season": "1617"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Sampdoria",
+      "season": "1718"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Sampdoria",
+      "season": "1819"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Sampdoria",
+      "season": "1920"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Sampdoria",
+      "season": "2021"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Sampdoria",
+      "season": "2122"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Sampdoria",
+      "season": "2223"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Sassuolo",
+      "season": "1415"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Sassuolo",
+      "season": "1516"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Sassuolo",
+      "season": "1617"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Sassuolo",
+      "season": "1718"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Sassuolo",
+      "season": "1819"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Sassuolo",
+      "season": "1920"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Sassuolo",
+      "season": "2021"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Sassuolo",
+      "season": "2122"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Sassuolo",
+      "season": "2223"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Sassuolo",
+      "season": "2324"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Spezia",
+      "season": "2021"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Spezia",
+      "season": "2122"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Spezia",
+      "season": "2223"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Torino",
+      "season": "1415"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Torino",
+      "season": "1516"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Torino",
+      "season": "1617"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Torino",
+      "season": "1718"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Torino",
+      "season": "1819"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Torino",
+      "season": "1920"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Torino",
+      "season": "2021"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Torino",
+      "season": "2122"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Torino",
+      "season": "2223"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Torino",
+      "season": "2324"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Torino",
+      "season": "2425"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Udinese",
+      "season": "1415"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Udinese",
+      "season": "1516"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Udinese",
+      "season": "1617"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Udinese",
+      "season": "1718"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Udinese",
+      "season": "1819"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Udinese",
+      "season": "1920"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Udinese",
+      "season": "2021"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Udinese",
+      "season": "2122"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Udinese",
+      "season": "2223"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Udinese",
+      "season": "2324"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Udinese",
+      "season": "2425"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Venezia",
+      "season": "2122"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Venezia",
+      "season": "2425"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Verona",
+      "season": "1415"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Verona",
+      "season": "1516"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Verona",
+      "season": "1718"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Verona",
+      "season": "1920"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Verona",
+      "season": "2021"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Verona",
+      "season": "2122"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Verona",
+      "season": "2223"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Verona",
+      "season": "2324"
+    },
+    {
+      "league": "ITA-Serie A",
+      "club": "Verona",
       "season": "2425"
     }
   ]

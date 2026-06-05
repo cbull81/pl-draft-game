@@ -28,6 +28,33 @@ from game.state import (
 )
 from model.score import score_xi
 
+LEAGUE_SHORT = {
+    "ENG-Premier League": "PL",
+    "ESP-La Liga":        "La Liga",
+    "GER-Bundesliga":     "Bundesliga",
+    "ITA-Serie A":        "Serie A",
+    "FRA-Ligue 1":        "Ligue 1",
+}
+
+LEAGUE_OPTIONS = [
+    ("ENG-Premier League", "Premier League"),
+    ("ESP-La Liga",        "La Liga"),
+    ("GER-Bundesliga",     "Bundesliga"),
+    ("ITA-Serie A",        "Serie A"),
+    ("FRA-Ligue 1",        "Ligue 1"),
+]
+
+
+def choose_league() -> str:
+    print("\nPick your league:\n")
+    for i, (league_id, name) in enumerate(LEAGUE_OPTIONS, 1):
+        print(f"  [{i}] {name}")
+    while True:
+        choice = input("\nLeague number: ").strip()
+        if choice.isdigit() and 1 <= int(choice) <= len(LEAGUE_OPTIONS):
+            return LEAGUE_OPTIONS[int(choice) - 1][0]
+        print("  Enter a number from the list.")
+
 
 def choose_formation() -> str:
     print("\n╔══════════════════════════════════════╗")
@@ -97,11 +124,26 @@ def print_model_inputs(xi_df: pd.DataFrame, result: dict) -> None:
     val_col = "age_adj_value_z" if "age_adj_value_z" in defensive.columns else "value_z"
     mean_def_vz = defensive[val_col].fillna(0).mean() if not defensive.empty else 0.0
 
-    print(f"\n  xGF_hat  = Σ npxG/g (outfield)  →  {bd['attack_xgf_pg']:.4f}")
-    print(f"  def_val_z = mean value_z (DEF+GK) →  {mean_def_vz:+.4f}")
-    print(f"  xGA_hat  = Stage 2 (def_val_z)    →  {bd['defense_xga_pg']:.4f}  (lower = better)")
-    print(f"  ppg_hat  = Stage 1 [xGF, xGA]     →  {bd['ppg_hat']:.4f}")
-    print(f"  pts      = ppg × 38               →  {bd['ppg_hat'] * 38:.1f}")
+    off = bd.get("offensive_features", {})
+    if off:
+        print(f"\n  Stage 0 inputs (→ xGF_hat):")
+        label_map = {
+            "sum_npxg_pg":       "Σ npxG/g",
+            "sum_xa_pg":         "Σ xA/g",
+            "sum_xg_buildup_pg": "Σ buildup/g",
+            "sum_xg_chain_pg":   "Σ chain/g",
+            "sum_key_passes_pg": "Σ key passes/g",
+            "sum_shots_pg":      "Σ shots/g",
+        }
+        for col, val in off.items():
+            print(f"    {label_map.get(col, col):<16} {val:.4f}")
+    avg_games = result.get("avg_games", 38.0)
+    print(f"\n  xGF_hat   = Stage 0 [Σnpxg, Σxa, Σbuildup]  →  {bd['attack_xgf_pg']:.4f}")
+    print(f"  def_val_z = mean age-adj value_z (DEF+GK)    →  {mean_def_vz:+.4f}")
+    print(f"  xGA_hat   = Stage 2 (def_val_z)              →  {bd['defense_xga_pg']:.4f}  (lower = better)")
+    print(f"  ppg_hat   = Stage 1 [xGF, xGA]               →  {bd['ppg_hat']:.4f}")
+    print(f"  avg games = XI average games played           →  {avg_games:.1f} / 38")
+    print(f"  pts       = ppg × avg_games                   →  {bd['ppg_hat'] * avg_games:.1f}")
     print("  " + "─" * 54)
 
 
@@ -129,19 +171,21 @@ def play():
         sys.exit(1)
 
     players_df = pd.read_parquet(players_path)
+    league = choose_league()
     formation = choose_formation()
-    state = new_game(formation)
+    state = new_game(formation, league)
     show_stats = False
-    print(f"\nLocked: {formation}  |  Rerolls: {state['rerolls_left']}")
+    print(f"\nLocked: {LEAGUE_SHORT.get(league, league)}  |  {formation}  |  Rerolls: {state['rerolls_left']}")
 
     while not state["complete"]:
         print("\n" + "─" * 55)
         print(roster_summary(state))
         print("─" * 55)
 
-        club, season = roll(state)
+        league, club, season = roll(state)
         season_display = f"20{season[:2]}/{season[2:]}"
-        print(f"\n🎰  Rolled: {club}  ({season_display})")
+        league_display = LEAGUE_SHORT.get(league, league)
+        print(f"\n🎰  Rolled: {club}  ({season_display})  [{league_display}]")
 
         while True:
             candidates = get_candidates(state, players_df)
@@ -149,15 +193,16 @@ def play():
                 print("  No eligible players for open slots in this roll.")
                 if state["rerolls_left"] > 0:
                     print(f"  Auto-rerolling ({state['rerolls_left']} rerolls left)…")
-                    club, season = reroll(state)
+                    league, club, season = reroll(state)
                     season_display = f"20{season[:2]}/{season[2:]}"
-                    print(f"  → {club}  ({season_display})")
+                    league_display = LEAGUE_SHORT.get(league, league)
+                    print(f"  → {club}  ({season_display})  [{league_display}]")
                 else:
                     print("  ERROR: No rerolls left and no eligible players — this shouldn't happen.")
                     sys.exit(1)
                 continue
 
-            print(f"\n  Squad: {club}  {season_display}")
+            print(f"\n  Squad: {club}  {season_display}  [{league_display}]")
             print_candidates(candidates, show_stats)
 
             stats_label = "on" if show_stats else "off"
@@ -175,9 +220,10 @@ def play():
                 if state["rerolls_left"] <= 0:
                     print("  No rerolls left!")
                     continue
-                club, season = reroll(state)
+                league, club, season = reroll(state)
                 season_display = f"20{season[:2]}/{season[2:]}"
-                print(f"\n  → Rerolled: {club}  ({season_display})")
+                league_display = LEAGUE_SHORT.get(league, league)
+                print(f"\n  → Rerolled: {club}  ({season_display})  [{league_display}]")
                 continue
 
             if not choice.isdigit() or not (1 <= int(choice) <= len(candidates)):
@@ -202,7 +248,9 @@ def play():
 
     print_model_inputs(xi_df, result)
 
+    avg_games = result.get("avg_games", 38.0)
     print(f"\n  Predicted points:  {result['predicted_points']:.1f} / 114")
+    print(f"  Avg games played:  {avg_games:.1f} / 38")
     print(f"  Record:            {result['record']}")
     print(f"  Tier:              {result['tier']}")
 

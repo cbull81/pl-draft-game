@@ -67,11 +67,12 @@ def build_tm_index(tm_appearances: pd.DataFrame, tm_players: pd.DataFrame,
     tm_appearances has no season column — derive it by joining with tm_games on game_id.
     Filter to Premier League (competition_id == 'GB1') before joining.
     """
-    pl_apps = tm_appearances[tm_appearances["competition_id"] == "GB1"].copy()
+    TOP5 = ["GB1", "ES1", "IT1", "FR1", "L1"]
+    pl_apps = tm_appearances[tm_appearances["competition_id"].isin(TOP5)].copy()
 
     # Add season (integer start year, e.g. 2014 for 2014/15) from games table
     season_map = (
-        tm_games[tm_games["competition_id"] == "GB1"][["game_id", "season"]]
+        tm_games[tm_games["competition_id"].isin(TOP5)][["game_id", "season"]]
         .drop_duplicates("game_id")
     )
     pl_apps = pl_apps.merge(season_map, on="game_id", how="left")
