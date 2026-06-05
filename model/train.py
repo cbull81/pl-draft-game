@@ -35,12 +35,27 @@ ALPHAS = np.logspace(-3, 3, 25)
 def build_stage1_matrix() -> tuple[pd.DataFrame, pd.Series, pd.Series, pd.Series]:
     """
     Load Understat team-seasons from all 5 leagues.
-    Returns X (xGF_pg, xGA_pg), y (points_pg), league series, season series.
+    Returns X (xgf_pg, xga_pg, squad_value_z), y (points_pg), league, season.
+
+    squad_value_z: mean age_adj_value_z across qualified players (≥450 min) in
+    each team-season. Captures squad pedigree beyond what xG/xGA measures.
     """
     ts = pd.read_parquet(ARTIFACTS / "understat_team_seasons.parquet")
     ts = ts.dropna(subset=["xgf_pg", "xga_pg", "points_pg"])
-    ts = ts[ts["games"] >= 10]  # exclude partial seasons
-    X = ts[["xgf_pg", "xga_pg"]]
+    ts = ts[ts["games"] >= 10]
+
+    players = pd.read_parquet(ARTIFACTS / "players.parquet")
+    qualified = players[players["minutes"].fillna(0) >= 450]
+    squad_vz = (
+        qualified.groupby(["league", "season", "club"])["age_adj_value_z"]
+        .apply(lambda x: x.fillna(0).mean())
+        .reset_index()
+        .rename(columns={"age_adj_value_z": "squad_value_z", "club": "team"})
+    )
+    ts = ts.merge(squad_vz, on=["league", "season", "team"], how="left")
+    ts["squad_value_z"] = ts["squad_value_z"].fillna(0)
+
+    X = ts[["xgf_pg", "xga_pg", "squad_value_z"]]
     y = ts["points_pg"]
     return X, y, ts["league"], ts["season"], ts
 
@@ -143,7 +158,7 @@ def main():
         print(f"  Coefficients: {dict(zip(X0.columns, stage0.coef_))}")
         print(f"  In-sample  Spearman ρ: {rho0:.3f}  R²: {r2_0:.3f}")
 
-    print("\n=== Stage 1: points_pg ~ OLS(xGF_pg, xGA_pg) ===")
+    print("\n=== Stage 1: points_pg ~ OLS(xGF_pg, xGA_pg, squad_value_z) ===")
     X1, y1, league_s, season_s, ts = build_stage1_matrix()
     print(f"  Rows: {len(X1)}  (leagues: {league_s.nunique()}, seasons: {season_s.nunique()})")
     print(f"  points_pg: {y1.min():.3f} – {y1.max():.3f}  mean={y1.mean():.3f}")
@@ -155,11 +170,11 @@ def main():
 
     stage1 = LinearRegression()
     stage1.fit(X1, y1)
-    coefs1 = dict(zip(["xGF_pg", "xGA_pg"], stage1.coef_))
+    coefs1 = dict(zip(["xGF_pg", "xGA_pg", "squad_value_z"], stage1.coef_))
     print(f"\n  Intercept: {stage1.intercept_:.4f}")
     print(f"  Coefficients: {coefs1}")
-    if coefs1.get("xGF_pg", 0) <= 0 or coefs1.get("xGA_pg", 0) >= 0:
-        print("  WARNING: coefficient signs unexpected — xGF should be +, xGA should be –")
+    if coefs1.get("xGF_pg", 0) <= 0 or coefs1.get("xGA_pg", 0) >= 0 or coefs1.get("squad_value_z", 0) <= 0:
+        print("  WARNING: unexpected signs — xGF and squad_value_z should be +, xGA should be –")
 
     print("\n=== Stage 2: xGA_pg ~ Ridge(def_value_z) ===")
     X2, y2 = build_stage2_matrix()
@@ -186,7 +201,7 @@ def main():
 
     stage1_artifact = {
         "model": stage1,
-        "feature_cols": ["xgf_pg", "xga_pg"],
+        "feature_cols": ["xgf_pg", "xga_pg", "squad_value_z"],
         "coefs": coefs1,
         "loso_rmse_ppg": rmse,
         "loso_spearman": rho,
