@@ -65,11 +65,12 @@ def season_str_to_start_year(season: str) -> int:
 
 def get_season_valuation(player_id: str, season: str, valuations: pd.DataFrame) -> float | None:
     """
-    Return the market value of a player closest to the START of a given season.
-    Season end = May/June; season start = August. Use August 1 as the anchor.
+    Return the market value of a player closest to the END of a given season.
+    TM updates cluster in June (post-season); anchor to June 1 of the end year.
+    e.g. "1617" → June 1 2017.
     """
     start_year = season_str_to_start_year(season)
-    anchor = pd.Timestamp(f"{start_year}-08-01")
+    anchor = pd.Timestamp(f"{start_year + 1}-06-01")
     pv = valuations[valuations["player_id"] == player_id].copy()
     if pv.empty:
         return None
@@ -160,7 +161,7 @@ def build_players() -> pd.DataFrame:
         if grp.empty:
             return np.nan
         start_year = season_str_to_start_year(str(row["season"]))
-        anchor = pd.Timestamp(f"{start_year}-08-01")
+        anchor = pd.Timestamp(f"{start_year + 1}-06-01")
         grp = grp.copy()
         grp["date"] = pd.to_datetime(grp["date"], errors="coerce")
         grp = grp.dropna(subset=["date"])

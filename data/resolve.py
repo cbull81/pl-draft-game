@@ -207,7 +207,7 @@ def resolve(us_players: pd.DataFrame, tm_appearances: pd.DataFrame,
 
 def main():
     print("=== Loading data ===")
-    us_players = pd.read_parquet(ARTIFACTS / "understat_players_pl.parquet")
+    us_players = pd.read_parquet(ARTIFACTS / "understat_players_all.parquet")
     tm_players = pd.read_parquet(ARTIFACTS / "tm_players_raw.parquet")
     tm_appearances = pd.read_parquet(ARTIFACTS / "tm_appearances_raw.parquet")
     tm_clubs = pd.read_parquet(ARTIFACTS / "tm_clubs_raw.parquet")
