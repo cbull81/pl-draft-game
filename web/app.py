@@ -5,9 +5,11 @@ Run: uvicorn web.app:app --reload
 import logging
 import math
 import os
+import sqlite3
 import sys
 import time
 import uuid
+from datetime import datetime, timezone
 from pathlib import Path
 
 import pandas as pd
@@ -133,6 +135,8 @@ async def _startup():
         log.critical(msg)
         raise RuntimeError(msg)
 
+    _init_analytics()
+
     # Eagerly load both datasets so first-request latency is predictable
     # and any parquet/schema errors surface immediately at boot.
     try:
@@ -197,8 +201,44 @@ def _abbr_club(name: str) -> str:
 
 templates.env.filters["abbr_club"] = _abbr_club
 
+# ── Analytics (SQLite) ───────────────────────────────────────────────────────
+_DB_PATH = Path(os.environ.get("DB_PATH", str(ROOT / "data" / "analytics.db")))
+_STATS_KEY = os.environ.get("STATS_KEY", "")
+
+
+def _init_analytics() -> None:
+    _DB_PATH.parent.mkdir(parents=True, exist_ok=True)
+    with sqlite3.connect(_DB_PATH) as conn:
+        conn.execute("""
+            CREATE TABLE IF NOT EXISTS events (
+                id        INTEGER PRIMARY KEY AUTOINCREMENT,
+                ts        REAL    NOT NULL,
+                event     TEXT    NOT NULL,
+                sid       TEXT,
+                mode      TEXT,
+                formation TEXT,
+                league    TEXT
+            )
+        """)
+        conn.commit()
+    log.info("Analytics DB ready at %s", _DB_PATH)
+
+
+def _track(event: str, sid: str = None, mode: str = None,
+           formation: str = None, league: str = None) -> None:
+    try:
+        with sqlite3.connect(_DB_PATH) as conn:
+            conn.execute(
+                "INSERT INTO events (ts, event, sid, mode, formation, league) VALUES (?,?,?,?,?,?)",
+                (time.time(), event, sid, mode, formation, league),
+            )
+            conn.commit()
+    except Exception:
+        log.warning("Analytics write failed", exc_info=True)
+
+
 # ── Session store (in-memory, with TTL) ───────────────────────────────────────
-_SESSION_TTL = 7200  # 2 hours in seconds
+_SESSION_TTL = 1800  # 30 minutes
 _sessions: dict[str, dict] = {}
 
 _PRODUCTION = os.environ.get("ENVIRONMENT") == "production"
@@ -457,6 +497,7 @@ async def start(
 
     sid = str(uuid.uuid4())
     _sessions[sid] = state
+    _track("game_start", sid=sid, mode="pl", formation=formation, league=league)
 
     candidates = get_candidates(state, _players())
     ctx = {
@@ -615,6 +656,7 @@ async def wc_start(request: Request, formation: str = Form(...)):
 
     sid = str(uuid.uuid4())
     _sessions[sid] = state
+    _track("game_start", sid=sid, mode="wc", formation=formation)
 
     candidates = get_wc_candidates(state, _wc_players())
     ctx = {
@@ -739,6 +781,68 @@ async def wc_result(request: Request):
         "bucket_colours": BUCKET_COLOURS,
         "tier_art": wc_tier_pixel_art(result["tier"]),
     })
+
+
+# ── Stats ─────────────────────────────────────────────────────────────────────
+
+@app.get("/stats", response_class=HTMLResponse)
+async def stats(request: Request, key: str = ""):
+    if _STATS_KEY and key != _STATS_KEY:
+        return HTMLResponse("Forbidden", status_code=403)
+
+    active = len(_sessions)
+    day_ago = time.time() - 86400
+
+    with sqlite3.connect(_DB_PATH) as conn:
+        total   = conn.execute("SELECT COUNT(*) FROM events WHERE event='game_start'").fetchone()[0]
+        today   = conn.execute("SELECT COUNT(*) FROM events WHERE event='game_start' AND ts>?", (day_ago,)).fetchone()[0]
+        pl_ct   = conn.execute("SELECT COUNT(*) FROM events WHERE event='game_start' AND mode='pl'").fetchone()[0]
+        wc_ct   = conn.execute("SELECT COUNT(*) FROM events WHERE event='game_start' AND mode='wc'").fetchone()[0]
+        fmts    = conn.execute("""
+            SELECT formation, COUNT(*) n FROM events
+            WHERE event='game_start' AND formation IS NOT NULL
+            GROUP BY formation ORDER BY n DESC
+        """).fetchall()
+        recent  = conn.execute("""
+            SELECT ts, mode, formation, league FROM events
+            WHERE event='game_start' ORDER BY ts DESC LIMIT 30
+        """).fetchall()
+
+    def _row(ts, mode, formation, league):
+        dt = datetime.fromtimestamp(ts, tz=timezone.utc).strftime("%Y-%m-%d %H:%M")
+        lbl = (LEAGUE_SHORT.get(league, league) or "") if mode == "pl" else "WC 2026"
+        return f"<tr><td>{dt}</td><td>{mode.upper()}</td><td>{formation or '—'}</td><td>{lbl}</td></tr>"
+
+    fmt_rows    = "".join(f"<tr><td>{f}</td><td>{n}</td></tr>" for f, n in fmts)
+    recent_rows = "".join(_row(*r) for r in recent)
+
+    html = f"""<!DOCTYPE html><html><head><title>T&amp;G Stats</title>
+<style>
+  body{{font-family:monospace;padding:24px;max-width:860px;margin:0 auto;color:#1e3a5f;}}
+  h1{{margin-bottom:4px;}}p.sub{{color:#6b7280;margin-bottom:28px;}}
+  h2{{margin:28px 0 10px;border-bottom:2px solid #e5e7eb;padding-bottom:4px;}}
+  table{{border-collapse:collapse;width:100%;margin-bottom:16px;}}
+  td,th{{border:1px solid #e5e7eb;padding:7px 12px;text-align:left;}}
+  th{{background:#f9fafb;font-weight:700;}}
+  .big{{font-size:2rem;font-weight:900;}}
+  .grid{{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:8px;}}
+  .card{{background:#f0f9ff;border:2px solid #bae6fd;border-radius:6px;padding:14px 16px;}}
+  .card .lbl{{font-size:11px;color:#6b7280;margin-bottom:4px;}}
+</style></head><body>
+<h1>Tacticos &amp; Galacticos</h1>
+<p class="sub">Live dashboard · refreshes on reload</p>
+<div class="grid">
+  <div class="card"><div class="lbl">ACTIVE NOW</div><div class="big">{active}</div></div>
+  <div class="card"><div class="lbl">LAST 24H</div><div class="big">{today}</div></div>
+  <div class="card"><div class="lbl">TOTAL STARTS</div><div class="big">{total}</div></div>
+  <div class="card"><div class="lbl">PL / WC</div><div class="big">{pl_ct} / {wc_ct}</div></div>
+</div>
+<h2>Formations</h2>
+<table><tr><th>Formation</th><th>Starts</th></tr>{fmt_rows}</table>
+<h2>Recent 30 games</h2>
+<table><tr><th>Time (UTC)</th><th>Mode</th><th>Formation</th><th>League</th></tr>{recent_rows}</table>
+</body></html>"""
+    return HTMLResponse(html)
 
 
 # ── Pixel art ─────────────────────────────────────────────────────────────────
