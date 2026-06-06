@@ -27,14 +27,28 @@
 @keyframes wc-right { from { transform: translateX(-50%); } to { transform: translateX(0); } }
 
 @media (max-width: 480px) {
-  /* Reduce outer padding so the card uses full width on small phones */
-  .index-outer { padding: 1.5rem 0.75rem !important; }
-  /* League grid: 5-col is too tight, drop to 3-col wrapping */
-  .league-grid  { grid-template-columns: repeat(3, 1fr) !important; }
-  /* Formation grid: 3-col is fine, just tighten the inner padding */
+  /* Push card below the fixed toggle so they don't overlap */
+  .index-outer { padding: 5rem 0.75rem 1.5rem !important; align-items: flex-start !important; }
+  /* Tighter inner card padding + section spacing on mobile */
+  .card-inner { padding: 1.25rem !important; }
+  .card-title-section { margin-bottom: 1.75rem !important; }
+  .card-formation-section { margin-bottom: 1.5rem !important; }
+  .card-league-section { margin-bottom: 1.25rem !important; }
+  /* League grid: flex-wrap + centred so last row (2 items) centres */
+  .league-grid {
+    display: flex !important; flex-wrap: wrap !important;
+    justify-content: center !important; gap: 8px !important;
+  }
+  .league-grid > label { width: calc(33.33% - 6px) !important; }
+  /* Formation grid: 2 columns (3 rows) instead of 3 columns */
+  .formation-grid { grid-template-columns: repeat(2, 1fr) !important; }
   .formation-grid .opt-card { padding: 8px !important; }
-  /* Mode toggle: smaller gap so it doesn't push into the card */
-  #mode-toggle { gap: 6px !important; }
+  /* Mode toggle: stay fixed, force compositing layer so iOS Safari doesn't break it */
+  #mode-toggle {
+    position: fixed !important; top: 14px !important; right: 18px !important;
+    z-index: 200 !important; gap: 6px !important;
+    -webkit-transform: translateZ(0); transform: translateZ(0);
+  }
 }
 {% endblock %}
 
@@ -100,10 +114,10 @@
   <div style="background:var(--yellow); border:3px solid var(--navy);
               box-shadow:5px 5px 0 var(--sh); border-radius:12px; padding:5px;">
   <!-- Inner card -->
-  <div style="background:#ffffff; border-radius:9px; padding:2rem;">
+  <div class="card-inner" style="background:#ffffff; border-radius:9px; padding:2rem;">
 
     <!-- Title -->
-    <div style="text-align:center; margin-bottom:3rem;">
+    <div class="card-title-section" style="text-align:center; margin-bottom:3rem;">
       <h1 class="font-pixel"
           style="font-size:clamp(1.4rem,4vw,2.6rem); color:var(--navy);
                  text-shadow:3px 3px 0 var(--border), 5px 5px 0 rgba(30,58,95,0.12);
@@ -122,7 +136,7 @@
     <form method="POST" action="/start">
 
       <!-- LEAGUE -->
-      <div style="margin-bottom:2rem;">
+      <div class="card-league-section" style="margin-bottom:2rem;">
         <div class="font-pixel"
              style="font-size:8px; color:var(--navy); letter-spacing:0.1em; margin-bottom:12px;">
           &gt; SELECT LEAGUE
@@ -145,7 +159,7 @@
       </div>
 
       <!-- FORMATION -->
-      <div style="margin-bottom:2.5rem;">
+      <div class="card-formation-section" style="margin-bottom:2.5rem;">
         <div class="font-pixel"
              style="font-size:8px; color:var(--navy); letter-spacing:0.1em; margin-bottom:12px;">
           &gt; CHOOSE FORMATION
@@ -203,10 +217,10 @@
               border:3px solid var(--navy); box-shadow:5px 5px 0 rgba(26,26,46,0.3);
               border-radius:12px; padding:5px;">
   <!-- Inner card -->
-  <div style="background:#ffffff; border-radius:9px; padding:2rem;">
+  <div class="card-inner" style="background:#ffffff; border-radius:9px; padding:2rem;">
 
     <!-- WC Title -->
-    <div style="text-align:center; margin-bottom:3rem;">
+    <div class="card-title-section" style="text-align:center; margin-bottom:3rem;">
       <h1 class="font-pixel"
           style="font-size:clamp(1.4rem,4vw,2.6rem); color:var(--navy);
                  text-shadow:3px 3px 0 var(--border), 5px 5px 0 rgba(30,58,95,0.12);
@@ -226,18 +240,18 @@
     <form method="POST" action="/wc/start">
 
       <!-- WC FORMATION -->
-      <div style="margin-bottom:2.5rem;">
+      <div class="card-formation-section" style="margin-bottom:2.5rem;">
         <div class="font-pixel"
              style="font-size:8px; color:var(--navy); letter-spacing:0.1em; margin-bottom:12px;">
           &gt; CHOOSE FORMATION
         </div>
-        <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:8px;">
+        <div class="formation-grid" style="display:grid; grid-template-columns:repeat(3,1fr); gap:8px;">
           {% for fname, slots in formations.items() %}
           <label style="cursor:pointer; display:block;">
             <input type="radio" name="formation" value="{{ fname }}" required
                    {% if loop.first %}checked{% endif %}
                    style="position:absolute; opacity:0; width:0; height:0;" class="wc-opt-radio">
-            <div class="wc-opt-card px-box-sm"
+            <div class="wc-opt-card opt-card px-box-sm"
                  style="background:var(--panel); padding:12px; cursor:pointer; transition:all 0.08s; border-radius:4px;">
               <div class="font-pixel" style="font-size:9px; color:#1a1a2e; margin-bottom:10px;">{{ fname }}</div>
               <div style="background:#2d8a42; padding:8px; border-radius:3px;

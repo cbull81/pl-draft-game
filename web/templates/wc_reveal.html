@@ -52,10 +52,21 @@ body {
                         padding: 18px 16px !important; }
   .reveal-stats-col   { border-top: 2px solid rgba(0,0,0,0.12); padding: 14px 16px !important; }
   .reveal-main-grid   { grid-template-columns: 1fr !important; }
-  .reveal-pitch-panel { height: 280px !important; }
-  .reveal-squad-panel { height: 320px !important; }
+  .reveal-pitch-panel { height: 400px !important; }
+  .reveal-squad-panel { height: 360px !important; }
   .wc-breakdown-grid  { grid-template-columns: 1fr !important; }
   .reveal-pos-grid    { grid-template-columns: repeat(2, 1fr) !important; }
+}
+@media (max-height: 500px) and (orientation: landscape) {
+  .reveal-main-grid   { grid-template-columns: 0.55fr 1fr !important; }
+  .reveal-pitch-panel { height: 320px !important; }
+  .reveal-squad-panel { height: 320px !important; }
+  .squad-stat-row     { display: none !important; }
+  .squad-club-stacked { display: none !important; }
+  .squad-player-info              { display: flex !important; align-items: center !important; gap: 8px !important; }
+  .squad-player-info > div:first-child { margin-bottom: 0 !important; }
+  .squad-club-wide                { font-size: 9px !important; opacity: 0.65; white-space: nowrap;
+                                    overflow: hidden; text-overflow: ellipsis; }
 }
 {% endblock %}
 
@@ -113,8 +124,8 @@ body {
   </div>
 </div>
 
-<div style="position:relative; z-index:1; min-height:calc(100vh - 46px); overflow-y:auto;">
-<div style="max-width:1100px; margin:0 auto; padding:16px 16px 48px;">
+<div style="position:relative; z-index:1; height:calc(100vh - 46px); overflow-y:auto; -webkit-overflow-scrolling:touch;">
+<div style="max-width:1100px; margin:0 auto; padding:16px 16px 48px; overflow-x:hidden;">
 
 <!-- Hero: pixel art + score + squad stats -->
 <div class="px-box reveal-hero" style="background:{{ tBg }}; border-color:{{ tBdr }}; margin-bottom:16px;
@@ -212,7 +223,7 @@ body {
            onmouseover="this.style.background='var(--bg2)'"
            onmouseout="this.style.background=''">
         <div style="width:5px; align-self:stretch; background:{{ lc }}; flex-shrink:0;"></div>
-        <div style="flex:1; min-width:0; padding:9px 11px;">
+        <div class="squad-player-info" style="flex:1; min-width:0; padding:9px 11px;">
           <div style="display:flex; align-items:center; gap:7px; margin-bottom:2px;">
             <span class="font-pixel" style="font-size:6px; color:{{ lc }};">{{ row.bucket }}</span>
             <span style="font-size:13px; font-weight:900; color:var(--navy);
@@ -220,11 +231,16 @@ body {
               {{ player.player_name }}
             </span>
           </div>
-          <div style="font-size:10px; font-weight:700; color:var(--navy2);">
+          <div class="squad-club-wide" style="font-size:10px; font-weight:700; color:var(--navy2);">
             {{ player.get('flag','') }} {{ player.wc_team }}
           </div>
         </div>
-        <div style="padding:9px 12px; text-align:right; flex-shrink:0;">
+        <div style="display:flex; flex-direction:column; align-items:flex-end; flex-shrink:0;">
+          <div class="squad-club-stacked" style="display:none; font-size:9px; font-weight:700;
+               color:var(--navy2); padding:4px 12px 0; white-space:nowrap;">
+            {{ player.get('flag','') }} {{ player.wc_team }}
+          </div>
+          <div style="padding:9px 12px; text-align:right;">
           {% set caps = player.get('international_caps') %}
           {% if caps %}
           <div style="font-size:11px; font-weight:800; color:var(--navy);">
@@ -239,6 +255,7 @@ body {
             {{ "%+.1f"|format(vz) }}σ
           </div>
           {% endif %}
+          </div>
         </div>
       </div>
       {% endfor %}

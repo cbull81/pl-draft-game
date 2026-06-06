@@ -438,6 +438,11 @@ async def faq(request: Request):
     return templates.TemplateResponse(request, "faq.html", {})
 
 
+@app.get("/start")
+async def start_get():
+    return RedirectResponse("/", status_code=303)
+
+
 @app.post("/start", response_class=HTMLResponse)
 async def start(
     request: Request,
@@ -594,6 +599,11 @@ async def show_result(request: Request):
 
 
 # ── World Cup 2026 routes ─────────────────────────────────────────────────────
+
+@app.get("/wc/start")
+async def wc_start_get():
+    return RedirectResponse("/", status_code=303)
+
 
 @app.post("/wc/start", response_class=HTMLResponse)
 async def wc_start(request: Request, formation: str = Form(...)):
