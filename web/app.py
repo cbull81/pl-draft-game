@@ -807,26 +807,32 @@ async def stats(request: Request, key: str = ""):
         )
 
     day_ago = time.time() - 86400
-    with _pg_conn() as conn, conn.cursor() as cur:
-        cur.execute("SELECT COUNT(*) FROM events WHERE event='game_start'")
-        total = cur.fetchone()[0]
-        cur.execute("SELECT COUNT(*) FROM events WHERE event='game_start' AND ts>%s", (day_ago,))
-        today = cur.fetchone()[0]
-        cur.execute("SELECT COUNT(*) FROM events WHERE event='game_start' AND mode='pl'")
-        pl_ct = cur.fetchone()[0]
-        cur.execute("SELECT COUNT(*) FROM events WHERE event='game_start' AND mode='wc'")
-        wc_ct = cur.fetchone()[0]
-        cur.execute("""
-            SELECT formation, COUNT(*) n FROM events
-            WHERE event='game_start' AND formation IS NOT NULL
-            GROUP BY formation ORDER BY n DESC
-        """)
-        fmts = cur.fetchall()
-        cur.execute("""
-            SELECT ts, mode, formation, league FROM events
-            WHERE event='game_start' ORDER BY ts DESC LIMIT 30
-        """)
-        recent = cur.fetchall()
+    try:
+        with _pg_conn() as conn, conn.cursor() as cur:
+            cur.execute("SELECT COUNT(*) FROM events WHERE event='game_start'")
+            total = cur.fetchone()[0]
+            cur.execute("SELECT COUNT(*) FROM events WHERE event='game_start' AND ts>%s", (day_ago,))
+            today = cur.fetchone()[0]
+            cur.execute("SELECT COUNT(*) FROM events WHERE event='game_start' AND mode='pl'")
+            pl_ct = cur.fetchone()[0]
+            cur.execute("SELECT COUNT(*) FROM events WHERE event='game_start' AND mode='wc'")
+            wc_ct = cur.fetchone()[0]
+            cur.execute("""
+                SELECT formation, COUNT(*) n FROM events
+                WHERE event='game_start' AND formation IS NOT NULL
+                GROUP BY formation ORDER BY n DESC
+            """)
+            fmts = cur.fetchall()
+            cur.execute("""
+                SELECT ts, mode, formation, league FROM events
+                WHERE event='game_start' ORDER BY ts DESC LIMIT 30
+            """)
+            recent = cur.fetchall()
+    except Exception as exc:
+        log.warning("Stats DB query failed: %s", exc)
+        return HTMLResponse(
+            f"<pre>Active sessions: {active}\n\nDB connection failed: {exc}\n\nCheck DATABASE_URL and Supabase status.</pre>"
+        )
 
     def _row(ts, mode, formation, league):
         dt = datetime.fromtimestamp(ts, tz=timezone.utc).strftime("%Y-%m-%d %H:%M")
