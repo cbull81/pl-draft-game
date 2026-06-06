@@ -1,0 +1,149 @@
+<!--
+  WC round partial — returned by /wc/pick and /wc/reroll.
+  Shows national team header + player cards with caps/goals.
+-->
+
+{% if is_partial %}
+<div id="wc-formation-sidebar" hx-swap-oob="true"
+     style="flex:1; min-height:0; display:flex; flex-direction:column;">
+  {% include "partials/wc_formation.html" %}
+</div>
+{% endif %}
+
+<!-- Sticky team header — Olympic stripe + team info -->
+<div style="position:sticky; top:0; z-index:10; background:var(--panel);
+            border-bottom:3px solid var(--navy); box-shadow:0 3px 0 var(--sh);">
+  <!-- Olympic 5-colour stripe -->
+  <div style="display:flex; height:4px;">
+    <div style="flex:1; background:#0085c7;"></div>
+    <div style="flex:1; background:#f0b400;"></div>
+    <div style="flex:1; background:#1a1a2e;"></div>
+    <div style="flex:1; background:#009f3d;"></div>
+    <div style="flex:1; background:#e63329;"></div>
+  </div>
+  <div style="padding:10px 14px 10px;">
+    <div class="font-pixel"
+         style="font-size:6px; color:var(--navy2); letter-spacing:0.1em; margin-bottom:5px;">
+      ROUND {{ state.round + 1 }} / 11
+    </div>
+    <div style="display:flex; align-items:center; justify-content:space-between; gap:8px;">
+      <div style="min-width:0;">
+        <div style="font-size:20px; margin-bottom:2px;">{{ team_flag }}</div>
+        <div style="font-size:15px; font-weight:900; color:var(--navy); line-height:1.1;
+                    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
+          {{ team_name }}
+        </div>
+        <div class="font-pixel" style="font-size:5px; color:var(--navy2); margin-top:2px; opacity:0.7; letter-spacing:0.08em;">
+          {{ team_confederation }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Player cards -->
+{% if candidates %}
+<div style="padding:12px 10px; display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+
+  {% for p in candidates %}
+
+  {% if p.primary_bucket == 'GK' %}
+    {% set col = 'var(--col-gk)' %}  {% set colD = '#8a1a15' %}  {% set colT = '#fff' %} {% set colBg = '#fff0f0' %}
+  {% elif p.primary_bucket == 'DEF' %}
+    {% set col = 'var(--col-def)' %} {% set colD = '#004f78' %}  {% set colT = '#fff' %} {% set colBg = '#e8f4ff' %}
+  {% elif p.primary_bucket == 'MID' %}
+    {% set col = 'var(--col-mid)' %} {% set colD = '#005c24' %}  {% set colT = '#fff' %} {% set colBg = '#efffed' %}
+  {% else %}
+    {% set col = 'var(--col-fwd)' %} {% set colD = '#8a5f00' %}  {% set colT = '#fff' %} {% set colBg = '#fffbea' %}
+  {% endif %}
+
+  <div style="background:{{ colBg }}; border:2px solid var(--navy);
+              box-shadow:4px 4px 0 var(--sh); border-radius:6px;
+              display:flex; flex-direction:column; overflow:hidden;">
+
+    <div style="background:{{ col }}; padding:7px 8px; display:flex; align-items:center;
+                justify-content:space-between; gap:4px;">
+      <span class="font-pixel"
+            style="font-size:6px; color:{{ colT }}; letter-spacing:0.06em; line-height:1.4;">
+        {{ p.sub_position or p.primary_bucket }}
+      </span>
+      {% if p.international_caps %}
+      <span style="font-size:9px; font-weight:800; color:rgba(255,255,255,0.8);">{{ p.international_caps | int }}🎽</span>
+      {% endif %}
+    </div>
+
+    <div style="padding:8px 9px 6px; flex:1;">
+      <div style="font-size:13px; font-weight:900; color:var(--navy); line-height:1.2;
+                  margin-bottom:3px; word-break:break-word;">
+        {{ p.player_name }}
+      </div>
+      {% if p.club %}
+      <div style="font-size:10px; font-weight:700; color:var(--navy2); opacity:0.7;">
+        {{ p.club }}{% if p.season %} · {{ p.season[:2] }}/{{ p.season[2:] }}{% endif %}
+      </div>
+      {% endif %}
+
+      <div style="margin-top:8px; display:flex; flex-direction:column; gap:3px;">
+        {% set vz = p.value_z if p.value_z is not none else p.wc_value_z %}
+        {% if vz is not none %}
+        <div style="font-size:11px;">
+          <span style="font-weight:800;
+            {{ 'color:#15803d;' if vz > 1 else ('color:#be123c;' if vz < -0.5 else 'color:var(--navy);') }}">
+            {{ "%+.1f"|format(vz) }}σ
+          </span>
+          <span style="color:var(--navy2); font-size:10px;"> value</span>
+        </div>
+        {% endif %}
+        {% if p.international_caps and p.international_caps > 0 %}
+        <div style="font-size:11px; color:var(--navy);">
+          <span style="font-weight:800;">{{ p.international_caps | int }}</span>
+          <span style="color:var(--navy2); font-size:10px;"> caps</span>
+          {% if p.international_goals and p.international_goals > 0 %}
+          · <span style="font-weight:800;">{{ p.international_goals | int }}</span>
+          <span style="color:var(--navy2); font-size:10px;"> goals</span>
+          {% endif %}
+        </div>
+        {% endif %}
+        {% if p.goals_per_cap is not none and p.goals_per_cap > 0 %}
+        <div style="font-size:11px; color:var(--navy);">
+          <span style="font-weight:800;">{{ "%.2f"|format(p.goals_per_cap) }}</span>
+          <span style="color:var(--navy2); font-size:10px;"> g/cap</span>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+
+    <div style="display:flex; flex-direction:column; gap:0;">
+      {% for bucket in p.valid_buckets %}
+      {% if bucket == 'GK' %}{% set bc = 'var(--col-gk)' %}{% set bd = '#8a1a15' %}{% set bt = '#fff' %}
+      {% elif bucket == 'DEF' %}{% set bc = 'var(--col-def)' %}{% set bd = '#004f78' %}{% set bt = '#fff' %}
+      {% elif bucket == 'MID' %}{% set bc = 'var(--col-mid)' %}{% set bd = '#005c24' %}{% set bt = '#fff' %}
+      {% else %}{% set bc = 'var(--col-fwd)' %}{% set bd = '#8a5f00' %}{% set bt = '#fff' %}{% endif %}
+      <form hx-post="/wc/pick" hx-target="#wc-round-content" hx-swap="innerHTML"
+            style="display:block; margin:0; padding:0;">
+        <input type="hidden" name="tm_id" value="{{ p.tm_id }}">
+        <input type="hidden" name="wc_team" value="{{ p.wc_team }}">
+        <input type="hidden" name="bucket" value="{{ bucket }}">
+        <button type="submit" class="font-pixel"
+                style="font-size:7px; color:{{ bt }}; background:{{ bc }};
+                       border-top:2px solid {{ bd }}; border:none;
+                       padding:8px 4px; cursor:pointer; letter-spacing:0.07em; width:100%;
+                       transition:filter 0.08s;"
+                onmouseover="this.style.filter='brightness(1.1)'"
+                onmouseout="this.style.filter='none'">
+          PICK {{ bucket }} ▶
+        </button>
+      </form>
+      {% endfor %}
+    </div>
+
+  </div>
+  {% endfor %}
+</div>
+
+{% else %}
+<div style="padding:40px 16px; text-align:center;">
+  <div class="font-pixel" style="font-size:8px; color:var(--navy); margin-bottom:12px;">NO ELIGIBLE PLAYERS</div>
+  <p style="font-size:12px; color:var(--navy2);">All open slots filled or no rerolls remain.</p>
+</div>
+{% endif %}

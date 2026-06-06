@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}38-0 — Final Score{% endblock %}
+{% block title %}Tacticos &amp; Galacticos — Final Score{% endblock %}
 {% block content %}
 
 {% set tier = result.tier %}
@@ -21,7 +21,7 @@
 <div style="height:46px; background:var(--navy); border-bottom:3px solid var(--navy);
             box-shadow:0 3px 0 var(--sh); display:flex; align-items:center;
             justify-content:space-between; padding:0 18px; flex-shrink:0;">
-  <span class="font-pixel" style="font-size:13px; color:var(--yellow); text-shadow:2px 2px 0 var(--yellow2);">38-0</span>
+  <span class="font-pixel" style="font-size:9px; color:var(--yellow); text-shadow:2px 2px 0 var(--yellow2);">Tacticos &amp; Galacticos</span>
   <span class="font-pixel" style="font-size:7px; color:rgba(255,255,255,0.45); letter-spacing:0.1em;">FINAL RESULT</span>
   <a href="/" class="font-pixel"
      style="font-size:6px; color:var(--yellow); text-decoration:none; letter-spacing:0.08em;
@@ -39,52 +39,18 @@
             border-radius:6px; display:grid; grid-template-columns:1fr auto 1fr;
             align-items:center; gap:0; overflow:hidden;">
 
-  <!-- Left ASCII art -->
-  <div style="padding:24px 16px; display:flex; align-items:center; justify-content:center;">
-    <div class="font-pixel" style="font-size:7px; line-height:2; color:{{ artCol }};
-                white-space:pre; text-align:center; letter-spacing:0.05em;">
-{% if 'Invincible' in tier %}
-* * * * * * * *
-*  .--------.  *
-* /  ( (T) )  \ *
-*|   `------'  |*
-* \____+_____/ *
-  *    |||    *
-  *  ,=====, *
-  *  |CHAMP|  *
-  *  |_____|  *
-* * * * * * * *{% elif 'Title' in tier %}
-   .---------.
-  /  ( (T) )  \
- |   `-------'  |
-  \____+______/
-       |||
-     ,=====,
-     | WIN |
-     |_____|{% elif 'European' in tier %}
- .   *   .   *   .
- . * .--------. * .
- .  / *  **  * \  .
- * |  * * * * *  | *
- .  \ *  **  * /  .
- . * `--------' * .
- .   *   .   *   .{% elif 'Mid' in tier %}
-    ,-----------.
-    |  .     .  |
-    |    ___    |
-    |   (   )   |
-    |    ---    |
-    `-----------'
-    keeping heads
-      above water{% else %}
-    ,-----------.
-    |   !   !   |
-    |   v v v   |
-    `----vvv----'
-        v   v
-      v       v
-    TRAPDOOR
-    OPENS...{% endif %}
+  <!-- Left: pixel art -->
+  <div style="padding:24px 16px; display:flex; flex-direction:column;
+              align-items:center; justify-content:center; gap:10px;">
+    {% set art = tier_art %}
+    {% set px = '20px' %}
+    <div style="display:inline-grid;
+                grid-template-columns:repeat({{ art.rows[0]|length }},{{ px }});
+                gap:1px; image-rendering:pixelated;">
+      {% for row in art.rows %}{% for c in row %}<div style="background:{{ art.palette.get(c, tBg) }};width:{{ px }};height:{{ px }};"></div>{% endfor %}{% endfor %}
+    </div>
+    <div class="font-pixel" style="font-size:14px; color:{{ artCol }}; letter-spacing:0.15em; margin-top:12px;">
+      {{ art.label }}
     </div>
   </div>
 

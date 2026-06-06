@@ -1,0 +1,141 @@
+{% extends "base.html" %}
+{% block title %}FAQ — Tacticos &amp; Galacticos{% endblock %}
+
+{% block extra_styles %}
+.faq-item { border-bottom: 2px solid var(--border); padding: 18px 0; }
+.faq-item:last-child { border-bottom: none; }
+.faq-q { font-size: 11px; font-weight: 900; color: var(--navy); margin-bottom: 8px; line-height: 1.5; }
+.faq-a { font-size: 13px; color: var(--navy2); line-height: 1.7; }
+.faq-a a { color: var(--navy); }
+{% endblock %}
+
+{% block content %}
+<div style="min-height:100vh; display:flex; flex-direction:column;
+            align-items:center; justify-content:flex-start;
+            padding:3rem 1.5rem;">
+<div style="width:100%; max-width:680px;">
+
+  <!-- Header -->
+  <div style="background:#ffffff; border-radius:10px; padding:2rem;
+              border:2px solid #d8d8e8; box-shadow:4px 4px 0 rgba(26,26,46,0.18);
+              margin-bottom:1.5rem;">
+    <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:1.5rem;">
+      <h1 class="font-pixel" style="font-size:clamp(0.9rem,2.5vw,1.4rem); color:var(--navy);
+                                     line-height:1.5;">
+        FAQ
+      </h1>
+      <a href="/" class="font-pixel"
+         style="font-size:7px; color:var(--navy2); text-decoration:none;
+                border:2px solid var(--border); padding:7px 14px; border-radius:4px;
+                transition:border-color 0.1s;"
+         onmouseover="this.style.borderColor='var(--navy)'"
+         onmouseout="this.style.borderColor='var(--border)'">
+        ← BACK
+      </a>
+    </div>
+    <div class="font-pixel" style="font-size:7px; color:var(--navy2); letter-spacing:0.1em; opacity:0.6;">
+      TACTICOS &amp; GALACTICOS · A FOOTBALL DRAFT GAME
+    </div>
+  </div>
+
+  <!-- Questions -->
+  <div style="background:#ffffff; border-radius:10px; padding:2rem;
+              border:2px solid #d8d8e8; box-shadow:4px 4px 0 rgba(26,26,46,0.18);">
+
+    <div class="faq-item">
+      <div class="faq-q">What is Tacticos &amp; Galacticos?</div>
+      <div class="faq-a">
+        A blind football draft game inspired by <a href="https://www.82-0.com" target="_blank">82-0.com</a>.
+        Each round rolls a random club and season — you pick one player from that squad to fill a slot
+        in your locked formation. Once your XI is complete, a model predicts how many Premier League
+        points that team would earn over a 38-game season.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">How does scoring work?</div>
+      <div class="faq-a">
+        Your XI is scored on a predicted-points model trained on real team seasons across the top
+        European leagues. Attacking output comes from your players' individual xG/xA stats; defensive
+        quality is estimated from their (position- and season-normalised) market values.
+        The final score is clipped to the 0–114 range — 114 being a perfect 38-win season.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">What is "blind draft" mode?</div>
+      <div class="faq-a">
+        Player stats, market values, and caps are hidden during selection — you only see names
+        and positions. Use your football knowledge to pick well. Everything is revealed on the
+        final results screen.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">What do rerolls do?</div>
+      <div class="faq-a">
+        Each game starts with a small number of rerolls. Spending one skips the current
+        club-season and rolls a new one — useful if the rolled squad has no eligible players
+        for your open slots, or if it's a particularly thin promoted side.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">What is World Cup mode?</div>
+      <div class="faq-a">
+        Instead of club seasons, each round rolls one of the 48 nations competing at the
+        2026 FIFA World Cup. Squads are sourced from the actual 2026 tournament rosters.
+        Scoring is a pedigree index based on market value, international caps, and international
+        goals — no xG data is used since club-level stats don't map cleanly to international football.
+        There are no rerolls in WC mode.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">What do the World Cup tiers mean?</div>
+      <div class="faq-a">
+        Tiers are set from the distribution of optimal XIs across all 48 nations:
+        <br><br>
+        🏆 <strong>World Cup Champions</strong> — top-tier squad, real contender<br>
+        🥈 <strong>Finalists</strong> — elite but not quite the best<br>
+        🥉 <strong>Semi-finalists</strong> — strong tournament run expected<br>
+        💜 <strong>Quarter-finalists</strong> — solid squad, could go far<br>
+        ⚽ <strong>Round of 16</strong> — decent but limited ceiling<br>
+        ❌ <strong>Group Stage Exit</strong> — struggles to compete at this level
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Where does the data come from?</div>
+      <div class="faq-a">
+        <strong>Understat</strong> — xG and xA per player, per season (2014/15 onwards).<br>
+        <strong>Transfermarkt</strong> via the
+        <a href="https://www.kaggle.com/datasets/davidcariboo/player-scores" target="_blank">dcaribou open dataset</a>
+        — market valuations, international caps, clean positions, roster data.<br>
+        <strong>Wikipedia</strong> — 2026 World Cup squad lists.<br><br>
+        This is an independent project and is not affiliated with the Premier League, FIFA,
+        Understat, or Transfermarkt. Market values are crowd-sourced estimates, not transfer fees.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Why does my score seem low even with good players?</div>
+      <div class="faq-a">
+        The model rewards balance — a great attack paired with a weak defence will be punished
+        on the predicted-points side. Defensive quality is estimated from market value, so
+        budget centre-backs will drag the score down even if your forwards are world-class.
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Attribution -->
+  <p class="font-pixel" style="text-align:center; font-size:5px; color:var(--navy2); opacity:0.5;
+             line-height:2; letter-spacing:0.08em; margin-top:1.5rem;">
+    DATA: UNDERSTAT · TRANSFERMARKT (DCARIBOU DATASET) · WIKIPEDIA<br>
+    INDEPENDENT PROJECT · NOT AFFILIATED WITH THE PREMIER LEAGUE OR FIFA
+  </p>
+
+</div>
+</div>
+{% endblock %}

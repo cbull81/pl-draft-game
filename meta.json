@@ -5437,5 +5437,255 @@
       "club": "Verona",
       "season": "2425"
     }
-  ]
+  ],
+  "wc_teams": [
+    {
+      "name": "Austria",
+      "flag": "\ud83c\udde6\ud83c\uddf9",
+      "confederation": "UEFA"
+    },
+    {
+      "name": "Belgium",
+      "flag": "\ud83c\udde7\ud83c\uddea",
+      "confederation": "UEFA"
+    },
+    {
+      "name": "Bosnia & Herzegovina",
+      "flag": "\ud83c\udde7\ud83c\udde6",
+      "confederation": "UEFA"
+    },
+    {
+      "name": "Croatia",
+      "flag": "\ud83c\udded\ud83c\uddf7",
+      "confederation": "UEFA"
+    },
+    {
+      "name": "Czech Republic",
+      "flag": "\ud83c\udde8\ud83c\uddff",
+      "confederation": "UEFA"
+    },
+    {
+      "name": "England",
+      "flag": "\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f",
+      "confederation": "UEFA"
+    },
+    {
+      "name": "France",
+      "flag": "\ud83c\uddeb\ud83c\uddf7",
+      "confederation": "UEFA"
+    },
+    {
+      "name": "Germany",
+      "flag": "\ud83c\udde9\ud83c\uddea",
+      "confederation": "UEFA"
+    },
+    {
+      "name": "Netherlands",
+      "flag": "\ud83c\uddf3\ud83c\uddf1",
+      "confederation": "UEFA"
+    },
+    {
+      "name": "Norway",
+      "flag": "\ud83c\uddf3\ud83c\uddf4",
+      "confederation": "UEFA"
+    },
+    {
+      "name": "Portugal",
+      "flag": "\ud83c\uddf5\ud83c\uddf9",
+      "confederation": "UEFA"
+    },
+    {
+      "name": "Scotland",
+      "flag": "\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc73\udb40\udc63\udb40\udc74\udb40\udc7f",
+      "confederation": "UEFA"
+    },
+    {
+      "name": "Spain",
+      "flag": "\ud83c\uddea\ud83c\uddf8",
+      "confederation": "UEFA"
+    },
+    {
+      "name": "Sweden",
+      "flag": "\ud83c\uddf8\ud83c\uddea",
+      "confederation": "UEFA"
+    },
+    {
+      "name": "Switzerland",
+      "flag": "\ud83c\udde8\ud83c\udded",
+      "confederation": "UEFA"
+    },
+    {
+      "name": "Turkey",
+      "flag": "\ud83c\uddf9\ud83c\uddf7",
+      "confederation": "UEFA"
+    },
+    {
+      "name": "Argentina",
+      "flag": "\ud83c\udde6\ud83c\uddf7",
+      "confederation": "CONMEBOL"
+    },
+    {
+      "name": "Brazil",
+      "flag": "\ud83c\udde7\ud83c\uddf7",
+      "confederation": "CONMEBOL"
+    },
+    {
+      "name": "Colombia",
+      "flag": "\ud83c\udde8\ud83c\uddf4",
+      "confederation": "CONMEBOL"
+    },
+    {
+      "name": "Ecuador",
+      "flag": "\ud83c\uddea\ud83c\udde8",
+      "confederation": "CONMEBOL"
+    },
+    {
+      "name": "Paraguay",
+      "flag": "\ud83c\uddf5\ud83c\uddfe",
+      "confederation": "CONMEBOL"
+    },
+    {
+      "name": "Uruguay",
+      "flag": "\ud83c\uddfa\ud83c\uddfe",
+      "confederation": "CONMEBOL"
+    },
+    {
+      "name": "Canada",
+      "flag": "\ud83c\udde8\ud83c\udde6",
+      "confederation": "CONCACAF"
+    },
+    {
+      "name": "Cura\u00e7ao",
+      "flag": "\ud83c\udde8\ud83c\uddfc",
+      "confederation": "CONCACAF"
+    },
+    {
+      "name": "Haiti",
+      "flag": "\ud83c\udded\ud83c\uddf9",
+      "confederation": "CONCACAF"
+    },
+    {
+      "name": "Mexico",
+      "flag": "\ud83c\uddf2\ud83c\uddfd",
+      "confederation": "CONCACAF"
+    },
+    {
+      "name": "Panama",
+      "flag": "\ud83c\uddf5\ud83c\udde6",
+      "confederation": "CONCACAF"
+    },
+    {
+      "name": "United States",
+      "flag": "\ud83c\uddfa\ud83c\uddf8",
+      "confederation": "CONCACAF"
+    },
+    {
+      "name": "Algeria",
+      "flag": "\ud83c\udde9\ud83c\uddff",
+      "confederation": "CAF"
+    },
+    {
+      "name": "Cape Verde",
+      "flag": "\ud83c\udde8\ud83c\uddfb",
+      "confederation": "CAF"
+    },
+    {
+      "name": "DR Congo",
+      "flag": "\ud83c\udde8\ud83c\udde9",
+      "confederation": "CAF"
+    },
+    {
+      "name": "Egypt",
+      "flag": "\ud83c\uddea\ud83c\uddec",
+      "confederation": "CAF"
+    },
+    {
+      "name": "Ghana",
+      "flag": "\ud83c\uddec\ud83c\udded",
+      "confederation": "CAF"
+    },
+    {
+      "name": "Ivory Coast",
+      "flag": "\ud83c\udde8\ud83c\uddee",
+      "confederation": "CAF"
+    },
+    {
+      "name": "Morocco",
+      "flag": "\ud83c\uddf2\ud83c\udde6",
+      "confederation": "CAF"
+    },
+    {
+      "name": "Senegal",
+      "flag": "\ud83c\uddf8\ud83c\uddf3",
+      "confederation": "CAF"
+    },
+    {
+      "name": "South Africa",
+      "flag": "\ud83c\uddff\ud83c\udde6",
+      "confederation": "CAF"
+    },
+    {
+      "name": "Tunisia",
+      "flag": "\ud83c\uddf9\ud83c\uddf3",
+      "confederation": "CAF"
+    },
+    {
+      "name": "Australia",
+      "flag": "\ud83c\udde6\ud83c\uddfa",
+      "confederation": "AFC"
+    },
+    {
+      "name": "Iran",
+      "flag": "\ud83c\uddee\ud83c\uddf7",
+      "confederation": "AFC"
+    },
+    {
+      "name": "Iraq",
+      "flag": "\ud83c\uddee\ud83c\uddf6",
+      "confederation": "AFC"
+    },
+    {
+      "name": "Japan",
+      "flag": "\ud83c\uddef\ud83c\uddf5",
+      "confederation": "AFC"
+    },
+    {
+      "name": "Jordan",
+      "flag": "\ud83c\uddef\ud83c\uddf4",
+      "confederation": "AFC"
+    },
+    {
+      "name": "Qatar",
+      "flag": "\ud83c\uddf6\ud83c\udde6",
+      "confederation": "AFC"
+    },
+    {
+      "name": "Saudi Arabia",
+      "flag": "\ud83c\uddf8\ud83c\udde6",
+      "confederation": "AFC"
+    },
+    {
+      "name": "South Korea",
+      "flag": "\ud83c\uddf0\ud83c\uddf7",
+      "confederation": "AFC"
+    },
+    {
+      "name": "Uzbekistan",
+      "flag": "\ud83c\uddfa\ud83c\uddff",
+      "confederation": "AFC"
+    },
+    {
+      "name": "New Zealand",
+      "flag": "\ud83c\uddf3\ud83c\uddff",
+      "confederation": "OFC"
+    }
+  ],
+  "wc_tier_thresholds": {
+    "World Cup Champions": 1.1614155283801304,
+    "Finalists": 0.7887177844315749,
+    "Semi-finalists": 0.4210082596496289,
+    "Quarter-finalists": 0.2625634438588738,
+    "Round of 16": 0.08181688452130871,
+    "Group Stage Exit": -Infinity
+  }
 }

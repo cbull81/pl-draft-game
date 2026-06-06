@@ -1,113 +1,324 @@
 {% extends "base.html" %}
-{% block title %}38-0 — Build Your XI{% endblock %}
+{% block title %}Tacticos and Galacticos{% endblock %}
+
+{% block extra_styles %}
+.wc-flag-bg {
+  display: none;
+  position: fixed; inset: 0; z-index: 0;
+  overflow: hidden; pointer-events: none;
+  opacity: 0.35;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.wc-flag-bg.active { display: flex; }
+.flag-row {
+  display: flex; white-space: nowrap;
+  font-size: 46px; line-height: 1.4;
+  flex-shrink: 0; user-select: none;
+}
+.flag-row:nth-child(1) { animation: wc-left  38s linear infinite; }
+.flag-row:nth-child(2) { animation: wc-right 52s linear infinite; }
+.flag-row:nth-child(3) { animation: wc-left  44s linear infinite; }
+.flag-row:nth-child(4) { animation: wc-right 33s linear infinite; }
+.flag-row:nth-child(5) { animation: wc-left  58s linear infinite; }
+.flag-row:nth-child(6) { animation: wc-right 41s linear infinite; }
+.flag-row:nth-child(7) { animation: wc-left  47s linear infinite; }
+@keyframes wc-left  { from { transform: translateX(0); }    to { transform: translateX(-50%); } }
+@keyframes wc-right { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+{% endblock %}
+
 {% block content %}
+
+<!-- Animated flag background (shown in WC mode only) -->
+<div id="index-flag-bg" class="wc-flag-bg" aria-hidden="true">
+  <div class="flag-row"><span>🇦🇷 🇦🇺 🇦🇹 🇧🇪 🇧🇦 🇧🇷 🇨🇦 🇨🇻 🇨🇴 🇭🇷 🇨🇿 🇨🇩 🇪🇨 🇪🇬 🇫🇷 🇬🇭 🇩🇪 🇭🇹 🇮🇷 🇮🇶 🇨🇮 🇯🇵 🇯🇴 🇲🇽 🇲🇦 🇳🇱 🇳🇿 🇳🇴 🇵🇾 🇵🇦 🇵🇹 🇶🇦 🇸🇦 🇸🇳 🇿🇦 🇰🇷 🇪🇸 🇸🇪 🇨🇭 🇹🇳 🇹🇷 🇺🇿 🇺🇾 🏴󠁧󠁢󠁥󠁮󠁧󠁿 🏴󠁧󠁢󠁳󠁣󠁴󠁿 🇺🇸 🇨🇼 🇩🇿 &nbsp;</span><span>🇦🇷 🇦🇺 🇦🇹 🇧🇪 🇧🇦 🇧🇷 🇨🇦 🇨🇻 🇨🇴 🇭🇷 🇨🇿 🇨🇩 🇪🇨 🇪🇬 🇫🇷 🇬🇭 🇩🇪 🇭🇹 🇮🇷 🇮🇶 🇨🇮 🇯🇵 🇯🇴 🇲🇽 🇲🇦 🇳🇱 🇳🇿 🇳🇴 🇵🇾 🇵🇦 🇵🇹 🇶🇦 🇸🇦 🇸🇳 🇿🇦 🇰🇷 🇪🇸 🇸🇪 🇨🇭 🇹🇳 🇹🇷 🇺🇿 🇺🇾 🏴󠁧󠁢󠁥󠁮󠁧󠁿 🏴󠁧󠁢󠁳󠁣󠁴󠁿 🇺🇸 🇨🇼 🇩🇿 &nbsp;</span></div>
+  <div class="flag-row"><span>🇺🇸 🇲🇽 🇨🇦 🇫🇷 🇩🇪 🇧🇷 🇦🇷 🇪🇸 🇵🇹 🇳🇱 🇧🇪 🇨🇭 🇸🇪 🇳🇴 🇩🇿 🇲🇦 🇪🇬 🇸🇳 🇬🇭 🇨🇮 🇿🇦 🇹🇳 🇨🇩 🇨🇻 🇯🇵 🇰🇷 🇦🇺 🇮🇷 🇸🇦 🇶🇦 🇮🇶 🇯🇴 🇺🇿 🇺🇾 🇵🇾 🇵🇦 🇨🇴 🇪🇨 🇭🇹 🇧🇦 🇭🇷 🇨🇿 🇦🇹 🇹🇷 🇳🇿 🇨🇼 🏴󠁧󠁢󠁳󠁣󠁴󠁿 🏴󠁧󠁢󠁥󠁮󠁧󠁿 &nbsp;</span><span>🇺🇸 🇲🇽 🇨🇦 🇫🇷 🇩🇪 🇧🇷 🇦🇷 🇪🇸 🇵🇹 🇳🇱 🇧🇪 🇨🇭 🇸🇪 🇳🇴 🇩🇿 🇲🇦 🇪🇬 🇸🇳 🇬🇭 🇨🇮 🇿🇦 🇹🇳 🇨🇩 🇨🇻 🇯🇵 🇰🇷 🇦🇺 🇮🇷 🇸🇦 🇶🇦 🇮🇶 🇯🇴 🇺🇿 🇺🇾 🇵🇾 🇵🇦 🇨🇴 🇪🇨 🇭🇹 🇧🇦 🇭🇷 🇨🇿 🇦🇹 🇹🇷 🇳🇿 🇨🇼 🏴󠁧󠁢󠁳󠁣󠁴󠁿 🏴󠁧󠁢󠁥󠁮󠁧󠁿 &nbsp;</span></div>
+  <div class="flag-row"><span>🇯🇵 🇰🇷 🇦🇺 🇳🇿 🇮🇷 🇮🇶 🇸🇦 🇶🇦 🇯🇴 🇺🇿 🇺🇸 🇨🇦 🇲🇽 🇵🇦 🇭🇹 🇨🇼 🇦🇷 🇧🇷 🇺🇾 🇵🇾 🇨🇴 🇪🇨 🇫🇷 🇩🇪 🇪🇸 🇵🇹 🇧🇪 🇳🇱 🇨🇭 🇦🇹 🇸🇪 🇳🇴 🇭🇷 🇧🇦 🇨🇿 🇹🇷 🇸🇳 🇲🇦 🇩🇿 🇪🇬 🇬🇭 🇨🇮 🇿🇦 🇨🇩 🇨🇻 🇹🇳 🏴󠁧󠁢󠁥󠁮󠁧󠁿 🏴󠁧󠁢󠁳󠁣󠁴󠁿 &nbsp;</span><span>🇯🇵 🇰🇷 🇦🇺 🇳🇿 🇮🇷 🇮🇶 🇸🇦 🇶🇦 🇯🇴 🇺🇿 🇺🇸 🇨🇦 🇲🇽 🇵🇦 🇭🇹 🇨🇼 🇦🇷 🇧🇷 🇺🇾 🇵🇾 🇨🇴 🇪🇨 🇫🇷 🇩🇪 🇪🇸 🇵🇹 🇧🇪 🇳🇱 🇨🇭 🇦🇹 🇸🇪 🇳🇴 🇭🇷 🇧🇦 🇨🇿 🇹🇷 🇸🇳 🇲🇦 🇩🇿 🇪🇬 🇬🇭 🇨🇮 🇿🇦 🇨🇩 🇨🇻 🇹🇳 🏴󠁧󠁢󠁥󠁮󠁧󠁿 🏴󠁧󠁢󠁳󠁣󠁴󠁿 &nbsp;</span></div>
+  <div class="flag-row"><span>🇲🇦 🇩🇿 🇸🇳 🇪🇬 🇬🇭 🇨🇮 🇿🇦 🇨🇩 🇨🇻 🇹🇳 🇧🇷 🇦🇷 🇺🇾 🇵🇾 🇨🇴 🇪🇨 🇺🇸 🇨🇦 🇲🇽 🇨🇼 🇭🇹 🇵🇦 🏴󠁧󠁢󠁳󠁣󠁴󠁿 🏴󠁧󠁢󠁥󠁮󠁧󠁿 🇫🇷 🇩🇪 🇪🇸 🇵🇹 🇳🇱 🇧🇪 🇨🇭 🇸🇪 🇳🇴 🇹🇷 🇭🇷 🇧🇦 🇨🇿 🇦🇹 🇯🇵 🇰🇷 🇦🇺 🇳🇿 🇮🇷 🇮🇶 🇸🇦 🇶🇦 🇯🇴 🇺🇿 &nbsp;</span><span>🇲🇦 🇩🇿 🇸🇳 🇪🇬 🇬🇭 🇨🇮 🇿🇦 🇨🇩 🇨🇻 🇹🇳 🇧🇷 🇦🇷 🇺🇾 🇵🇾 🇨🇴 🇪🇨 🇺🇸 🇨🇦 🇲🇽 🇨🇼 🇭🇹 🇵🇦 🏴󠁧󠁢󠁳󠁣󠁴󠁿 🏴󠁧󠁢󠁥󠁮󠁧󠁿 🇫🇷 🇩🇪 🇪🇸 🇵🇹 🇳🇱 🇧🇪 🇨🇭 🇸🇪 🇳🇴 🇹🇷 🇭🇷 🇧🇦 🇨🇿 🇦🇹 🇯🇵 🇰🇷 🇦🇺 🇳🇿 🇮🇷 🇮🇶 🇸🇦 🇶🇦 🇯🇴 🇺🇿 &nbsp;</span></div>
+  <div class="flag-row"><span>🇨🇦 🇺🇸 🇲🇽 🇦🇷 🇧🇷 🇺🇾 🇵🇾 🇨🇴 🇪🇨 🇵🇦 🇭🇹 🇨🇼 🇫🇷 🇩🇪 🇪🇸 🇵🇹 🇧🇪 🇳🇱 🇨🇭 🇸🇪 🇳🇴 🇦🇹 🇹🇷 🇧🇦 🇭🇷 🇨🇿 🇩🇿 🇲🇦 🇸🇳 🇬🇭 🇨🇮 🇪🇬 🇿🇦 🇨🇩 🇨🇻 🇹🇳 🇯🇵 🇰🇷 🇦🇺 🇳🇿 🇮🇷 🇮🇶 🇸🇦 🇶🇦 🇯🇴 🇺🇿 🏴󠁧󠁢󠁥󠁮󠁧󠁿 🏴󠁧󠁢󠁳󠁣󠁴󠁿 &nbsp;</span><span>🇨🇦 🇺🇸 🇲🇽 🇦🇷 🇧🇷 🇺🇾 🇵🇾 🇨🇴 🇪🇨 🇵🇦 🇭🇹 🇨🇼 🇫🇷 🇩🇪 🇪🇸 🇵🇹 🇧🇪 🇳🇱 🇨🇭 🇸🇪 🇳🇴 🇦🇹 🇹🇷 🇧🇦 🇭🇷 🇨🇿 🇩🇿 🇲🇦 🇸🇳 🇬🇭 🇨🇮 🇪🇬 🇿🇦 🇨🇩 🇨🇻 🇹🇳 🇯🇵 🇰🇷 🇦🇺 🇳🇿 🇮🇷 🇮🇶 🇸🇦 🇶🇦 🇯🇴 🇺🇿 🏴󠁧󠁢󠁥󠁮󠁧󠁿 🏴󠁧󠁢󠁳󠁣󠁴󠁿 &nbsp;</span></div>
+  <div class="flag-row"><span>🇸🇦 🇮🇷 🇶🇦 🇯🇴 🇮🇶 🇺🇿 🇯🇵 🇦🇺 🇰🇷 🇳🇿 🇩🇿 🇹🇳 🇲🇦 🇸🇳 🇬🇭 🇪🇬 🇨🇮 🇿🇦 🇨🇩 🇨🇻 🇭🇷 🇨🇿 🇧🇦 🇦🇹 🇹🇷 🇧🇷 🇦🇷 🇨🇴 🇺🇾 🇵🇾 🇪🇨 🇵🇦 🇭🇹 🇨🇼 🇲🇽 🇺🇸 🇨🇦 🇫🇷 🇩🇪 🇧🇪 🇪🇸 🇵🇹 🇳🇱 🇨🇭 🇸🇪 🇳🇴 🏴󠁧󠁢󠁳󠁣󠁴󠁿 🏴󠁧󠁢󠁥󠁮󠁧󠁿 &nbsp;</span><span>🇸🇦 🇮🇷 🇶🇦 🇯🇴 🇮🇶 🇺🇿 🇯🇵 🇦🇺 🇰🇷 🇳🇿 🇩🇿 🇹🇳 🇲🇦 🇸🇳 🇬🇭 🇪🇬 🇨🇮 🇿🇦 🇨🇩 🇨🇻 🇭🇷 🇨🇿 🇧🇦 🇦🇹 🇹🇷 🇧🇷 🇦🇷 🇨🇴 🇺🇾 🇵🇾 🇪🇨 🇵🇦 🇭🇹 🇨🇼 🇲🇽 🇺🇸 🇨🇦 🇫🇷 🇩🇪 🇧🇪 🇪🇸 🇵🇹 🇳🇱 🇨🇭 🇸🇪 🇳🇴 🏴󠁧󠁢󠁳󠁣󠁴󠁿 🏴󠁧󠁢󠁥󠁮󠁧󠁿 &nbsp;</span></div>
+  <div class="flag-row"><span>🇪🇸 🇳🇱 🇩🇪 🇫🇷 🇧🇪 🇵🇹 🇨🇭 🇦🇹 🇳🇴 🇸🇪 🇹🇷 🇭🇷 🇧🇦 🇨🇿 🇰🇷 🇯🇵 🇦🇺 🇳🇿 🇶🇦 🇸🇦 🇮🇷 🇮🇶 🇯🇴 🇺🇿 🇲🇽 🇺🇸 🇨🇦 🇭🇹 🇵🇦 🇨🇼 🇦🇷 🇧🇷 🇺🇾 🇵🇾 🇨🇴 🇪🇨 🇲🇦 🇩🇿 🇸🇳 🇪🇬 🇬🇭 🇨🇮 🇿🇦 🇨🇩 🇨🇻 🇹🇳 🏴󠁧󠁢󠁥󠁮󠁧󠁿 🏴󠁧󠁢󠁳󠁣󠁴󠁿 &nbsp;</span><span>🇪🇸 🇳🇱 🇩🇪 🇫🇷 🇧🇪 🇵🇹 🇨🇭 🇦🇹 🇳🇴 🇸🇪 🇹🇷 🇭🇷 🇧🇦 🇨🇿 🇰🇷 🇯🇵 🇦🇺 🇳🇿 🇶🇦 🇸🇦 🇮🇷 🇮🇶 🇯🇴 🇺🇿 🇲🇽 🇺🇸 🇨🇦 🇭🇹 🇵🇦 🇨🇼 🇦🇷 🇧🇷 🇺🇾 🇵🇾 🇨🇴 🇪🇨 🇲🇦 🇩🇿 🇸🇳 🇪🇬 🇬🇭 🇨🇮 🇿🇦 🇨🇩 🇨🇻 🇹🇳 🏴󠁧󠁢󠁥󠁮󠁧󠁿 🏴󠁧󠁢󠁳󠁣󠁴󠁿 &nbsp;</span></div>
+</div>
+
+<!-- FAQ button (lower-left corner) -->
+<a href="/faq" class="font-pixel"
+   style="position:fixed; bottom:18px; left:18px; z-index:100;
+          width:36px; height:36px; border-radius:50%;
+          background:var(--navy); color:#ffffff;
+          border:2px solid var(--navy); box-shadow:3px 3px 0 var(--sh);
+          display:flex; align-items:center; justify-content:center;
+          font-size:10px; text-decoration:none; letter-spacing:0;
+          transition:transform 0.1s;"
+   onmouseover="this.style.transform='translateY(-2px)'"
+   onmouseout="this.style.transform='none'"
+   title="FAQ">?</a>
+
+<!-- Mode toggle (upper-right corner) -->
+<div id="mode-toggle"
+     style="position:fixed; top:14px; right:18px; z-index:100;
+            display:flex; align-items:center; gap:10px; user-select:none;">
+  <span id="toggle-label-league" class="font-pixel"
+        style="font-size:6px; color:var(--navy); letter-spacing:0.08em; transition:opacity 0.2s;">
+    LEAGUE
+  </span>
+
+  <!-- Toggle pill -->
+  <div id="toggle-pill"
+       onclick="switchMode()"
+       style="width:48px; height:26px; background:var(--navy); border:2px solid var(--navy);
+              border-radius:13px; position:relative; cursor:pointer;
+              box-shadow:3px 3px 0 var(--sh); transition:background 0.2s;">
+    <div id="toggle-knob"
+         style="width:18px; height:18px; border-radius:50%; background:var(--yellow);
+                position:absolute; top:2px; left:2px; transition:transform 0.2s;"></div>
+  </div>
+
+  <span id="toggle-label-wc" class="font-pixel"
+        style="font-size:6px; color:var(--navy2); letter-spacing:0.08em; opacity:0.45; transition:opacity 0.2s;">
+    🌍 WC 2026
+  </span>
+</div>
 
 <div style="min-height:100vh; overflow-y:auto; display:flex; flex-direction:column;
             align-items:center; justify-content:center; padding:3rem 1.5rem;">
-<div style="width:100%; max-width:620px;">
+<div style="width:100%; max-width:620px; position:relative; z-index:1;">
 
-  <!-- Title -->
-  <div style="text-align:center; margin-bottom:3rem;">
-    <h1 class="font-pixel"
-        style="font-size:clamp(2.5rem,9vw,5rem); color:var(--navy);
-               text-shadow:5px 5px 0 var(--border), 9px 9px 0 rgba(30,58,95,0.15);
-               line-height:1.1; margin-bottom:1.5rem;">
-      38-0
-    </h1>
-    <div class="font-pixel"
-         style="font-size:8px; color:var(--navy2); letter-spacing:0.15em; margin-bottom:1rem;">
-      CAN YOU GO UNBEATEN?
-    </div>
-    <p style="color:var(--navy2); font-size:14px; opacity:0.7;">
-      11 rounds · blind draft · expected-points scoring
-    </p>
-  </div>
+  <!-- ── LEAGUE MODE ───────────────────────────────────────────────── -->
+  <div id="league-mode">
+  <!-- Outer frame: yellow fill + navy border + pixel shadow -->
+  <div style="background:var(--yellow); border:3px solid var(--navy);
+              box-shadow:5px 5px 0 var(--sh); border-radius:12px; padding:5px;">
+  <!-- Inner card -->
+  <div style="background:#ffffff; border-radius:9px; padding:2rem;">
 
-  <form method="POST" action="/start">
-
-    <!-- LEAGUE -->
-    <div style="margin-bottom:2rem;">
+    <!-- Title -->
+    <div style="text-align:center; margin-bottom:3rem;">
+      <h1 class="font-pixel"
+          style="font-size:clamp(1.4rem,4vw,2.6rem); color:var(--navy);
+                 text-shadow:3px 3px 0 var(--border), 5px 5px 0 rgba(30,58,95,0.12);
+                 line-height:1.5; margin-bottom:1.5rem;">
+        Tacticos &amp;<br>Galacticos
+      </h1>
       <div class="font-pixel"
-           style="font-size:8px; color:var(--navy); letter-spacing:0.1em; margin-bottom:12px;">
-        &gt; SELECT LEAGUE
+           style="font-size:8px; color:var(--navy2); letter-spacing:0.15em; margin-bottom:1rem;">
+        A FOOTBALL DRAFT GAME
       </div>
-      <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:8px;">
-        {% for lid, name, flag in league_options %}
-        <label style="cursor:pointer; display:block;">
-          <input type="radio" name="league" value="{{ lid }}" required
-                 {% if loop.first %}checked{% endif %}
-                 style="position:absolute; opacity:0; width:0; height:0;" class="opt-radio">
-          <div class="opt-card px-box-sm"
-               style="background:var(--panel); padding:12px 6px; text-align:center;
-                      cursor:pointer; transition:all 0.08s; border-radius:4px;">
-            <div style="font-size:1.7rem; margin-bottom:5px;">{{ flag }}</div>
-            <div style="font-size:9px; font-weight:800; color:var(--navy); line-height:1.3;">{{ name }}</div>
-          </div>
-        </label>
-        {% endfor %}
-      </div>
+      <p style="color:var(--navy2); font-size:14px; opacity:0.7;">
+        11 rounds · blind draft · expected-points scoring
+      </p>
     </div>
 
-    <!-- FORMATION -->
-    <div style="margin-bottom:2.5rem;">
-      <div class="font-pixel"
-           style="font-size:8px; color:var(--navy); letter-spacing:0.1em; margin-bottom:12px;">
-        &gt; CHOOSE FORMATION
+    <form method="POST" action="/start">
+
+      <!-- LEAGUE -->
+      <div style="margin-bottom:2rem;">
+        <div class="font-pixel"
+             style="font-size:8px; color:var(--navy); letter-spacing:0.1em; margin-bottom:12px;">
+          &gt; SELECT LEAGUE
+        </div>
+        <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:8px;">
+          {% for lid, name, flag in league_options %}
+          <label style="cursor:pointer; display:block;">
+            <input type="radio" name="league" value="{{ lid }}" required
+                   {% if loop.first %}checked{% endif %}
+                   style="position:absolute; opacity:0; width:0; height:0;" class="opt-radio">
+            <div class="opt-card px-box-sm"
+                 style="background:var(--panel); padding:12px 6px; text-align:center;
+                        cursor:pointer; transition:all 0.08s; border-radius:4px;">
+              <div style="font-size:1.7rem; margin-bottom:5px;">{{ flag }}</div>
+              <div style="font-size:9px; font-weight:800; color:var(--navy); line-height:1.3;">{{ name }}</div>
+            </div>
+          </label>
+          {% endfor %}
+        </div>
       </div>
-      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:8px;">
-        {% for fname, slots in formations.items() %}
-        <label style="cursor:pointer; display:block;">
-          <input type="radio" name="formation" value="{{ fname }}" required
-                 {% if loop.first %}checked{% endif %}
-                 style="position:absolute; opacity:0; width:0; height:0;" class="opt-radio">
-          <div class="opt-card px-box-sm"
-               style="background:var(--panel); padding:12px; cursor:pointer;
-                      transition:all 0.08s; border-radius:4px;">
-            <div class="font-pixel" style="font-size:9px; color:var(--navy); margin-bottom:10px;">{{ fname }}</div>
-            <div style="background:#2d8a42; padding:8px; border-radius:3px;
-                        display:flex; flex-direction:column; gap:5px;">
-              {% for bucket, count, col in [("FWD",slots.FWD,"var(--col-fwd)"),("MID",slots.MID,"var(--col-mid)"),("DEF",slots.DEF,"var(--col-def)"),("GK",slots.GK,"var(--col-gk)")] %}
-              <div style="display:flex; justify-content:center; gap:4px;">
-                {% for _ in range(count) %}
-                <div style="width:12px; height:12px; border-radius:50%; background:{{ col }};
-                            border:1px solid rgba(255,255,255,0.4);"></div>
+
+      <!-- FORMATION -->
+      <div style="margin-bottom:2.5rem;">
+        <div class="font-pixel"
+             style="font-size:8px; color:var(--navy); letter-spacing:0.1em; margin-bottom:12px;">
+          &gt; CHOOSE FORMATION
+        </div>
+        <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:8px;">
+          {% for fname, slots in formations.items() %}
+          <label style="cursor:pointer; display:block;">
+            <input type="radio" name="formation" value="{{ fname }}" required
+                   {% if loop.first %}checked{% endif %}
+                   style="position:absolute; opacity:0; width:0; height:0;" class="opt-radio">
+            <div class="opt-card px-box-sm"
+                 style="background:var(--panel); padding:12px; cursor:pointer;
+                        transition:all 0.08s; border-radius:4px;">
+              <div class="font-pixel" style="font-size:9px; color:var(--navy); margin-bottom:10px;">{{ fname }}</div>
+              <div style="background:#2d8a42; padding:8px; border-radius:3px;
+                          display:flex; flex-direction:column; gap:5px;">
+                {% for bucket, count, col in [("FWD",slots.FWD,"var(--col-fwd)"),("MID",slots.MID,"var(--col-mid)"),("DEF",slots.DEF,"var(--col-def)"),("GK",slots.GK,"var(--col-gk)")] %}
+                <div style="display:flex; justify-content:center; gap:4px;">
+                  {% for _ in range(count) %}
+                  <div style="width:12px; height:12px; border-radius:50%; background:{{ col }};
+                              border:1px solid rgba(255,255,255,0.4);"></div>
+                  {% endfor %}
+                </div>
                 {% endfor %}
               </div>
-              {% endfor %}
             </div>
-          </div>
-        </label>
-        {% endfor %}
+          </label>
+          {% endfor %}
+        </div>
       </div>
+
+      <!-- START -->
+      <div style="text-align:center; padding-bottom:2rem;">
+        <button type="submit" class="font-pixel"
+                style="font-size:11px; background:var(--yellow); color:var(--navy);
+                       border:3px solid var(--navy); box-shadow:6px 6px 0 var(--sh);
+                       padding:16px 52px; cursor:pointer; letter-spacing:0.1em;
+                       border-radius:4px; transition:transform 0.08s;"
+                onmouseover="this.style.transform='translateY(-2px)'"
+                onmouseout="this.style.transform='none'"
+                onmousedown="this.style.transform='translateY(3px)'">
+          KICK OFF ▶
+        </button>
+      </div>
+
+    </form>
+  </div><!-- /inner card -->
+  </div><!-- /outer frame -->
+  </div>
+
+  <!-- ── WORLD CUP MODE ────────────────────────────────────────────── -->
+  <div id="wc-mode" style="display:none;">
+  <!-- Outer frame: Olympic 5-colour diagonal repeat + navy border + pixel shadow -->
+  <div style="background:repeating-linear-gradient(135deg,#0085c7 0px 28px,#f0b400 28px 56px,#1a1a2e 56px 84px,#009f3d 84px 112px,#e63329 112px 140px);
+              border:3px solid var(--navy); box-shadow:5px 5px 0 rgba(26,26,46,0.3);
+              border-radius:12px; padding:5px;">
+  <!-- Inner card -->
+  <div style="background:#ffffff; border-radius:9px; padding:2rem;">
+
+    <!-- WC Title -->
+    <div style="text-align:center; margin-bottom:3rem;">
+      <h1 class="font-pixel"
+          style="font-size:clamp(1.4rem,4vw,2.6rem); color:var(--navy);
+                 text-shadow:3px 3px 0 var(--border), 5px 5px 0 rgba(30,58,95,0.12);
+                 line-height:1.5; margin-bottom:1.5rem;">
+        Tacticos &amp;<br>Galacticos
+      </h1>
+      <div class="font-pixel" style="font-size:8px; letter-spacing:0.15em; margin-bottom:1rem;">
+        <span style="color:#0085c7;">WORLD CUP</span>
+        <span style="color:#6b7280;"> · </span>
+        <span style="color:#e63329;">2026 EDITION</span>
+      </div>
+      <p style="color:var(--navy2); font-size:14px; opacity:0.7;">
+        48 nations · blind draft · tournament predictor
+      </p>
     </div>
 
-    <!-- START -->
-    <div style="text-align:center; padding-bottom:2rem;">
-      <button type="submit" class="font-pixel"
-              style="font-size:11px; background:var(--yellow); color:var(--navy);
-                     border:3px solid var(--navy); box-shadow:6px 6px 0 var(--sh);
-                     padding:16px 52px; cursor:pointer; letter-spacing:0.1em;
-                     border-radius:4px; transition:transform 0.08s;"
-              onmouseover="this.style.transform='translateY(-2px)'"
-              onmouseout="this.style.transform='none'"
-              onmousedown="this.style.transform='translateY(3px)'">
-        KICK OFF ▶
-      </button>
-    </div>
+    <form method="POST" action="/wc/start">
 
-  </form>
+      <!-- WC FORMATION -->
+      <div style="margin-bottom:2.5rem;">
+        <div class="font-pixel"
+             style="font-size:8px; color:var(--navy); letter-spacing:0.1em; margin-bottom:12px;">
+          &gt; CHOOSE FORMATION
+        </div>
+        <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:8px;">
+          {% for fname, slots in formations.items() %}
+          <label style="cursor:pointer; display:block;">
+            <input type="radio" name="formation" value="{{ fname }}" required
+                   {% if loop.first %}checked{% endif %}
+                   style="position:absolute; opacity:0; width:0; height:0;" class="wc-opt-radio">
+            <div class="wc-opt-card px-box-sm"
+                 style="background:var(--panel); padding:12px; cursor:pointer; transition:all 0.08s; border-radius:4px;">
+              <div class="font-pixel" style="font-size:9px; color:#1a1a2e; margin-bottom:10px;">{{ fname }}</div>
+              <div style="background:#2d8a42; padding:8px; border-radius:3px;
+                          display:flex; flex-direction:column; gap:5px;">
+                {% for bucket, count, col in [("FWD",slots.FWD,"#df9800"),("MID",slots.MID,"#009f3d"),("DEF",slots.DEF,"#0085c7"),("GK",slots.GK,"#e63329")] %}
+                <div style="display:flex; justify-content:center; gap:4px;">
+                  {% for _ in range(count) %}
+                  <div style="width:12px; height:12px; border-radius:50%; background:{{ col }};
+                              border:1px solid rgba(255,255,255,0.4);"></div>
+                  {% endfor %}
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+          </label>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- WC START -->
+      <div style="text-align:center; padding-bottom:2rem;">
+        <button type="submit" class="font-pixel"
+                style="font-size:11px; background:#1a1a2e; color:#ffffff;
+                       border:3px solid #0d0d1a; box-shadow:6px 6px 0 rgba(26,26,46,0.35);
+                       padding:16px 52px; cursor:pointer; letter-spacing:0.1em;
+                       border-radius:4px; transition:transform 0.08s;"
+                onmouseover="this.style.transform='translateY(-2px)'"
+                onmouseout="this.style.transform='none'"
+                onmousedown="this.style.transform='translateY(3px)'">
+          KICK OFF ▶
+        </button>
+      </div>
+
+    </form>
+  </div><!-- /inner card -->
+  </div><!-- /outer frame -->
+  </div>
 
   <!-- Attribution -->
   <p class="font-pixel" style="text-align:center; font-size:5px; color:var(--navy2); opacity:0.5;
-             line-height:2; letter-spacing:0.08em;">
-    DATA: UNDERSTAT · TRANSFERMARKT (DCARIBOU DATASET)<br>
-    INDEPENDENT PROJECT · NOT AFFILIATED WITH THE PREMIER LEAGUE
+             line-height:2; letter-spacing:0.08em; margin-top:2rem;">
+    DATA: UNDERSTAT · TRANSFERMARKT (DCARIBOU DATASET) · WIKIPEDIA<br>
+    INDEPENDENT PROJECT · NOT AFFILIATED WITH THE PREMIER LEAGUE OR FIFA
   </p>
 
 </div>
 </div>
 
 <script>
+var _wcMode = false;
+
+function switchMode() {
+  _wcMode = !_wcMode;
+  var knob   = document.getElementById('toggle-knob');
+  var pill   = document.getElementById('toggle-pill');
+  var lblWC  = document.getElementById('toggle-label-wc');
+  var lblLg  = document.getElementById('toggle-label-league');
+  var wc     = document.getElementById('wc-mode');
+  var league = document.getElementById('league-mode');
+
+  var flagBg = document.getElementById('index-flag-bg');
+
+  if (_wcMode) {
+    knob.style.transform = 'translateX(22px)';
+    pill.style.background = '#1a1a2e';
+    pill.style.borderColor = '#1a1a2e';
+    knob.style.background = '#e63329';
+    lblWC.style.opacity = '1';
+    lblWC.style.color = '#1a1a2e';
+    lblLg.style.opacity = '0.35';
+    wc.style.display = 'block';
+    league.style.display = 'none';
+    document.body.style.background = '#f9f9f9';
+    document.body.style.backgroundImage = 'none';
+    if (flagBg) flagBg.classList.add('active');
+  } else {
+    knob.style.transform = 'translateX(0)';
+    pill.style.background = 'var(--navy)';
+    pill.style.borderColor = 'var(--navy)';
+    knob.style.background = 'var(--yellow)';
+    lblWC.style.opacity = '0.45';
+    lblWC.style.color = 'var(--navy2)';
+    lblLg.style.opacity = '1';
+    wc.style.display = 'none';
+    league.style.display = 'block';
+    document.body.style.background = '';
+    document.body.style.backgroundImage = '';
+    if (flagBg) flagBg.classList.remove('active');
+  }
+}
+
+// League radio card highlight
 (function() {
   function sync() {
     document.querySelectorAll('label').forEach(function(lbl) {
@@ -128,6 +339,30 @@
   sync();
   document.querySelectorAll('.opt-radio').forEach(function(r) {
     r.addEventListener('change', sync);
+  });
+})();
+
+// WC formation card highlight
+(function() {
+  function syncWC() {
+    document.querySelectorAll('label').forEach(function(lbl) {
+      var r = lbl.querySelector('.wc-opt-radio');
+      var c = lbl.querySelector('.wc-opt-card');
+      if (!r || !c) return;
+      if (r.checked) {
+        c.style.background = '#fef9c3';
+        c.style.borderColor = 'var(--navy)';
+        c.style.boxShadow = '3px 3px 0 var(--yellow2)';
+      } else {
+        c.style.background = 'var(--panel)';
+        c.style.borderColor = 'var(--navy)';
+        c.style.boxShadow = '3px 3px 0 var(--sh)';
+      }
+    });
+  }
+  syncWC();
+  document.querySelectorAll('.wc-opt-radio').forEach(function(r) {
+    r.addEventListener('change', syncWC);
   });
 })();
 </script>

@@ -34,9 +34,9 @@
             hx-target="#round-content"
             hx-swap="innerHTML"
             class="font-pixel"
-            style="font-size:6px; background:var(--yellow); color:var(--navy);
-                   border:2px solid var(--navy); box-shadow:3px 3px 0 var(--sh);
-                   padding:7px 11px; cursor:pointer; white-space:nowrap;
+            style="font-size:7px; background:var(--yellow); color:var(--navy);
+                   border:3px solid var(--navy); box-shadow:4px 4px 0 var(--sh);
+                   padding:10px 16px; cursor:pointer; white-space:nowrap;
                    border-radius:3px; flex-shrink:0; transition:transform 0.08s;"
             onmouseover="this.style.transform='translateY(-1px)'"
             onmouseout="this.style.transform='none'">
@@ -78,7 +78,7 @@
         {{ p.sub_position or p.primary_bucket }}
       </span>
       {% if p.games is not none %}
-      <span style="font-size:9px; font-weight:800; color:rgba(255,255,255,0.8);">{{ p.games | int }}g</span>
+      <span style="font-size:9px; font-weight:800; color:rgba(255,255,255,0.8);">{{ p.games | int }}/{{ max_games }}g</span>
       {% endif %}
     </div>
 
