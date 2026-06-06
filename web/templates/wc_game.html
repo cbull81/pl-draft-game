@@ -49,6 +49,17 @@ body {
 
 @keyframes wc-left  { from { transform: translateX(0); }    to { transform: translateX(-50%); } }
 @keyframes wc-right { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+
+@media (max-width: 640px) {
+  .wc-game-body        { flex-direction: column !important; height: auto !important;
+                         min-height: calc(100vh - 46px) !important; overflow-y: auto !important;
+                         padding: 6px !important; gap: 6px !important; }
+  .wc-pitch-panel      { height: 36vh !important; flex: none !important;
+                         padding: 8px 6px !important; }
+  #wc-round-content    { flex: 1 !important; min-width: 0 !important;
+                         min-height: 52vh !important; overflow-y: auto !important; }
+  .wc-header-nations   { display: none !important; }
+}
 {% endblock %}
 
 {% block content %}
@@ -75,7 +86,7 @@ body {
       <span>{{ state.formation }}</span>
       <span>RD <strong style="color:#fff;">{{ state.round + 1 }}</strong>/11</span>
     </div>
-    <span class="font-pixel" style="font-size:6px; color:rgba(255,255,255,0.4); letter-spacing:0.06em;">48 NATIONS</span>
+    <span class="font-pixel wc-header-nations" style="font-size:6px; color:rgba(255,255,255,0.4); letter-spacing:0.06em;">48 NATIONS</span>
   </div>
   <!-- Olympic 5-colour stripe -->
   <div style="height:4px; display:flex;">
@@ -88,11 +99,11 @@ body {
 </div>
 
 <!-- Body: float panels with gap so flag background shows through -->
-<div style="position:relative; z-index:1; display:flex; height:calc(100vh - 46px);
+<div class="wc-game-body" style="position:relative; z-index:1; display:flex; height:calc(100vh - 46px);
             padding:10px; gap:10px; overflow:hidden;">
 
   <!-- PITCH (white panel floating on flag bg) -->
-  <div style="flex:2; min-width:0; overflow:hidden; display:flex; flex-direction:column;
+  <div class="wc-pitch-panel" style="flex:2; min-width:0; overflow:hidden; display:flex; flex-direction:column;
               background:#ffffff; border-radius:8px;
               border:2px solid var(--border); box-shadow:0 2px 12px rgba(26,26,46,0.12);
               padding:14px 10px 10px 14px;">

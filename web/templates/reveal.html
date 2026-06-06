@@ -1,5 +1,36 @@
 {% extends "base.html" %}
 {% block title %}Tacticos &amp; Galacticos — Final Score{% endblock %}
+
+{% block extra_styles %}
+@media (max-width: 640px) {
+  .reveal-hero      { grid-template-columns: 1fr !important; }
+  .reveal-art-col   { display: none !important; }
+  .reveal-score-col { border-left: none !important; border-right: none !important;
+                      padding: 18px 16px !important; }
+  .reveal-stats-col { border-top: 2px solid rgba(0,0,0,0.12); padding: 14px 16px !important; }
+  .reveal-main-grid   { grid-template-columns: 1fr !important; }
+  .reveal-pitch-panel { height: 400px !important; }
+  .reveal-squad-panel { height: 360px !important; }
+  .reveal-breakdown-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .reveal-pos-grid        { grid-template-columns: repeat(2, 1fr) !important; }
+  .squad-stat-row { gap: 8px !important; padding: 0 6px !important; flex-wrap: wrap !important; }
+  .squad-stat-row > div { min-width: 36px; }
+  .reveal-header-title { display: none !important; }
+}
+@media (max-height: 500px) and (orientation: landscape) {
+  .reveal-main-grid   { grid-template-columns: 0.55fr 1fr !important; }
+  .reveal-pitch-panel { height: 320px !important; }
+  .reveal-squad-panel { height: 320px !important; }
+  .squad-stat-row     { display: none !important; }
+  .squad-club-stacked { display: none !important; }
+  /* Club/season inline next to player name */
+  .squad-player-info              { display: flex !important; align-items: center !important; gap: 8px !important; }
+  .squad-player-info > div:first-child { margin-bottom: 0 !important; }
+  .squad-club-wide                { font-size: 9px !important; opacity: 0.65; white-space: nowrap;
+                                    overflow: hidden; text-overflow: ellipsis; }
+}
+{% endblock %}
+
 {% block content %}
 
 {% set tier = result.tier %}
@@ -21,7 +52,7 @@
 <div style="height:46px; background:var(--navy); border-bottom:3px solid var(--navy);
             box-shadow:0 3px 0 var(--sh); display:flex; align-items:center;
             justify-content:space-between; padding:0 18px; flex-shrink:0;">
-  <span class="font-pixel" style="font-size:9px; color:var(--yellow); text-shadow:2px 2px 0 var(--yellow2);">Tacticos &amp; Galacticos</span>
+  <span class="font-pixel reveal-header-title" style="font-size:9px; color:var(--yellow); text-shadow:2px 2px 0 var(--yellow2);">Tacticos &amp; Galacticos</span>
   <span class="font-pixel" style="font-size:7px; color:rgba(255,255,255,0.45); letter-spacing:0.1em;">FINAL RESULT</span>
   <a href="/" class="font-pixel"
      style="font-size:6px; color:var(--yellow); text-decoration:none; letter-spacing:0.08em;
@@ -31,16 +62,16 @@
   </a>
 </div>
 
-<div style="min-height:calc(100vh - 46px); overflow-y:auto;">
-<div style="max-width:1100px; margin:0 auto; padding:16px 16px 48px;">
+<div style="height:calc(100vh - 46px); overflow-y:auto; -webkit-overflow-scrolling:touch;">
+<div style="max-width:1100px; margin:0 auto; padding:16px 16px 48px; overflow-x:hidden;">
 
 <!-- ─── Hero: ASCII art + Score + Art ──────────────────────── -->
-<div class="px-box" style="background:{{ tBg }}; border-color:{{ tBdr }}; margin-bottom:16px;
+<div class="px-box reveal-hero" style="background:{{ tBg }}; border-color:{{ tBdr }}; margin-bottom:16px;
             border-radius:6px; display:grid; grid-template-columns:1fr auto 1fr;
             align-items:center; gap:0; overflow:hidden;">
 
   <!-- Left: pixel art -->
-  <div style="padding:24px 16px; display:flex; flex-direction:column;
+  <div class="reveal-art-col" style="padding:24px 16px; display:flex; flex-direction:column;
               align-items:center; justify-content:center; gap:10px;">
     {% set art = tier_art %}
     {% set px = '20px' %}
@@ -55,7 +86,7 @@
   </div>
 
   <!-- Score (center column) -->
-  <div style="padding:32px 40px; text-align:center; border-left:3px solid {{ tBdr }};
+  <div class="reveal-score-col" style="padding:32px 40px; text-align:center; border-left:3px solid {{ tBdr }};
               border-right:3px solid {{ tBdr }};">
     <div class="font-pixel" style="font-size:7px; color:{{ tc }}; letter-spacing:0.15em; margin-bottom:12px; opacity:0.7;">
       PREDICTED POINTS
@@ -80,8 +111,8 @@
     {% endif %}
   </div>
 
-  <!-- Right ASCII art (mirrored feel, slightly different) -->
-  <div style="padding:24px 16px; display:flex; align-items:center; justify-content:center;">
+  <!-- Right: squad stats -->
+  <div class="reveal-stats-col" style="padding:24px 16px; display:flex; align-items:center; justify-content:center;">
     {% set bd = result.breakdown %}
     {% set pg = result.pedigree %}
     <div style="display:flex; flex-direction:column; gap:10px; width:100%;">
@@ -115,16 +146,16 @@
 </div>
 
 <!-- ─── Pitch + Squad list ──────────────────────────────────── -->
-<div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;">
+<div class="reveal-main-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;">
 
   <!-- Pitch -->
-  <div class="px-box" style="background:var(--panel); border-radius:6px; padding:14px;
+  <div class="px-box reveal-pitch-panel" style="background:var(--panel); border-radius:6px; padding:14px;
               height:480px; display:flex; flex-direction:column;">
     {% include "partials/formation.html" %}
   </div>
 
   <!-- Squad list -->
-  <div class="px-box" style="background:var(--panel); border-radius:6px; overflow:hidden;
+  <div class="px-box reveal-squad-panel" style="background:var(--panel); border-radius:6px; overflow:hidden;
               height:480px; display:flex; flex-direction:column;">
     <div style="flex-shrink:0; padding:10px 14px; border-bottom:2px solid var(--border);">
       <span class="font-pixel" style="font-size:7px; color:var(--navy); letter-spacing:0.08em;">FULL SQUAD</span>
@@ -143,7 +174,7 @@
         <!-- Position colour strip -->
         <div style="width:5px; align-self:stretch; background:{{ lc }}; flex-shrink:0;"></div>
         <!-- Player info -->
-        <div style="flex:1; min-width:0; padding:9px 11px;">
+        <div class="squad-player-info" style="flex:1; min-width:0; padding:9px 11px;">
           <div style="display:flex; align-items:center; gap:7px; margin-bottom:2px;">
             <span class="font-pixel" style="font-size:6px; color:{{ lc }};">{{ row.bucket }}</span>
             <span style="font-size:13px; font-weight:900; color:var(--navy);
@@ -151,13 +182,19 @@
               {{ player.player_name }}
             </span>
           </div>
-          <div style="font-size:10px; font-weight:700; color:var(--navy2);">
+          <div class="squad-club-wide" style="font-size:10px; font-weight:700; color:var(--navy2);">
             {{ player.club }} &nbsp;·&nbsp; {{ player.season[:2] }}/{{ player.season[2:] }}
           </div>
         </div>
-        <!-- Key stats: all four in a horizontal row -->
+        <!-- Stats + club/season label (stacked above stats in landscape) -->
         {% set vz = (player.get('age_adj_value_z') or player.get('value_z')) if player is mapping else none %}
-        <div style="display:flex; align-items:center; gap:14px; padding:0 12px; flex-shrink:0;">
+        <div style="display:flex; flex-direction:column; align-items:flex-end; flex-shrink:0;">
+          <div class="squad-club-stacked" style="display:none; font-size:9px; font-weight:700;
+               color:var(--navy2); padding:4px 12px 0; white-space:nowrap;
+               overflow:hidden; text-overflow:ellipsis; max-width:200px;">
+            {{ player.club }} &nbsp;·&nbsp; {{ player.season[:2] }}/{{ player.season[2:] }}
+          </div>
+        <div class="squad-stat-row" style="display:flex; align-items:center; gap:14px; padding:0 12px; flex-shrink:0;">
           {% if player.npxg_pg is not none %}
           <div style="text-align:center;">
             <div style="font-size:12px; font-weight:800; color:var(--navy);">{{ "%.2f"|format(player.npxg_pg) }}</div>
@@ -186,6 +223,7 @@
           </div>
           {% endif %}
         </div>
+        </div><!-- /stats+label wrapper -->
       </div>
       {% endfor %}
       {% endfor %}
@@ -200,7 +238,7 @@
     MODEL BREAKDOWN
   </div>
   {% set bd = result.breakdown %}
-  <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:0; border:2px solid var(--border); border-radius:4px; overflow:hidden;">
+  <div class="reveal-breakdown-grid" style="display:grid; grid-template-columns:repeat(4,1fr); gap:0; border:2px solid var(--border); border-radius:4px; overflow:hidden;">
     {% set base_pts_display = result.breakdown.base_pts %}
     {% set games_bonus_display = result.breakdown.games_bonus %}
     {% set champ_bonus_display = result.breakdown.champion_bonus %}
@@ -244,7 +282,7 @@
   {% endif %}
 
   <!-- Position value breakdown -->
-  <div style="margin-top:14px; display:grid; grid-template-columns:repeat(4,1fr); gap:10px;">
+  <div class="reveal-pos-grid" style="margin-top:14px; display:grid; grid-template-columns:repeat(4,1fr); gap:10px;">
     {% for bucket, key in [("GK","gk_value_z"),("DEF","def_value_z"),("MID","mid_value_z"),("FWD","fwd_value_z")] %}
     {% set vv = bd.position_value.get(key, 0) %}
     {% if bucket == 'GK' %}{% set bc='var(--col-gk)' %}
