@@ -1,12 +1,23 @@
 {% extends "base.html" %}
 {% block title %}Tacticos &amp; Galacticos — Round {{ state.round + 1 }}/11{% endblock %}
+{% block extra_styles %}
+@media (max-width: 640px) {
+  .game-body        { flex-direction: column !important; }
+  .game-pitch-panel { height: 36vh !important; flex: none !important; padding: 8px 6px !important; }
+  #round-content    { flex: 1 !important; min-width: 0 !important; overflow-y: auto !important;
+                      border-left: none !important; border-top: 3px solid var(--navy) !important;
+                      box-shadow: 0 -3px 0 var(--sh) !important; }
+  .game-header-title { display: none !important; }
+}
+{% endblock %}
+
 {% block content %}
 
 <!-- Header -->
 <div style="height:46px; background:var(--navy); border-bottom:3px solid var(--navy);
             box-shadow:0 3px 0 var(--sh); display:flex; align-items:center;
             justify-content:space-between; padding:0 18px; flex-shrink:0;">
-  <span class="font-pixel"
+  <span class="font-pixel game-header-title"
         style="font-size:9px; color:var(--yellow); text-shadow:2px 2px 0 var(--yellow2);">
     Tacticos &amp; Galacticos
   </span>
@@ -22,10 +33,10 @@
 </div>
 
 <!-- Body: PITCH (flex:2) | CANDIDATES (flex:1) -->
-<div style="display:flex; height:calc(100vh - 46px); overflow:hidden;">
+<div class="game-body" style="display:flex; height:calc(100vh - 46px); overflow:hidden;">
 
   <!-- PITCH — 2/3 of the screen -->
-  <div style="flex:2; min-width:0; overflow:hidden; display:flex; flex-direction:column;
+  <div class="game-pitch-panel" style="flex:2; min-width:0; overflow:hidden; display:flex; flex-direction:column;
               padding:14px 10px 10px 14px;">
     <div id="formation-sidebar"
          style="flex:1; min-height:0; display:flex; flex-direction:column;">

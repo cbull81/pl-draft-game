@@ -25,6 +25,17 @@
 .flag-row:nth-child(7) { animation: wc-left  47s linear infinite; }
 @keyframes wc-left  { from { transform: translateX(0); }    to { transform: translateX(-50%); } }
 @keyframes wc-right { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+
+@media (max-width: 480px) {
+  /* Reduce outer padding so the card uses full width on small phones */
+  .index-outer { padding: 1.5rem 0.75rem !important; }
+  /* League grid: 5-col is too tight, drop to 3-col wrapping */
+  .league-grid  { grid-template-columns: repeat(3, 1fr) !important; }
+  /* Formation grid: 3-col is fine, just tighten the inner padding */
+  .formation-grid .opt-card { padding: 8px !important; }
+  /* Mode toggle: smaller gap so it doesn't push into the card */
+  #mode-toggle { gap: 6px !important; }
+}
 {% endblock %}
 
 {% block content %}
@@ -79,7 +90,7 @@
   </span>
 </div>
 
-<div style="min-height:100vh; overflow-y:auto; display:flex; flex-direction:column;
+<div class="index-outer" style="min-height:100vh; overflow-y:auto; display:flex; flex-direction:column;
             align-items:center; justify-content:center; padding:3rem 1.5rem;">
 <div style="width:100%; max-width:620px; position:relative; z-index:1;">
 
@@ -116,7 +127,7 @@
              style="font-size:8px; color:var(--navy); letter-spacing:0.1em; margin-bottom:12px;">
           &gt; SELECT LEAGUE
         </div>
-        <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:8px;">
+        <div class="league-grid" style="display:grid; grid-template-columns:repeat(5,1fr); gap:8px;">
           {% for lid, name, flag in league_options %}
           <label style="cursor:pointer; display:block;">
             <input type="radio" name="league" value="{{ lid }}" required
@@ -139,7 +150,7 @@
              style="font-size:8px; color:var(--navy); letter-spacing:0.1em; margin-bottom:12px;">
           &gt; CHOOSE FORMATION
         </div>
-        <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:8px;">
+        <div class="formation-grid" style="display:grid; grid-template-columns:repeat(3,1fr); gap:8px;">
           {% for fname, slots in formations.items() %}
           <label style="cursor:pointer; display:block;">
             <input type="radio" name="formation" value="{{ fname }}" required
