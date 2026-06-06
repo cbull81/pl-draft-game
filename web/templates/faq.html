@@ -45,10 +45,11 @@
     <div class="faq-item">
       <div class="faq-q">What is Tacticos &amp; Galacticos?</div>
       <div class="faq-a">
-        A blind football draft game inspired by <a href="https://www.82-0.com" target="_blank">82-0.com</a>.
-        Each round rolls a random club and season — you pick one player from that squad to fill a slot
-        in your locked formation. Once your XI is complete, a model predicts how many Premier League
-        points that team would earn over a 38-game season.
+        A blind football draft game inspired by FIFA Ultimate Team and <a href="https://www.82-0.com" target="_blank">82-0.com</a>.
+        Pick from one of the top five leagues, and then choose a formation. Each round rolls a random club and season; 
+        you pick one player from that squad to fill a slot in your locked formation. Once your XI is complete, a points-per-game model 
+        uses advanced analytics and standardized player market valuations to predict how many points that team would earn in a given game,
+        which is then extrapolated over a 38-game season.
       </div>
     </div>
 
@@ -56,27 +57,64 @@
       <div class="faq-q">How does scoring work?</div>
       <div class="faq-a">
         Your XI is scored on a predicted-points model trained on real team seasons across the top
-        European leagues. Attacking output comes from your players' individual xG/xA stats; defensive
-        quality is estimated from their (position- and season-normalised) market values.
+        European leagues. Attacking output comes from your players' individual expected goals (xG), expected assists (xA),
+        and other advanced metrics that measure a player's impact on a game; defensive
+        quality is estimated from their (position-, league-, and season-normalised) market values.
         The final score is clipped to the 0–114 range — 114 being a perfect 38-win season.
+      </div>
+    </div>
+
+     <div class="faq-item">
+      <div class="faq-q">What does npxG and xA mean?</div>
+      <div class="faq-a">
+        npxG stands for "non-penalty expected goals" and represents a player's ability to take goal-scoring chances, minus penalty kicks. This is derived from real-game moments, with chances closer to the goal and with better angles being worth more than long-range speculative efforts. 
+        A player with a high npxG is one who consistently gets into dangerous positions and creates quality chances for themselves.
+        xA stands for "expected assists" and estimates the likelihood of a player contributing to a goal through their passes and movements. A player with a high xA is one who creates a lot of good chances for their teammates, even if those chances don't always result in goals. 
+        Both npxG and xA are key metrics for evaluating attacking performance beyond just goals and assists, as they capture the underlying quality of a player's contributions on the pitch. In the draft, these statistics are sourced from Understat, which tracks every shot and key pass in the top European leagues.
+        They're averaged on a per-game basis to account for a player's ability to affect any given game. 
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Why did my expected points per game not get multiplied by 38 games?</div>
+      <div class="faq-a">
+        The prediction model incorporated into Tacticos and Galacticos is designed to estimate a team's expected points per game based on the quality of its players. 
+        That said, the squad you select reflects how a player performed in a given season, so if they did not actually play many games despite performing well in the ones they did play,
+        your team will suffer over the course of a season. Specifically, if the players you select do not average at least 30 games played per season, your expected points per game will 
+        be multiplied by that exact average number of games - e.g. if your players average 25 games played and your predicted points per game is 2.0, your final score will be 25 * 2.0 = 50 points instead of the 76 points you would get if they averaged 38 games played.
+        If they average 30 or more games played, then the full 38-game season is applied and your expected points per game is multiplied by 38 to get your final score. This is meant to reflect the importance of player availability and durability over the course of a season,
+        while still recognizing the value of players who may have had injury issues or other availability concerns (taking a bite out of a player, perhaps...) in a given season.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">How are player valuations standardized?</div>
+      <div class="faq-a">
+        Market value data is gathered in each season for each league from Transfermarkt. In order for values to be comparable across seasons and leagues, 
+        they are standardized by calculating a z-score for each player's value within their league, season, position, and age group. This means that the valuation of Kylian Mbappe in 2022 is not
+        naively compared to Virgil van Dijk in 2018, because of the inherent differences in market value between positions and seasons. Since Premier League players tend to be more expensive than 
+        counterparts in other leagues, this also allows for drafts in La Liga, Serie A, Ligue 1, and Bundesliga to be independent. World class players in any league will be rewarded, but players that stand out
+        in their own league especially will make a bigger difference than they would in a naive valuation system. Finally, because young, promising players tend to receive high valuations before they truly impact
+        a team over the course of a season, and because generally, experienced players are more valuable than younger ones, age is not only factored into the standardization but used to penalize the valuation of 
+        players before they hit their prime years. Unfortunately, Mykhailo Mudryk will not win you this game on his own. The final valuation score is represented by a 'z-score,' a commmon statistical measure of how many standard deviations away from the mean a data point is.
+        The Greek letter sigma (σ) is used to represent a unit of standard deviation.
       </div>
     </div>
 
     <div class="faq-item">
       <div class="faq-q">What is "blind draft" mode?</div>
       <div class="faq-a">
-        Player stats, market values, and caps are hidden during selection — you only see names
-        and positions. Use your football knowledge to pick well. Everything is revealed on the
-        final results screen.
+        In blind draft mode, you pick your formation before the draft starts, and then fill in the slots as club seasons are rolled.
+        Since you don't know what club or season you'll get in the next round, you have to choose your players carefully! You never know when
+        you'll get Barcelona in 15/16 or Burnley in 17/18.
       </div>
     </div>
 
     <div class="faq-item">
       <div class="faq-q">What do rerolls do?</div>
       <div class="faq-a">
-        Each game starts with a small number of rerolls. Spending one skips the current
-        club-season and rolls a new one — useful if the rolled squad has no eligible players
-        for your open slots, or if it's a particularly thin promoted side.
+        Each game starts with three rerolls (not included in World Cup mode). Spending one skips the current
+        club-season and rolls a new one if you really can't stomach the players in that squad.
       </div>
     </div>
 
@@ -85,30 +123,45 @@
       <div class="faq-a">
         Instead of club seasons, each round rolls one of the 48 nations competing at the
         2026 FIFA World Cup. Squads are sourced from the actual 2026 tournament rosters.
-        Scoring is a pedigree index based on market value, international caps, and international
-        goals — no xG data is used since club-level stats don't map cleanly to international football.
-        There are no rerolls in WC mode.
+        Scoring is a composite index based on market value, international caps, and international
+        goals. Since not all players in World Cup squads hail from the top five European leagues, 
+        the scoring model is simpler, rewarding market valuation, international impact and experience.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">What do the scoring tiers mean?</div>
+      <div class="faq-a">
+        Tiers are set by the typical thresholds for points earned in a 38-game season:
+        <br><br>
+        🏆 <strong>105-114 Points: Invincible Chase</strong> — up there with Xabi and Arsene<br>
+        🥈 <strong>85-104 Points: Title Contender</strong> — it could just be your year<br>
+        🥉 <strong>65-84 Points: European Football</strong> — Qarabag away anyone?<br>
+        ⚽  <strong>45-64 Points: Mid-Table</strong> — nice and snug<br>
+        ❌ <strong>0-44 Points: Relegation Battle</strong> — watch out for the drop
+        <br>
       </div>
     </div>
 
     <div class="faq-item">
       <div class="faq-q">What do the World Cup tiers mean?</div>
       <div class="faq-a">
-        Tiers are set from the distribution of optimal XIs across all 48 nations:
+        Tiers are set from the distribution of optimal XI scores across all 48 nations:
         <br><br>
-        🏆 <strong>World Cup Champions</strong> — top-tier squad, real contender<br>
-        🥈 <strong>Finalists</strong> — elite but not quite the best<br>
-        🥉 <strong>Semi-finalists</strong> — strong tournament run expected<br>
-        💜 <strong>Quarter-finalists</strong> — solid squad, could go far<br>
-        ⚽ <strong>Round of 16</strong> — decent but limited ceiling<br>
-        ❌ <strong>Group Stage Exit</strong> — struggles to compete at this level
+        🏆 <strong>World Cup Champions</strong> — add a star to your kit<br>
+        🥈 <strong>Finalists</strong> — close but no cigar<br>
+        🥉 <strong>Semi-finalists</strong> — don't forget the third place game!<br>
+        💜 <strong>Quarter-finalists</strong> — at least you made it to July<br>
+        ⚽ <strong>Round of 16</strong> — the El Tri special <br>
+        ❌ <strong>Group Stage Exit</strong> — just happy to be here
+        <br>
       </div>
     </div>
 
     <div class="faq-item">
       <div class="faq-q">Where does the data come from?</div>
       <div class="faq-a">
-        <strong>Understat</strong> — xG and xA per player, per season (2014/15 onwards).<br>
+        <strong>Understat</strong> — xG and xA per player per game, plus other advanced metrics, on a per season basis (2014/15 onwards).<br>
         <strong>Transfermarkt</strong> via the
         <a href="https://www.kaggle.com/datasets/davidcariboo/player-scores" target="_blank">dcaribou open dataset</a>
         — market valuations, international caps, clean positions, roster data.<br>
@@ -121,9 +174,18 @@
     <div class="faq-item">
       <div class="faq-q">Why does my score seem low even with good players?</div>
       <div class="faq-a">
-        The model rewards balance — a great attack paired with a weak defence will be punished
-        on the predicted-points side. Defensive quality is estimated from market value, so
-        budget centre-backs will drag the score down even if your forwards are world-class.
+        A good squad needs balance; a great attack paired with a weak defence will be punished
+        on the predicted-points side. Defensive quality, which directly predicts your expected goals allowed,
+        is estimated from market value, so low-quality defenders will drag the score down even if your forwards are world-class.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Who created Tacticos & Galacticos?</div>
+      <div class="faq-a">
+        This is a project by Chris Bull <a href="https://github.com/cbull81" target="_blank">(GitHub)</a>. Formerly a data scientist in the consulting industry, 
+        he is currently a grad student at the University of Michigan. He is a lifelong football fan and decade-plus long victim of Tottenham Hotspur Football Club.
+        Feel free to reach out with any feedback at <a href="mailto:christopherwbull@gmail.com">christopherwbull@gmail.com</a>.
       </div>
     </div>
 
