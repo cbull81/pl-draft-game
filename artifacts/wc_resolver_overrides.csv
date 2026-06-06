@@ -1,0 +1,8 @@
+player_name,wc_team,tm_id,note
+Arda Güler,Turkey,861410,Fuzzy matched Baran Güler (GK) instead — correct id is Arda Güler (Attacking Midfield)
+Mert Günok,Turkey,51894,TM Türkiye citizenship caused wrong fuzzy match to tm_id 383453 (CB) — correct is GK
+Zeki Çelik,Turkey,251075,TM Türkiye citizenship caused wrong fuzzy match to tm_id 458029 (CF) — correct is RB
+Hakan Çalhanoğlu,Turkey,126414,TM Türkiye citizenship caused wrong fuzzy match to tm_id 235024 (GK) — correct is DM
+Kaan Ayhan,Turkey,119031,TM Türkiye citizenship caused wrong fuzzy match to tm_id 677186 (LW) — correct is DM
+Uğurcan Çakır,Turkey,292199,TM Türkiye citizenship caused wrong fuzzy match to tm_id 21370 (RB) — correct is GK
+İsmail Yüksek,Turkey,613725,TM Türkiye citizenship caused wrong fuzzy match to tm_id 242482 (RW) — correct is DM

@@ -23,7 +23,7 @@
     <div style="min-width:0;">
       <div style="font-size:16px; font-weight:900; color:var(--navy); line-height:1.1;
                   white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
-        {{ club }}
+        {{ club }}{% if is_champion %} 🏆{% endif %}
       </div>
       <div style="font-size:11px; color:var(--navy2); margin-top:1px; font-weight:700;">
         {{ season_display }}
@@ -106,11 +106,18 @@
           <span style="color:var(--navy2); font-size:10px;"> xA/g</span>
         </div>
         {% endif %}
-        {% if p.value_z is not none %}
+        {% if p.xg_buildup_pg is not none and p.xg_buildup_pg > 0 %}
+        <div style="font-size:11px; color:var(--navy);">
+          <span style="font-weight:800;">{{ "%.2f"|format(p.xg_buildup_pg) }}</span>
+          <span style="color:var(--navy2); font-size:10px;"> xBuild/g</span>
+        </div>
+        {% endif %}
+        {% set vz = p.age_adj_value_z if p.age_adj_value_z is not none else p.value_z %}
+        {% if vz is not none %}
         <div style="font-size:11px;">
           <span style="font-weight:800;
-            {{ 'color:#15803d;' if p.value_z > 1 else ('color:#be123c;' if p.value_z < -0.5 else 'color:var(--navy);') }}">
-            {{ "%+.1f"|format(p.value_z) }}σ
+            {{ 'color:#15803d;' if vz > 1 else ('color:#be123c;' if vz < -0.5 else 'color:var(--navy);') }}">
+            {{ "%+.1f"|format(vz) }}σ
           </span>
           <span style="color:var(--navy2); font-size:10px;"> value</span>
         </div>

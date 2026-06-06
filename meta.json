@@ -53,11 +53,80 @@
   "default_rerolls": 3,
   "min_minutes": 450,
   "tier_thresholds": {
-    "Invincible Chase (38-0)": 105,
-    "Title Contender": 85,
-    "European Football": 65,
-    "Mid-Table": 45,
+    "Title Contenders": 80,
+    "European Football": 62,
+    "Top Half": 54,
+    "Bottom Half": 45,
     "Relegation Battle": 0
+  },
+  "champion_bonus_per_player": 2,
+  "champion_bonus_max_players": 5,
+  "league_champions": {
+    "ENG-Premier League": {
+      "1415": "Chelsea",
+      "1516": "Leicester",
+      "1617": "Chelsea",
+      "1718": "Manchester City",
+      "1819": "Manchester City",
+      "1920": "Liverpool",
+      "2021": "Manchester City",
+      "2122": "Manchester City",
+      "2223": "Manchester City",
+      "2324": "Manchester City",
+      "2425": "Liverpool"
+    },
+    "ESP-La Liga": {
+      "1415": "Barcelona",
+      "1516": "Barcelona",
+      "1617": "Real Madrid",
+      "1718": "Barcelona",
+      "1819": "Barcelona",
+      "1920": "Real Madrid",
+      "2021": "Atletico Madrid",
+      "2122": "Real Madrid",
+      "2223": "Barcelona",
+      "2324": "Real Madrid",
+      "2425": "Barcelona"
+    },
+    "ITA-Serie A": {
+      "1415": "Juventus",
+      "1516": "Juventus",
+      "1617": "Juventus",
+      "1718": "Juventus",
+      "1819": "Juventus",
+      "1920": "Juventus",
+      "2021": "Inter",
+      "2122": "AC Milan",
+      "2223": "Napoli",
+      "2324": "Inter",
+      "2425": "Inter"
+    },
+    "GER-Bundesliga": {
+      "1415": "Bayern Munich",
+      "1516": "Bayern Munich",
+      "1617": "Bayern Munich",
+      "1718": "Bayern Munich",
+      "1819": "Bayern Munich",
+      "1920": "Bayern Munich",
+      "2021": "Bayern Munich",
+      "2122": "Bayern Munich",
+      "2223": "Bayern Munich",
+      "2324": "Bayer Leverkusen",
+      "2425": "Bayern Munich"
+    },
+    "FRA-Ligue 1": {
+      "1415": "Paris Saint Germain",
+      "1516": "Paris Saint Germain",
+      "1617": "Monaco",
+      "1718": "Paris Saint Germain",
+      "1819": "Paris Saint Germain",
+      "1920": "Paris Saint Germain",
+      "2021": "Lille",
+      "2122": "Paris Saint Germain",
+      "2223": "Paris Saint Germain",
+      "2324": "Paris Saint Germain",
+      "2425": "Paris Saint Germain"
+    }
   },
   "stage1_features": [
     "xgf_pg",
@@ -5681,11 +5750,11 @@
     }
   ],
   "wc_tier_thresholds": {
-    "World Cup Champions": 1.1614155283801304,
-    "Finalists": 0.7887177844315749,
-    "Semi-finalists": 0.4210082596496289,
-    "Quarter-finalists": 0.2625634438588738,
-    "Round of 16": 0.08181688452130871,
+    "World Cup Champions": 1.1855636404002072,
+    "Finalists": 0.773763573457307,
+    "Semi-finalists": 0.4311205512034223,
+    "Quarter-finalists": 0.2707479643349858,
+    "Round of 16": 0.08013851803726141,
     "Group Stage Exit": -Infinity
   }
 }

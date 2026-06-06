@@ -54,7 +54,7 @@ def age_value_weight(age: float) -> float:
 
 
 # Features fed into Stage 0 (xGF model). Order matters — must match training.
-OFFENSIVE_COLS = ["npxg_pg", "xa_pg", "xg_buildup_pg", "xg_chain_pg", "key_passes_pg", "shots_pg"]
+OFFENSIVE_COLS = ["npxg_pg", "xa_pg", "xg_buildup_pg", "key_passes_pg", "shots_pg"]
 
 
 def build_offensive_features(players: pd.DataFrame) -> pd.DataFrame:

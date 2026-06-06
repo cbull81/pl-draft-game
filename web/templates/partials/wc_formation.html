@@ -31,13 +31,13 @@
 
     {% for i in range(row.total) %}
     {% if row.bucket == 'GK' %}
-      {% set col='var(--col-gk)' %}{% set colD='#8a1a15' %}{% set colT='#fff' %}
+      {% set col='var(--col-gk)' %}{% set colD='#8a5f00' %}{% set colT='#fff' %}
     {% elif row.bucket == 'DEF' %}
       {% set col='var(--col-def)' %}{% set colD='#004f78' %}{% set colT='#fff' %}
     {% elif row.bucket == 'MID' %}
       {% set col='var(--col-mid)' %}{% set colD='#005c24' %}{% set colT='#fff' %}
     {% else %}
-      {% set col='var(--col-fwd)' %}{% set colD='#8a5f00' %}{% set colT='#fff' %}
+      {% set col='var(--col-fwd)' %}{% set colD='#8a1a15' %}{% set colT='#fff' %}
     {% endif %}
 
     {% if i < row.players | length %}

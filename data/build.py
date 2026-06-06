@@ -14,11 +14,13 @@ Output: artifacts/players.parquet, updates meta.json valid_cells
 """
 
 import json
+import sys
 from pathlib import Path
 
 import numpy as np
 import pandas as pd
 
+sys.path.insert(0, str(Path(__file__).parent.parent))
 from model.features import age_value_weight
 
 ARTIFACTS = Path(__file__).parent.parent / "artifacts"
@@ -99,7 +101,14 @@ def build_players() -> pd.DataFrame:
     ).drop(columns=["understat_id"])
     # Resolver tm_id is float64 (int + None → float when pandas builds the DataFrame).
     # Normalize to clean string IDs so downstream merges and dict lookups work.
-    df["tm_id"] = df["tm_id"].apply(lambda x: str(int(x)) if pd.notna(x) else None)
+    def _clean_tm_id(x):
+        if pd.isna(x) or x is None:
+            return None
+        try:
+            return str(int(float(x)))
+        except (ValueError, TypeError):
+            return None  # drop non-numeric artefacts
+    df["tm_id"] = df["tm_id"].apply(_clean_tm_id)
 
     # Merge TM player profile (sub_position, caps, dob, nationality)
     # Cast to string to match resolver's tm_id (object dtype)

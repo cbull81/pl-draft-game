@@ -5,14 +5,14 @@
 {% set tier = result.tier %}
 
 <!-- Tier-specific theme colours -->
-{% if 'Invincible' in tier %}
-  {% set tc = '#92620a' %}{% set tBg = '#fef3c7' %}{% set tBdr = '#d97706' %}{% set artCol = '#d97706' %}
-{% elif 'Title' in tier %}
+{% if 'Title' in tier %}
   {% set tc = '#14532d' %}{% set tBg = '#dcfce7' %}{% set tBdr = '#16a34a' %}{% set artCol = '#16a34a' %}
 {% elif 'European' in tier %}
   {% set tc = '#1e3a8a' %}{% set tBg = '#dbeafe' %}{% set tBdr = '#3b82f6' %}{% set artCol = '#3b82f6' %}
-{% elif 'Mid' in tier %}
+{% elif 'Top' in tier %}
   {% set tc = '#374151' %}{% set tBg = '#f3f4f6' %}{% set tBdr = '#9ca3af' %}{% set artCol = '#6b7280' %}
+{% elif 'Bottom' in tier %}
+  {% set tc = '#92620a' %}{% set tBg = '#fef9c3' %}{% set tBdr = '#ca8a04' %}{% set artCol = '#ca8a04' %}
 {% else %}
   {% set tc = '#7f1d1d' %}{% set tBg = '#fee2e2' %}{% set tBdr = '#ef4444' %}{% set artCol = '#ef4444' %}
 {% endif %}
@@ -155,19 +155,34 @@
             {{ player.club }} &nbsp;·&nbsp; {{ player.season[:2] }}/{{ player.season[2:] }}
           </div>
         </div>
-        <!-- Key stats -->
-        <div style="padding:9px 12px; text-align:right; flex-shrink:0;">
+        <!-- Key stats: all four in a horizontal row -->
+        {% set vz = (player.get('age_adj_value_z') or player.get('value_z')) if player is mapping else none %}
+        <div style="display:flex; align-items:center; gap:14px; padding:0 12px; flex-shrink:0;">
           {% if player.npxg_pg is not none %}
-          <div style="font-size:11px; font-weight:800; color:var(--navy);">
-            {{ "%.2f"|format(player.npxg_pg) }}
-            <span style="font-size:9px; font-weight:600; color:var(--navy2);">npxG/g</span>
+          <div style="text-align:center;">
+            <div style="font-size:12px; font-weight:800; color:var(--navy);">{{ "%.2f"|format(player.npxg_pg) }}</div>
+            <div class="font-pixel" style="font-size:5px; color:var(--navy2);">npxG/g</div>
           </div>
           {% endif %}
-          {% set vz = player.get('value_z') if player is mapping else none %}
+          {% if player.xa_pg is not none %}
+          <div style="text-align:center;">
+            <div style="font-size:12px; font-weight:800; color:var(--navy);">{{ "%.2f"|format(player.xa_pg) }}</div>
+            <div class="font-pixel" style="font-size:5px; color:var(--navy2);">xA/g</div>
+          </div>
+          {% endif %}
+          {% if player.xg_buildup_pg is not none and player.xg_buildup_pg > 0 %}
+          <div style="text-align:center;">
+            <div style="font-size:12px; font-weight:800; color:var(--navy);">{{ "%.2f"|format(player.xg_buildup_pg) }}</div>
+            <div class="font-pixel" style="font-size:5px; color:var(--navy2);">xBuild/g</div>
+          </div>
+          {% endif %}
           {% if vz is not none %}
-          <div style="font-size:11px; font-weight:800;
-               {{ 'color:#15803d;' if vz > 1 else ('color:#be123c;' if vz < -0.5 else 'color:var(--navy2);') }}">
-            {{ "%+.1f"|format(vz) }}σ
+          <div style="text-align:center;">
+            <div style="font-size:12px; font-weight:800;
+                 {{ 'color:#15803d;' if vz > 1 else ('color:#be123c;' if vz < -0.5 else 'color:var(--navy2);') }}">
+              {{ "%+.1f"|format(vz) }}σ
+            </div>
+            <div class="font-pixel" style="font-size:5px; color:var(--navy2);">value</div>
           </div>
           {% endif %}
         </div>
@@ -186,6 +201,10 @@
   </div>
   {% set bd = result.breakdown %}
   <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:0; border:2px solid var(--border); border-radius:4px; overflow:hidden;">
+    {% set base_pts_display = result.breakdown.base_pts %}
+    {% set games_bonus_display = result.breakdown.games_bonus %}
+    {% set champ_bonus_display = result.breakdown.champion_bonus %}
+    {% set show_bonuses = (games_bonus_display > 0) or (champ_bonus_display > 0) %}
     {% for label, value, sublabel in [
         ("xGF/g", "%.3f"|format(bd.attack_xgf_pg), "attack"),
         ("xGA/g", "%.3f"|format(bd.defense_xga_pg), "defence"),
@@ -200,6 +219,29 @@
     </div>
     {% endfor %}
   </div>
+
+  <!-- Bonuses row (only shown when non-zero) -->
+  {% if show_bonuses %}
+  <div style="margin-top:10px; display:flex; gap:10px; flex-wrap:wrap;">
+    {% if games_bonus_display > 0 %}
+    <div style="background:var(--bg2); border:2px solid var(--border); border-radius:4px; padding:10px 14px;
+                display:flex; align-items:baseline; gap:8px;">
+      <span style="font-size:11px; font-weight:700; color:var(--navy2);">Games bonus</span>
+      <span style="font-size:18px; font-weight:900; color:#15803d;">+{{ "%.1f"|format(games_bonus_display) }}</span>
+      <span class="font-pixel" style="font-size:6px; color:var(--navy2);">avg {{ "%.0f"|format(result.avg_games) }}g</span>
+    </div>
+    {% endif %}
+    {% if champ_bonus_display > 0 %}
+    <div style="background:var(--bg2); border:2px solid var(--border); border-radius:4px; padding:10px 14px;
+                display:flex; align-items:baseline; gap:8px;">
+      <span style="font-size:18px;">🏆</span>
+      <span style="font-size:11px; font-weight:700; color:var(--navy2);">Champion bonus</span>
+      <span style="font-size:18px; font-weight:900; color:#15803d;">+{{ champ_bonus_display }}</span>
+      <span class="font-pixel" style="font-size:6px; color:var(--navy2);">{{ result.champion_count }} player{{ 's' if result.champion_count != 1 else '' }}</span>
+    </div>
+    {% endif %}
+  </div>
+  {% endif %}
 
   <!-- Position value breakdown -->
   <div style="margin-top:14px; display:grid; grid-template-columns:repeat(4,1fr); gap:10px;">

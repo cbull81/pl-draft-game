@@ -127,6 +127,10 @@ WIKI_NAME_OVERRIDES = {
 TEAM_DISPLAY = {row[0]: row for row in WC_TEAMS}
 TEAM_BY_CITIZENSHIP = {row[1]: row[0] for row in WC_TEAMS}
 TM_CIT = {row[0]: row[1] for row in WC_TEAMS}
+# TM uses both "Turkey" and "Türkiye" — search both to avoid missing players
+TM_CIT_EXTRA: dict[str, list[str]] = {
+    "Turkey": ["Türkiye"],
+}
 
 
 # ── Step 1: Scrape Wikipedia ───────────────────────────────────────────────────
@@ -246,18 +250,39 @@ def match_to_transfermarkt(squads: pd.DataFrame) -> pd.DataFrame:
     tm["tm_id"] = tm["player_id"].astype(str)
     tm["_norm"] = tm["name"].apply(_normalise_name)
 
+    # Load manual overrides: player_name + wc_team → correct tm_id
+    overrides: dict[tuple[str, str], str] = {}
+    override_path = ARTIFACTS / "wc_resolver_overrides.csv"
+    if override_path.exists():
+        ov = pd.read_csv(override_path, dtype=str)
+        for _, r in ov.iterrows():
+            if pd.notna(r.get("tm_id")) and r["tm_id"].strip():
+                overrides[(r["player_name"].strip(), r["wc_team"].strip())] = r["tm_id"].strip()
+        print(f"  Loaded {len(overrides)} WC resolver override(s)")
+
     matched_tm_id   = []
     matched_value   = []
     matched_sub_pos = []
     matched_type    = []
 
     for _, row in squads.iterrows():
+        override_id = overrides.get((row["player_name"], row["wc_team"]))
+        if override_id:
+            tm_row = tm[tm["tm_id"] == override_id]
+            if not tm_row.empty:
+                best = tm_row.iloc[0]
+                matched_tm_id.append(override_id)
+                matched_value.append(best.get("market_value_in_eur"))
+                matched_sub_pos.append(best.get("sub_position"))
+                matched_type.append("override")
+                continue
         team = row["wc_team"]
         cit  = TM_CIT.get(team, team)
+        cit_list = [cit] + TM_CIT_EXTRA.get(team, [])
         norm_q = _normalise_name(row["player_name"])
 
-        # Restrict to same citizenship first
-        pool = tm[tm["country_of_citizenship"] == cit]
+        # Restrict to same citizenship first (some teams have multiple TM citizenship strings)
+        pool = tm[tm["country_of_citizenship"].isin(cit_list)]
 
         # Try exact first
         exact = pool[pool["_norm"] == norm_q]

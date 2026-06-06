@@ -48,13 +48,13 @@
   {% for p in candidates %}
 
   {% if p.primary_bucket == 'GK' %}
-    {% set col = 'var(--col-gk)' %}  {% set colD = '#8a1a15' %}  {% set colT = '#fff' %} {% set colBg = '#fff0f0' %}
+    {% set col = 'var(--col-gk)' %}  {% set colD = '#925707' %}  {% set colT = '#fff' %} {% set colBg = '#fef3c7' %}
   {% elif p.primary_bucket == 'DEF' %}
     {% set col = 'var(--col-def)' %} {% set colD = '#004f78' %}  {% set colT = '#fff' %} {% set colBg = '#e8f4ff' %}
   {% elif p.primary_bucket == 'MID' %}
     {% set col = 'var(--col-mid)' %} {% set colD = '#005c24' %}  {% set colT = '#fff' %} {% set colBg = '#efffed' %}
   {% else %}
-    {% set col = 'var(--col-fwd)' %} {% set colD = '#8a5f00' %}  {% set colT = '#fff' %} {% set colBg = '#fffbea' %}
+    {% set col = 'var(--col-fwd)' %} {% set colD = '#be123c' %}  {% set colT = '#fff' %} {% set colBg = '#fff1f2' %}
   {% endif %}
 
   <div style="background:{{ colBg }}; border:2px solid var(--navy);
@@ -115,10 +115,10 @@
 
     <div style="display:flex; flex-direction:column; gap:0;">
       {% for bucket in p.valid_buckets %}
-      {% if bucket == 'GK' %}{% set bc = 'var(--col-gk)' %}{% set bd = '#8a1a15' %}{% set bt = '#fff' %}
+      {% if bucket == 'GK' %}{% set bc = 'var(--col-gk)' %}{% set bd = '#925707' %}{% set bt = '#fff' %}
       {% elif bucket == 'DEF' %}{% set bc = 'var(--col-def)' %}{% set bd = '#004f78' %}{% set bt = '#fff' %}
       {% elif bucket == 'MID' %}{% set bc = 'var(--col-mid)' %}{% set bd = '#005c24' %}{% set bt = '#fff' %}
-      {% else %}{% set bc = 'var(--col-fwd)' %}{% set bd = '#8a5f00' %}{% set bt = '#fff' %}{% endif %}
+      {% else %}{% set bc = 'var(--col-fwd)' %}{% set bd = '#be123c' %}{% set bt = '#fff' %}{% endif %}
       <form hx-post="/wc/pick" hx-target="#wc-round-content" hx-swap="innerHTML"
             style="display:block; margin:0; padding:0;">
         <input type="hidden" name="tm_id" value="{{ p.tm_id }}">

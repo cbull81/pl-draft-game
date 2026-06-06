@@ -39,12 +39,14 @@ WC_ACCENT = {
 }
 
 # Fallback thresholds if meta.json not available
+# Calibrated to smart-play simulation (75th-pct pick strategy, 5000 games):
+#   Champions=top 5%, Finalists=top 17%, Semi=top 35%, QF=top 60%, R16=top 82%
 _DEFAULT_THRESHOLDS = [
-    ("World Cup Champions", 0.90),
-    ("Finalists",           0.65),
-    ("Semi-finalists",      0.35),
-    ("Quarter-finalists",   0.05),
-    ("Round of 16",        -0.25),
+    ("World Cup Champions", 0.510),
+    ("Finalists",           0.406),
+    ("Semi-finalists",      0.324),
+    ("Quarter-finalists",   0.244),
+    ("Round of 16",         0.170),
     ("Group Stage Exit",   -9.99),
 ]
 

@@ -1,9 +1,18 @@
 # Data artifacts — regenerate with data/ scripts
 artifacts/*.parquet
 artifacts/*.joblib
+artifacts/*.csv
 
-# Keep manual resolver overrides (checked in per CLAUDE.md)
+# Runtime artifacts committed so Render can serve without a rebuild step
+!artifacts/players.parquet
+!artifacts/wc_players.parquet
+!artifacts/ep_model.joblib
+!artifacts/xgf_model.joblib
+!artifacts/xga_model.joblib
+
+# Manual resolver overrides — checked in per CLAUDE.md
 !artifacts/resolver_overrides.csv
+!artifacts/wc_resolver_overrides.csv
 
 # Downloaded source files
 downloaded_files/

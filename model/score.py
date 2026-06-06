@@ -3,6 +3,7 @@ Score a drafted XI → predicted points + breakdown.
 Called by game/state.py after all 11 slots are filled.
 """
 
+import json
 from pathlib import Path
 
 import joblib
@@ -19,16 +20,29 @@ from model.features import (
 )
 
 ARTIFACTS = Path(__file__).parent.parent / "artifacts"
+ROOT = Path(__file__).parent.parent
 
-GAMES_THRESHOLD = 30  # avg games played per player; above this, no availability penalty
+GAMES_BONUS_THRESHOLD = 30   # avg games above this earn +1 pt per game
+CHAMPION_BONUS_PER = 2       # pts per champion-season player
+CHAMPION_BONUS_CAP = 5       # max players counted for the bonus
 
 TIER_THRESHOLDS = [
-    ("Invincible Chase (38-0)", 105),
-    ("Title Contender", 85),
-    ("European Football", 65),
-    ("Mid-Table", 45),
-    ("Relegation Battle", 0),
+    ("Title Contenders",  80),
+    ("European Football", 62),
+    ("Top Half",          54),
+    ("Bottom Half",       45),
+    ("Relegation Battle",  0),
 ]
+
+
+def _load_champions() -> dict[str, dict[str, str]]:
+    """Return {league: {season: champion_club}} from meta.json."""
+    meta_path = ROOT / "meta.json"
+    if not meta_path.exists():
+        return {}
+    with open(meta_path) as f:
+        meta = json.load(f)
+    return meta.get("league_champions", {})
 
 
 def load_models():
@@ -64,9 +78,10 @@ def score_xi(players: pd.DataFrame) -> dict:
     players: 11-row DataFrame (one per drafted player).
     Returns: predicted_points, tier, record, attack/defense breakdown, pedigree.
 
-    Per-game quality (ppg_hat) is estimated from individual per-game rates, then
-    scaled by the XI's average games played — not a fixed 38. Drafting players who
-    only appeared in 15 games contributes proportionally less to total points.
+    Scoring:
+      base_pts  = ppg_hat * 38  (always a full season — no availability penalty)
+      games_bonus = max(0, avg_normalized_games - 30)  (+1 pt per game above 30)
+      champion_bonus = 2 * min(champion_players, 5)   (players from title-winning seasons)
     """
     ep_model, xga_model, xgf_model = load_models()
 
@@ -85,8 +100,7 @@ def score_xi(players: pd.DataFrame) -> dict:
     ], axis=1)
     raw_ppg = float(ep_model.predict(feat)[0])
 
-    # Normalize each player's games to a 38-game equivalent before averaging.
-    # Bundesliga has 34-game seasons; Ligue 1 has 34-game seasons from 2023/24 onwards.
+    # Normalize each player's games to a 38-game equivalent.
     def _norm_games(row) -> float:
         max_g = season_max_games(str(row.get("league", "")), str(row.get("season", "")))
         g = min(float(row.get("games") or 0), max_g)
@@ -94,8 +108,25 @@ def score_xi(players: pd.DataFrame) -> dict:
 
     avg_games = float(players.apply(_norm_games, axis=1).mean())
     avg_games = max(1.0, avg_games)
-    effective_games = 38.0 if avg_games >= GAMES_THRESHOLD else avg_games
-    raw_pts = raw_ppg * effective_games
+
+    # Base: always a full 38-game season (no downward penalty)
+    base_pts = raw_ppg * 38.0
+
+    # Positive games bonus: +1 pt per average game above 30
+    games_bonus = max(0.0, avg_games - GAMES_BONUS_THRESHOLD)
+
+    # Champion bonus: players whose club won the league that season
+    champions = _load_champions()
+    champion_count = 0
+    for _, row in players.iterrows():
+        league = str(row.get("league", ""))
+        club   = str(row.get("club", ""))
+        season = str(row.get("season", ""))
+        if champions.get(league, {}).get(season) == club:
+            champion_count += 1
+    champion_bonus = CHAMPION_BONUS_PER * min(champion_count, CHAMPION_BONUS_CAP)
+
+    raw_pts = base_pts + games_bonus + champion_bonus
     predicted_points = float(np.clip(raw_pts, 0, 114))
 
     pedigree = squad_pedigree(players)
@@ -103,14 +134,19 @@ def score_xi(players: pd.DataFrame) -> dict:
     return {
         "predicted_points": predicted_points,
         "tier": tier(predicted_points),
-        "record": points_to_record(predicted_points, games=round(effective_games)),
+        "record": points_to_record(predicted_points),
         "avg_games": round(avg_games, 1),
-        "effective_games": round(effective_games, 1),
+        "games_bonus": round(games_bonus, 1),
+        "champion_count": champion_count,
+        "champion_bonus": champion_bonus,
         "breakdown": {
             "attack_xgf_pg": round(xgf_pg, 3),
             "defense_xga_pg": round(xga_pg, 3),
             "position_value": {c: round(float(v), 3) for c, v in pos_value_feats.iloc[0].items()},
             "ppg_hat": round(raw_ppg, 3),
+            "base_pts": round(base_pts, 1),
+            "games_bonus": round(games_bonus, 1),
+            "champion_bonus": champion_bonus,
             "offensive_features": {c: round(float(v), 3) for c, v in off_feats.iloc[0].items()},
         },
         "pedigree": pedigree,

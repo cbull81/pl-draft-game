@@ -220,6 +220,7 @@ def main():
 
     print("\n=== Running entity resolution ===")
     resolver = resolve(us_players, tm_appearances, tm_players, tm_clubs, tm_games)
+    resolver["tm_id"] = resolver["tm_id"].astype(str).where(resolver["tm_id"].notna(), None)
     resolver.to_parquet(ARTIFACTS / "resolver.parquet", index=False)
     print(f"\n  Saved resolver.parquet  shape={resolver.shape}")
 

@@ -80,6 +80,8 @@ def get_wc_candidates(state: dict, wc_df: pd.DataFrame) -> pd.DataFrame:
     mask = (
         (wc_df["wc_team"] == state["current_team"])
         & (~wc_df["tm_id"].isin(drafted_ids))
+        & wc_df["tm_id"].notna()
+        & (wc_df["tm_id"] != "None")
     )
     pool = wc_df[mask].copy()
 

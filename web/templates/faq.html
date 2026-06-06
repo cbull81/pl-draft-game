@@ -46,58 +46,78 @@
       <div class="faq-q">What is Tacticos &amp; Galacticos?</div>
       <div class="faq-a">
         A blind football draft game inspired by FIFA Ultimate Team and <a href="https://www.82-0.com" target="_blank">82-0.com</a>.
-        Pick from one of the top five leagues, and then choose a formation. Each round rolls a random club and season; 
-        you pick one player from that squad to fill a slot in your locked formation. Once your XI is complete, a points-per-game model 
-        uses advanced analytics and standardized player market valuations to predict how many points that team would earn in a given game,
-        which is then extrapolated over a 38-game season.
+        <br><br>
+        Pick from one of the top five leagues and choose a formation. Each round rolls a random club and season, and
+        you pick one player from that squad to fill a slot in your locked formation.
+        Once your XI is complete, a points-per-game model uses advanced analytics and standardised player market valuations
+        to estimate your team's quality, which is then extrapolated over a 38-game season.
       </div>
     </div>
 
     <div class="faq-item">
       <div class="faq-q">How does scoring work?</div>
       <div class="faq-a">
-        Your XI is scored on a predicted-points model trained on real team seasons across the top
-        European leagues. Attacking output comes from your players' individual expected goals (xG), expected assists (xA),
-        and other advanced metrics that measure a player's impact on a game; defensive
-        quality is estimated from their (position-, league-, and season-normalised) market values.
+        Your XI is scored by a predicted-points model trained on real team seasons across the top European leagues.
+        <br><br>
+        Attacking output is estimated from your players' individual expected goals (xG), expected assists (xA),
+        and buildup involvement. Defensive quality is estimated from standardised market values, since
+        individualized and genuinely informative defensive stats aren't reliably available.
+        <br><br>
         The final score is clipped to the 0–114 range — 114 being a perfect 38-win season.
       </div>
     </div>
 
      <div class="faq-item">
-      <div class="faq-q">What does npxG and xA mean?</div>
+      <div class="faq-q">What does npxG, xA, and xBuildup mean?</div>
       <div class="faq-a">
-        npxG stands for "non-penalty expected goals" and represents a player's ability to take goal-scoring chances, minus penalty kicks. This is derived from real-game moments, with chances closer to the goal and with better angles being worth more than long-range speculative efforts. 
-        A player with a high npxG is one who consistently gets into dangerous positions and creates quality chances for themselves.
-        xA stands for "expected assists" and estimates the likelihood of a player contributing to a goal through their passes and movements. A player with a high xA is one who creates a lot of good chances for their teammates, even if those chances don't always result in goals. 
-        Both npxG and xA are key metrics for evaluating attacking performance beyond just goals and assists, as they capture the underlying quality of a player's contributions on the pitch. In the draft, these statistics are sourced from Understat, which tracks every shot and key pass in the top European leagues.
-        They're averaged on a per-game basis to account for a player's ability to affect any given game. 
+        <strong>npxG</strong> (non-penalty expected goals) measures a player's ability to get into dangerous positions and take quality shots, minus penalty kicks.
+        Chances closer to goal and at better angles are worth more than speculative long-range efforts. A high npxG player consistently creates shooting opportunities for themselves.
+        <br><br>
+        <strong>xA</strong> (expected assists) estimates how likely a player's passes and movements are to result in a goal for a teammate — even when those chances aren't converted.
+        A high xA player is a reliable chance creator, regardless of whether their team finishes well. 
+        <br><br>
+        <strong>xBuildup</strong> measures a player's involvement in attacking sequences that led to a shot, but specifically excludes their own direct contributions (shots and key passes).
+        It captures the "invisible" work of players who move the ball into dangerous areas and help construct attacks without being the one who pulls the trigger or threads the final ball.
+        Midfielders and ball-playing defenders tend to rank highly here.
+        <br><br>
+        All three stats are sourced from Understat, which tracks every shot and key pass across the top European leagues since 2014/15, and are shown on a per-game basis.
       </div>
     </div>
 
     <div class="faq-item">
-      <div class="faq-q">Why did my expected points per game not get multiplied by 38 games?</div>
+      <div class="faq-q">Why did I receive points bonuses in my results?</div>
       <div class="faq-a">
-        The prediction model incorporated into Tacticos and Galacticos is designed to estimate a team's expected points per game based on the quality of its players. 
-        That said, the squad you select reflects how a player performed in a given season, so if they did not actually play many games despite performing well in the ones they did play,
-        your team will suffer over the course of a season. Specifically, if the players you select do not average at least 30 games played per season, your expected points per game will 
-        be multiplied by that exact average number of games - e.g. if your players average 25 games played and your predicted points per game is 2.0, your final score will be 25 * 2.0 = 50 points instead of the 76 points you would get if they averaged 38 games played.
-        If they average 30 or more games played, then the full 38-game season is applied and your expected points per game is multiplied by 38 to get your final score. This is meant to reflect the importance of player availability and durability over the course of a season,
-        while still recognizing the value of players who may have had injury issues or other availability concerns (taking a bite out of a player, perhaps...) in a given season.
+        The model estimates a team's expected points per game based on player quality, but your squad is meant to reflect how players actually performed in a specific season.
+        If a player was excellent in the games they played but missed a lot of the campaign through injury or suspension, drafting them comes at an opportunity cost.
+        <br><br>
+        If your players average 30 or more games played, you'll receive a bonus point for every additional average game above 30.
+        For example: if your squad averages 31 games, you'll get one extra point on top of your score. 
+        If you field a team of true 38-game ironmen, you'll receive the maximum 8 bonus points.
+        <br><br>
+        You'll also receive a reward if you roll a club in a season that they won the title. To account for the unquantifiable title-winning magic that pushes a team over the line,
+        you'll get an extra 2 points for every title winner in your squad, up to a maximum of 5 individual title winners (10 bonus points). 
       </div>
     </div>
 
     <div class="faq-item">
-      <div class="faq-q">How are player valuations standardized?</div>
+      <div class="faq-q">How are player valuations standardised?</div>
       <div class="faq-a">
-        Market value data is gathered in each season for each league from Transfermarkt. In order for values to be comparable across seasons and leagues, 
-        they are standardized by calculating a z-score for each player's value within their league, season, position, and age group. This means that the valuation of Kylian Mbappe in 2022 is not
-        naively compared to Virgil van Dijk in 2018, because of the inherent differences in market value between positions and seasons. Since Premier League players tend to be more expensive than 
-        counterparts in other leagues, this also allows for drafts in La Liga, Serie A, Ligue 1, and Bundesliga to be independent. World class players in any league will be rewarded, but players that stand out
-        in their own league especially will make a bigger difference than they would in a naive valuation system. Finally, because young, promising players tend to receive high valuations before they truly impact
-        a team over the course of a season, and because generally, experienced players are more valuable than younger ones, age is not only factored into the standardization but used to penalize the valuation of 
-        players before they hit their prime years. Unfortunately, Mykhailo Mudryk will not win you this game on his own. The final valuation score is represented by a 'z-score,' a commmon statistical measure of how many standard deviations away from the mean a data point is.
-        The Greek letter sigma (σ) is used to represent a unit of standard deviation.
+        Market value data comes from Transfermarkt, gathered at the relevant point in each season.
+        To make values comparable across seasons, leagues, and positions, each player's value is converted to a 'z-score'
+        within their position group and season, so Kylian Mbappé in 2022 isn't naively compared to Virgil van Dijk in 2018.
+        <br><br>
+        Because Premier League players tend to carry higher valuations than counterparts in other leagues,
+        this standardisation also means your La Liga or Bundesliga draft is fully independent and fair.
+        World-class players in any league are rewarded, but a standout player in their own context
+        will make a bigger difference than a raw valuation system would suggest.
+        <br><br>
+        Finally, young players often carry inflated valuations reflecting future potential rather than current impact.
+        An age adjustment is applied to discount value for players who haven't yet reached their prime years.
+        This means you can't simply draft pricey wonderkids if you roll a team who loves an ill-advised 100m signing *ahem* ChelseAndManUnited.
+        <br><br>
+        The standardised score you see is shown as a z-score (σ): a common statistical measure of how many standard deviations
+        above or below the average a player sits. The Greek letter sigma (σ) represents one standard deviation. Pay special attention to this score for defenders,
+        because this is the primary predictor of lower expected goals allowed in your team, which is crucial for a high overall score.
       </div>
     </div>
 
@@ -132,13 +152,13 @@
     <div class="faq-item">
       <div class="faq-q">What do the scoring tiers mean?</div>
       <div class="faq-a">
-        Tiers are set by the typical thresholds for points earned in a 38-game season:
+        Tiers are calibrated against real points totals from the top European leagues:
         <br><br>
-        🏆 <strong>105-114 Points: Invincible Chase</strong> — up there with Xabi and Arsene<br>
-        🥈 <strong>85-104 Points: Title Contender</strong> — it could just be your year<br>
-        🥉 <strong>65-84 Points: European Football</strong> — Qarabag away anyone?<br>
-        ⚽  <strong>45-64 Points: Mid-Table</strong> — nice and snug<br>
-        ❌ <strong>0-44 Points: Relegation Battle</strong> — watch out for the drop
+        🏆 <strong>80+ Points: Title Contenders</strong> — it could just be your year<br>
+        🥈 <strong>62–79 Points: European Football</strong> — Qarabağ away, anyone?<br>
+        🥉 <strong>54–61 Points: Top Half</strong> — comfortably mid-table<br>
+        ⚽ <strong>45–53 Points: Bottom Half</strong> — looking over your shoulder<br>
+        ❌ <strong>0–44 Points: Relegation Battle</strong> — watch out for the drop
         <br>
       </div>
     </div>
@@ -146,7 +166,7 @@
     <div class="faq-item">
       <div class="faq-q">What do the World Cup tiers mean?</div>
       <div class="faq-a">
-        Tiers are set from the distribution of optimal XI scores across all 48 nations:
+        Tiers are calibrated against simulated gameplay — Champions requires a top 5% draft, Semi-finalists a top 35%, and so on:
         <br><br>
         🏆 <strong>World Cup Champions</strong> — add a star to your kit<br>
         🥈 <strong>Finalists</strong> — close but no cigar<br>
