@@ -5,7 +5,6 @@ Run: uvicorn web.app:app --reload
 import logging
 import math
 import os
-import sqlite3
 import sys
 import time
 import uuid
@@ -201,38 +200,48 @@ def _abbr_club(name: str) -> str:
 
 templates.env.filters["abbr_club"] = _abbr_club
 
-# ── Analytics (SQLite) ───────────────────────────────────────────────────────
-_DB_PATH = Path(os.environ.get("DB_PATH", str(ROOT / "data" / "analytics.db")))
+# ── Analytics (Supabase Postgres) ────────────────────────────────────────────
+_DB_URL    = os.environ.get("DATABASE_URL", "")
 _STATS_KEY = os.environ.get("STATS_KEY", "")
 
 
+def _pg_conn():
+    import psycopg2
+    return psycopg2.connect(_DB_URL)
+
+
 def _init_analytics() -> None:
-    _DB_PATH.parent.mkdir(parents=True, exist_ok=True)
-    with sqlite3.connect(_DB_PATH) as conn:
-        conn.execute("""
-            CREATE TABLE IF NOT EXISTS events (
-                id        INTEGER PRIMARY KEY AUTOINCREMENT,
-                ts        REAL    NOT NULL,
-                event     TEXT    NOT NULL,
-                sid       TEXT,
-                mode      TEXT,
-                formation TEXT,
-                league    TEXT
-            )
-        """)
-        conn.commit()
-    log.info("Analytics DB ready at %s", _DB_PATH)
+    if not _DB_URL:
+        log.info("DATABASE_URL not set — analytics disabled")
+        return
+    try:
+        with _pg_conn() as conn, conn.cursor() as cur:
+            cur.execute("""
+                CREATE TABLE IF NOT EXISTS events (
+                    id        SERIAL PRIMARY KEY,
+                    ts        DOUBLE PRECISION NOT NULL,
+                    event     TEXT NOT NULL,
+                    sid       TEXT,
+                    mode      TEXT,
+                    formation TEXT,
+                    league    TEXT
+                )
+            """)
+        log.info("Analytics DB ready (Supabase Postgres)")
+    except Exception:
+        log.warning("Analytics init failed — continuing without analytics", exc_info=True)
 
 
 def _track(event: str, sid: str = None, mode: str = None,
            formation: str = None, league: str = None) -> None:
+    if not _DB_URL:
+        return
     try:
-        with sqlite3.connect(_DB_PATH) as conn:
-            conn.execute(
-                "INSERT INTO events (ts, event, sid, mode, formation, league) VALUES (?,?,?,?,?,?)",
+        with _pg_conn() as conn, conn.cursor() as cur:
+            cur.execute(
+                "INSERT INTO events (ts, event, sid, mode, formation, league) VALUES (%s,%s,%s,%s,%s,%s)",
                 (time.time(), event, sid, mode, formation, league),
             )
-            conn.commit()
     except Exception:
         log.warning("Analytics write failed", exc_info=True)
 
@@ -791,22 +800,33 @@ async def stats(request: Request, key: str = ""):
         return HTMLResponse("Forbidden", status_code=403)
 
     active = len(_sessions)
-    day_ago = time.time() - 86400
 
-    with sqlite3.connect(_DB_PATH) as conn:
-        total   = conn.execute("SELECT COUNT(*) FROM events WHERE event='game_start'").fetchone()[0]
-        today   = conn.execute("SELECT COUNT(*) FROM events WHERE event='game_start' AND ts>?", (day_ago,)).fetchone()[0]
-        pl_ct   = conn.execute("SELECT COUNT(*) FROM events WHERE event='game_start' AND mode='pl'").fetchone()[0]
-        wc_ct   = conn.execute("SELECT COUNT(*) FROM events WHERE event='game_start' AND mode='wc'").fetchone()[0]
-        fmts    = conn.execute("""
+    if not _DB_URL:
+        return HTMLResponse(
+            f"<pre>Active sessions: {active}\n\nAnalytics disabled (no DATABASE_URL).</pre>"
+        )
+
+    day_ago = time.time() - 86400
+    with _pg_conn() as conn, conn.cursor() as cur:
+        cur.execute("SELECT COUNT(*) FROM events WHERE event='game_start'")
+        total = cur.fetchone()[0]
+        cur.execute("SELECT COUNT(*) FROM events WHERE event='game_start' AND ts>%s", (day_ago,))
+        today = cur.fetchone()[0]
+        cur.execute("SELECT COUNT(*) FROM events WHERE event='game_start' AND mode='pl'")
+        pl_ct = cur.fetchone()[0]
+        cur.execute("SELECT COUNT(*) FROM events WHERE event='game_start' AND mode='wc'")
+        wc_ct = cur.fetchone()[0]
+        cur.execute("""
             SELECT formation, COUNT(*) n FROM events
             WHERE event='game_start' AND formation IS NOT NULL
             GROUP BY formation ORDER BY n DESC
-        """).fetchall()
-        recent  = conn.execute("""
+        """)
+        fmts = cur.fetchall()
+        cur.execute("""
             SELECT ts, mode, formation, league FROM events
             WHERE event='game_start' ORDER BY ts DESC LIMIT 30
-        """).fetchall()
+        """)
+        recent = cur.fetchall()
 
     def _row(ts, mode, formation, league):
         dt = datetime.fromtimestamp(ts, tz=timezone.utc).strftime("%Y-%m-%d %H:%M")
