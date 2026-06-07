@@ -191,6 +191,40 @@ body {
   </div>
 </div>
 
+<!-- Share -->
+<div style="text-align:center; margin-bottom:16px;">
+  <button onclick="shareResult()" class="font-pixel"
+          style="font-size:9px; background:var(--navy); color:#fbbf24;
+                 border:3px solid var(--navy); box-shadow:4px 4px 0 rgba(26,26,46,0.3);
+                 padding:12px 28px; cursor:pointer; letter-spacing:0.1em;
+                 border-radius:4px; transition:transform 0.08s;"
+          onmouseover="this.style.transform='translateY(-2px)'"
+          onmouseout="this.style.transform='none'"
+          onmousedown="this.style.transform='translateY(2px)'">
+    &#128228; SHARE RESULT
+  </button>
+  <div id="share-confirm"
+       style="display:none; font-size:12px; font-weight:800;
+              color:var(--navy); margin-top:10px;">
+    Copied to clipboard ✓
+  </div>
+</div>
+<script>
+var _shareText = {{ share_text | tojson }};
+function shareResult() {
+  if (navigator.share) {
+    navigator.share({ title: 'Tacticos & Galacticos', text: _shareText })
+      .catch(function() {});
+  } else {
+    navigator.clipboard.writeText(_shareText).then(function() {
+      var el = document.getElementById('share-confirm');
+      el.style.display = 'block';
+      setTimeout(function() { el.style.display = 'none'; }, 2500);
+    });
+  }
+}
+</script>
+
 <!-- Pitch + Squad list -->
 <div class="reveal-main-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;">
 

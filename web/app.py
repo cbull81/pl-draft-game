@@ -390,6 +390,41 @@ def _roster_rows(state: dict) -> list[dict]:
     return rows
 
 
+def _build_share_text(state: dict, result: dict, roster_rows: list,
+                      mode: str, base_url: str) -> str:
+    pts = int(round(result["predicted_points"]))
+    tier = result["tier"].upper()
+    formation = state.get("formation", "")
+
+    if mode == "wc":
+        header = "Tacticos & Galacticos 🌍"
+        subtitle = f"WC 2026 · {formation} · {pts}pts — {tier}"
+    else:
+        header = "Tacticos & Galacticos ⚽"
+        subtitle = f"{formation} · {pts}pts — {tier}"
+
+    lines = [header, subtitle, ""]
+
+    for row in roster_rows:
+        if not row["players"]:
+            continue
+        parts = []
+        for p in row["players"]:
+            name = p.get("player_name", "")
+            last = name.split()[-1] if name else "?"
+            if mode == "wc":
+                flag = p.get("flag", "🌍")
+                parts.append(f"{flag} {last}")
+            else:
+                season = str(p.get("season", ""))
+                sfmt = f"{season[:2]}/{season[2:]}" if len(season) == 4 else ""
+                parts.append(f"{last} ({sfmt})" if sfmt else last)
+        lines.append(f"{row['bucket']}: {' · '.join(parts)}")
+
+    lines += ["", f"Can you beat {pts}pts?", str(base_url).rstrip("/")]
+    return "\n".join(lines)
+
+
 def _valid_buckets(player_row: dict, state: dict) -> list[str]:
     open_b = _open_buckets(state)
     return [b for b in player_row["eligible_buckets"] if b in open_b]
@@ -638,13 +673,15 @@ async def show_result(request: Request):
         log.info("Result page hit with no complete game in session — redirecting home")
         return RedirectResponse("/", status_code=303)
     result = state["_result"]
+    rrows = _roster_rows(state)
     return templates.TemplateResponse(request, "reveal.html", {
         "state": state,
         "result": result,
-        "roster_rows": _roster_rows(state),
+        "roster_rows": rrows,
         "league_display": LEAGUE_SHORT.get(state["league"], state["league"]),
         "bucket_colours": BUCKET_COLOURS,
         "tier_art": _tier_pixel_art(result["tier"]),
+        "share_text": _build_share_text(state, result, rrows, "pl", request.base_url),
     })
 
 
@@ -783,12 +820,14 @@ async def wc_result(request: Request):
         log.info("WC result page hit with no complete game — redirecting home")
         return RedirectResponse("/", status_code=303)
     result = state["_result"]
+    rrows = _roster_rows(state)
     return templates.TemplateResponse(request, "wc_reveal.html", {
         "state": state,
         "result": result,
-        "roster_rows": _roster_rows(state),
+        "roster_rows": rrows,
         "bucket_colours": BUCKET_COLOURS,
         "tier_art": wc_tier_pixel_art(result["tier"]),
+        "share_text": _build_share_text(state, result, rrows, "wc", request.base_url),
     })
 
 
