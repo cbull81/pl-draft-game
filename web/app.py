@@ -392,16 +392,18 @@ def _roster_rows(state: dict) -> list[dict]:
 
 def _build_share_text(state: dict, result: dict, roster_rows: list,
                       mode: str, base_url: str) -> str:
-    pts = int(round(result["predicted_points"]))
     tier = result["tier"].upper()
     formation = state.get("formation", "")
 
     if mode == "wc":
+        score_str = f"{result['wc_index']:+.2f}"
         header = "Tacticos & Galacticos 🌍"
-        subtitle = f"WC 2026 · {formation} · {pts}pts — {tier}"
+        subtitle = f"WC 2026 · {formation} · {score_str} — {tier}"
     else:
+        pts = int(round(result["predicted_points"]))
+        score_str = f"{pts}pts"
         header = "Tacticos & Galacticos ⚽"
-        subtitle = f"{formation} · {pts}pts — {tier}"
+        subtitle = f"{formation} · {score_str} — {tier}"
 
     lines = [header, subtitle, ""]
 
@@ -421,7 +423,7 @@ def _build_share_text(state: dict, result: dict, roster_rows: list,
                 parts.append(f"{last} ({sfmt})" if sfmt else last)
         lines.append(f"{row['bucket']}: {' · '.join(parts)}")
 
-    lines += ["", f"Can you beat {pts}pts?", str(base_url).rstrip("/")]
+    lines += ["", f"Can you beat {score_str}?", str(base_url).rstrip("/")]
     return "\n".join(lines)
 
 
