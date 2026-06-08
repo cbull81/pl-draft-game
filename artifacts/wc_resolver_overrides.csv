@@ -6,3 +6,21 @@ Hakan Çalhanoğlu,Turkey,126414,TM Türkiye citizenship caused wrong fuzzy matc
 Kaan Ayhan,Turkey,119031,TM Türkiye citizenship caused wrong fuzzy match to tm_id 677186 (LW) — correct is DM
 Uğurcan Çakır,Turkey,292199,TM Türkiye citizenship caused wrong fuzzy match to tm_id 21370 (RB) — correct is GK
 İsmail Yüksek,Turkey,613725,TM Türkiye citizenship caused wrong fuzzy match to tm_id 242482 (RW) — correct is DM
+Gabriel Magalhães,Brazil,435338,Fuzzy matched short TM listing 'Gabriel' (tm_id 79242 - GK at Vitória) instead — correct is 'Gabriel' (Centre-Back at Arsenal - tm_id 435338)
+Ederson Moraes,Brazil,238223,Fuzzy matched unrelated AM 'Ederson' (tm_id 29035 at Lazio b.1986) instead — correct is the GK 'Ederson' (tm_id 238223 at Fenerbahçe b.1993)
+Álex Grimaldo,Spain,193082,Fuzzy matched unrelated lower-league GK 'Álex Grimaldo' (tm_id 939445) instead — correct is 'Alejandro Grimaldo' (Left-Back at Bayer Leverkusen - tm_id 193082)
+Gatito Fernández,Paraguay,107318,Nickname not in TM so fuzzy matched random Spanish 'Fernández' instead — correct real name is 'Roberto Fernández' (GK - tm_id 107318 - b. 1988-03-29)
+Ricardo Adé,Haiti,NONE,Not present in TM snapshot — fuzzy_global wrongly matched unrelated GK 'Ricardo' (tm_id 3535) so force unmatched and fall back to Wikipedia position
+Josué Duverger,Haiti,NONE,Not present in TM snapshot — fuzzy_global wrongly matched unrelated MF 'Josué' (tm_id 52910) so force unmatched and fall back to Wikipedia position
+Munir Mohamedi,Morocco,NONE,Not present in TM snapshot — fuzzy wrongly matched unrelated RB 'Mohamed Moufid' (tm_id 800363) so force unmatched and fall back to Wikipedia position
+Mostafa Shobeir,Egypt,NONE,Not present in TM snapshot — fuzzy wrongly matched unrelated DM 'Mostafa Shebeita' (tm_id 106605) so force unmatched and fall back to Wikipedia position
+Hossein Hosseini,Iran,NONE,Not present in TM snapshot — fuzzy wrongly matched unrelated CF 'Amirhossein Hosseinzadeh' (tm_id 542380) so force unmatched and fall back to Wikipedia position
+Roberto Lopes,Cape Verde,NONE,Not present in TM snapshot — fuzzy_global wrongly matched unrelated GK 'Roberto' (tm_id 37403) so force unmatched and fall back to Wikipedia position
+Márcio Rosa,Cape Verde,NONE,Not present in TM snapshot — fuzzy_global wrongly matched unrelated CB 'Márcio Rosário' (tm_id 147881) so force unmatched and fall back to Wikipedia position
+Benjamin Asare,Ghana,NONE,Not present in TM snapshot — fuzzy wrongly matched unrelated youth-team DM 'Benjamin' (tm_id 1312046) so force unmatched and fall back to Wikipedia position
+Marcus Holmgren Pedersen,Norway,NONE,Not present in TM snapshot — fuzzy wrongly matched unrelated CF 'Marcus Pedersen' (tm_id 41609) so force unmatched and fall back to Wikipedia position
+Mohamed Alaa,Egypt,NONE,Not present in TM snapshot — fuzzy wrongly matched 'Mohamed Salah' (tm_id 148455 - Liverpool) on shared first name so force unmatched and fall back to Wikipedia position
+Ayoube Amaimouni,Morocco,799993,Fuzzy matched unrelated LB 'Ayoub Amraoui' (tm_id 860051) on similar first name instead — correct is 'Ayoube Amaimouni-Echghouyab' (Right Winger - tm_id 799993)
+Gustavo Velázquez,Paraguay,NONE,Not present in TM snapshot — fuzzy_global wrongly matched a Brazilian CF named 'Gustavo' (tm_id 333913) so force unmatched and fall back to Wikipedia position
+Kelvin Pires,Cape Verde,NONE,Not present in TM snapshot — fuzzy_global wrongly matched a Portuguese CF named 'Pires' (tm_id 85602) so force unmatched and fall back to Wikipedia position
+Mohammad Abu Zrayq,Jordan,NONE,Not present in TM snapshot — fuzzy wrongly matched unrelated LB 'Mohammad Abu Hasheesh' (tm_id 895249) on shared 'Abu' prefix so force unmatched and fall back to Wikipedia position

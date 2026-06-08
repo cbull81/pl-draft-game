@@ -268,6 +268,14 @@ def match_to_transfermarkt(squads: pd.DataFrame) -> pd.DataFrame:
     for _, row in squads.iterrows():
         override_id = overrides.get((row["player_name"], row["wc_team"]))
         if override_id:
+            if override_id.upper() == "NONE":
+                # Player isn't in the TM snapshot — force unmatched rather than
+                # let the fuzzy fallback latch onto an unrelated player.
+                matched_tm_id.append(None)
+                matched_value.append(None)
+                matched_sub_pos.append(None)
+                matched_type.append("override_unmatched")
+                continue
             tm_row = tm[tm["tm_id"] == override_id]
             if not tm_row.empty:
                 best = tm_row.iloc[0]

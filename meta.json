@@ -5750,11 +5750,11 @@
     }
   ],
   "wc_tier_thresholds": {
-    "World Cup Champions": 1.1855636404002072,
-    "Finalists": 0.773763573457307,
-    "Semi-finalists": 0.4311205512034223,
-    "Quarter-finalists": 0.2707479643349858,
-    "Round of 16": 0.08013851803726141,
+    "World Cup Champions": 1.168842459709141,
+    "Finalists": 0.7701795299586088,
+    "Semi-finalists": 0.4176209830315921,
+    "Quarter-finalists": 0.2651194107099675,
+    "Round of 16": 0.08179298026653739,
     "Group Stage Exit": -Infinity
   }
 }
