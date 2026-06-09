@@ -104,8 +104,11 @@ def build_defensive_value_index(players: pd.DataFrame) -> pd.DataFrame:
     One-row feature vector for Stage 2: average age-adjusted value_z of DEF+GK players.
     Prefers age_adj_value_z (age-weighted) over raw value_z when available.
     Missing values imputed with 0 (= position-season average quality).
+    Uses drafted_bucket when present (scoring path) so a CDM drafted as DEF
+    contributes to the defensive index; falls back to primary_bucket for training.
     """
-    defensive = players[players["primary_bucket"].isin(["GK", "DEF"])]
+    bucket_col = "drafted_bucket" if "drafted_bucket" in players.columns else "primary_bucket"
+    defensive = players[players[bucket_col].isin(["GK", "DEF"])]
     if defensive.empty:
         return pd.DataFrame([{"def_value_z": 0.0}])
     val_col = "age_adj_value_z" if "age_adj_value_z" in defensive.columns else "value_z"
@@ -124,11 +127,16 @@ def build_position_value_features(players: pd.DataFrame) -> pd.DataFrame:
     value_z is already position×season-normalised, so a defender's value_z is
     relative to other defenders that season — no cross-position inflation.
     Missing values imputed with 0 (position-season median quality).
+
+    Uses drafted_bucket when present (scoring path) so the per-position values
+    match exactly what the reveal screen displays. Falls back to primary_bucket
+    for training (real-team data has no drafted_bucket).
     """
     val_col = "age_adj_value_z" if "age_adj_value_z" in players.columns else "value_z"
+    bucket_col = "drafted_bucket" if "drafted_bucket" in players.columns else "primary_bucket"
     row = {}
     for bucket, feat_name in POSITION_VALUE_GROUPS:
-        grp = players[players["primary_bucket"] == bucket][val_col]
+        grp = players[players[bucket_col] == bucket][val_col]
         row[feat_name] = float(grp.fillna(0).mean()) if not grp.empty else 0.0
     return pd.DataFrame([row])[[feat for _, feat in POSITION_VALUE_GROUPS]]
 
